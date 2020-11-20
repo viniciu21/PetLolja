@@ -1,5 +1,6 @@
 #include <iomanip>
 
+#include<iostream>
 using std::setfill;
 using std::setw;
 using std::cout;
@@ -66,6 +67,6 @@ ostream& AnimalNativo::imprimeDados(ostream& o) const{
 		<< setfill(' ') << setw(10) << this->registro_ibama
 		<< setfill(' ') << setw(10) << this->territorio_brasileiro
 		<< setfill(' ') << setw(10) << (this->extincao==ameacado ? "Risco de extincao" : "Nao corre risco de extincao")
-		<< setfill(' ') << setw(6) 
+		<< setfill(' ') << setw(6);
 	return o;
 }

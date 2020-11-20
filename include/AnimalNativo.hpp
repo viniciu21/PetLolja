@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class AnimalNativo: public Animal, AnimalSilvestre{
+class AnimalNativo: public AnimalSilvestre{
 
 protected:
 	

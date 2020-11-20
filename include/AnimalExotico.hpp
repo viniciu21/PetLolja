@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class AnimalExotico: public Animal, AnimalSilvestre{
+class AnimalExotico: public AnimalSilvestre{
 
 protected:
 	string pais_origem;

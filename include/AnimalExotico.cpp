@@ -1,4 +1,5 @@
 #include <iomanip>
+#include<iostream>
 
 using std::setfill;
 using std::setw;
@@ -50,10 +51,10 @@ AnimalExotico::~AnimalExotico(){}
 // Getters
 
 vector<AnimalSilvestre*> AnimalExotico::getExotico(){
-	return this->nativos;
+	return this->exotico;
 }
 
-string   getPais_origem(){
+string   AnimalExotico::getPais_origem(){
 	return this->pais_origem;
 }
 
@@ -71,6 +72,6 @@ ostream& AnimalExotico::imprimeDados(ostream& o) const{
 		<< setfill(' ') << setw(10) << this->registro_ibama
 		<< setfill(' ') << setw(10) << this->territorio_brasileiro
 		<< setfill(' ') << setw(10) << (this->extincao==ameacado ? "Risco de extincao" : "Nao corre risco de extincao")
-		<< setfill(' ') << setw(6) 
+		<< setfill(' ') << setw(6); 
 	return o;
 }

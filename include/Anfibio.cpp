@@ -1,16 +1,4 @@
-#ifndef __Anfibio__
-#define __Anfibio__
-
-#include<iostream>
-#include "Animal.hpp"
-
-class Anfibio: public Animal{
-
-protected:
-	string habitat;
-	bool possui_ovos;
-	
-public:
+#include "Anfibio.hpp"
 
 	Anfibio(
 		int id,
@@ -34,4 +22,3 @@ public:
 	string getHabitat();
 	bool getPossui_ovos();
 	
-};
