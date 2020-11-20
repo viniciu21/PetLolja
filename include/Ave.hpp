@@ -1,15 +1,15 @@
-#ifndef __Anfibio__
-#define __Anfibio__
+#ifndef __AVE__
+#define __AVE__
 
 #include<iostream>
 
-class Anfibio{
+class Ave{
 protected:
 	
 	
 public:
 
-	Anfibio();
-	~Anfibio();
+	Ave();
+	~Ave();
 	
 };
