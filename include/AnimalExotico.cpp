@@ -6,22 +6,10 @@ using std::setw;
 using std::cout;
 using std::endl;
 
-#include "Animal.hpp"
 #include "AnimalSilvestre.hpp"
 #include "AnimalExotico.hpp"
 
 AnimalExotico::AnimalExotico(
-	int          id,
-	string       especie, 
-	string       nome,
-	string       genero,  
-	Veterinario* veterinario, 
-	Tratador*    tratador, 
-	string       tipo_temperatura,
-	string       tipo_pele, 
-	string       tipo_fecundacao, 
-	bool         troca_pele, 
-	string       material_eliminidado,
 	string       aquatico_terrestre,
 	bool         registro_ibama,
 	bool         territorio_brasileiro,
@@ -29,16 +17,6 @@ AnimalExotico::AnimalExotico(
 	string       pais_origem
 	):
 		AnimalSilvestre(
-			id,
-			especie, 
-			nome,
-			genero,  
-			veterinario, 
-			tratador, 
-			tipo_temperatura,
-			tipo_pele, 
-			tipo_fecundacao, 
-			troca_pele, 
 			material_eliminidado,
 			aquatico_terrestre,
 			registro_ibama,
@@ -50,7 +28,7 @@ AnimalExotico::~AnimalExotico(){}
 
 // Getters
 
-vector<AnimalSilvestre*> AnimalExotico::getExotico(){
+vector<AnimalExotico*> AnimalExotico::getExotico(){
 	return this->exotico;
 }
 
