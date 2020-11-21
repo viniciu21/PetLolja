@@ -16,7 +16,6 @@ protected:
 public:
 
 	AnimalExotico(
-		string       material_eliminidado,
 		string       aquatico_terrestre,
 		bool         registro_ibama,
 		bool         territorio_brasileiro,

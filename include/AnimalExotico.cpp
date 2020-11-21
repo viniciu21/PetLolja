@@ -17,7 +17,6 @@ AnimalExotico::AnimalExotico(
 	string       pais_origem
 	):
 		AnimalSilvestre(
-			material_eliminidado,
 			aquatico_terrestre,
 			registro_ibama,
 			territorio_brasileiro,

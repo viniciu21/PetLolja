@@ -1,23 +1,23 @@
-#ifndef __ANFIBIONATIVO__
-#define __ANFIBIONATIVO__
+#ifndef __ANFIBIOEXOTICO__
+#define __ANFIBIOEXOTICO__
 
 #include<iostream>
 #include<vector>
 
 #include "Anfibio.hpp"
-#include "AnimalNativo.hpp"
+#include "AnimalExotico.hpp"
 #include "Animal.hpp"
 using namespace std;
 
-class AnfibioNativo: public Anfibio,  AnimalNativo{
+class AnfibioExotico: public Anfibio,  AnimalExotico{
 
 protected:
 	
-
+	
 
 public:
 
-	AnfibioNativo(
+	AnfibioExotico(
 		int          id,
 		string       especie, 
 		string       nome,
@@ -34,15 +34,16 @@ public:
 		string       aquatico_terrestre,
 		bool         registro_ibama,
 		bool         territorio_brasileiro,
-		enExtincao   extincao
+		enExtincao   extincao,
+		string pais_origem
 		);
 	
-	~AnfibioNativo();
+	~AnfibioExotico();
 	
 
 	// Getters
 
-	friend std::ostream& operator<<(std::ostream& os, AnfibioNativo& an);
+	friend std::ostream& operator<<(std::ostream& os, AnfibioExotico& ae);
 	ostream& imprimeDados(ostream& o) const;
 
 };
