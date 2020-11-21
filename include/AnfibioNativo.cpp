@@ -14,8 +14,8 @@ AnfibioNativo::AnfibioNativo(
 	string       especie, 
 	string       nome,
 	string       genero,  
-	Veterinario* veterinario, 
-	Tratador*    tratador, 
+	string veterinario, 
+	string    tratador, 
 	string       tipo_temperatura,
 	string       tipo_pele, 
 	string       tipo_fecundacao, 
@@ -54,8 +54,8 @@ AnfibioNativo::~AnfibioNativo(){}
 
 // Getters
 
-vector<AnfibioNativo*> AnfibioNativo::getAnfibio_nativos(){
-	return this->anfibio_nativos;
+std::ostream& operator<<(std::ostream& o, AnfibioNativo& an){
+	return an.imprimeDados(o);
 }
 
 ostream& AnfibioNativo::imprimeDados(ostream& o) const{

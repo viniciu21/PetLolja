@@ -28,7 +28,7 @@ public:
 	// Getters
 	vector<AnimalNativo*> getNativos();
 
-	ostream& imprimeDados(ostream& o) const;
+	virtual ostream& imprimeDados(ostream& o) const = 0;
 
 };
 

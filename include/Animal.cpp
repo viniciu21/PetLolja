@@ -5,8 +5,8 @@ Animal::Animal(
 	string       especie, 
 	string       nome, 
 	string       genero, 
-	Veterinario* veterinario, 
-	Tratador*    tratador, 
+	string veterinario, 
+	string    tratador, 
 	string       tipo_temperatura, 
 	string       tipo_pele, 
 	string       tipo_fecundacao, 
@@ -44,11 +44,11 @@ string       Animal::getGenero(){
 	return this->genero;
 }
 
-Veterinario* Animal::getVeterinario(){
+string Animal::getVeterinario(){
 	return this->veterinario;
 }
 
-Tratador*    Animal::getTratador(){
+string    Animal::getTratador(){
 	return this->tratador;
 }	
 

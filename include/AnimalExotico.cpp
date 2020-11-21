@@ -35,21 +35,3 @@ vector<AnimalExotico*> AnimalExotico::getExotico(){
 string   AnimalExotico::getPais_origem(){
 	return this->pais_origem;
 }
-
-ostream& AnimalExotico::imprimeDados(ostream& o) const{
-	o   << setfill(' ') << setw(10) << this->id
-		<< setfill(' ') << setw(10) << this->especie
-		<< setfill(' ') << setw(10) << this->nome
-		<< setfill(' ') << setw(10) << this->genero
-		<< setfill(' ') << setw(10) << this->veterinario
-		<< setfill(' ') << setw(10) << this->tratador
-		<< setfill(' ') << setw(10) << this->tipo_temperatura
-		<< setfill(' ') << setw(10) << this->tipo_pele
-		<< setfill(' ') << setw(10) << this->material_eliminidado
-		<< setfill(' ') << setw(10) << this->aquatico_terrestre
-		<< setfill(' ') << setw(10) << this->registro_ibama
-		<< setfill(' ') << setw(10) << this->territorio_brasileiro
-		<< setfill(' ') << setw(10) << (this->extincao==ameacado ? "Risco de extincao" : "Nao corre risco de extincao")
-		<< setfill(' ') << setw(6); 
-	return o;
-}

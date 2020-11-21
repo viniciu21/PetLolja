@@ -13,7 +13,7 @@ class AnfibioNativo: public Anfibio,  AnimalNativo{
 
 protected:
 	
-	vector<AnfibioNativo*> anfibio_nativos;
+
 
 public:
 
@@ -22,8 +22,8 @@ public:
 		string       especie, 
 		string       nome,
 		string       genero,  
-		Veterinario* veterinario, 
-		Tratador*    tratador, 
+		string veterinario, 
+		string    tratador, 
 		string       tipo_temperatura,
 		string       tipo_pele, 
 		string       tipo_fecundacao, 
@@ -43,6 +43,7 @@ public:
 	// Getters
 	vector<AnfibioNativo*> getAnfibio_nativos();
 
+	friend std::ostream& operator<<(std::ostream& os, AnfibioNativo& an);
 	ostream& imprimeDados(ostream& o) const;
 
 };

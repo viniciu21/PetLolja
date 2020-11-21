@@ -14,8 +14,8 @@ protected:
 	string       especie;
 	string       nome;
 	string       genero;
-	Veterinario* veterinario;
-	Tratador*    tratador;
+	string       veterinario;
+	string       tratador;
 	string       tipo_temperatura;
 	string       tipo_pele;
 	string       tipo_fecundacao;
@@ -24,7 +24,7 @@ protected:
 
 public:
 
-	Animal(int id,string especie, string nome, string genero, Veterinario* veterinario, Tratador* tratador, string tipo_temperatura, string tipo_pele, string tipo_fecundacao, bool troca_pele, string material_eliminidado);
+	Animal(int id,string especie, string nome, string genero, string veterinario, string tratador, string tipo_temperatura, string tipo_pele, string tipo_fecundacao, bool troca_pele, string material_eliminidado);
 	~Animal();
 
 	// Getters
@@ -32,8 +32,8 @@ public:
 	string       getEspecie();
 	string       getNome();
 	string       getGenero();
-	Veterinario* getVeterinario();
-	Tratador*    getTratador();
+	string getVeterinario();
+	string    getTratador();
 	string       getTipo_temperatura();
 	string       getTipo_pele();
 	string       getTipo_fecundacao();

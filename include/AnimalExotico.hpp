@@ -31,7 +31,7 @@ public:
 	string   getPais_origem();
 	vector<AnimalExotico*> getExotico();
 
-	ostream& imprimeDados(ostream& o) const;
+	virtual ostream& imprimeDados(ostream& o) const = 0;
 
 };
 

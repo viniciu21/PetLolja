@@ -28,12 +28,3 @@ AnimalNativo::~AnimalNativo(){}
 vector<AnimalNativo*> AnimalNativo::getNativos(){
 	return this->nativos;
 }
-
-ostream& AnimalNativo::imprimeDados(ostream& o) const{
-	o   << setfill(' ') << setw(10) << this->aquatico_terrestre
-		<< setfill(' ') << setw(10) << this->registro_ibama
-		<< setfill(' ') << setw(10) << this->territorio_brasileiro
-		<< setfill(' ') << setw(10) << (this->extincao==ameacado ? "Risco de extincao" : "Nao corre risco de extincao")
-		<< setfill(' ') << setw(6);
-	return o;
-}
