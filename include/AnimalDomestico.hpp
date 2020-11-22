@@ -3,11 +3,24 @@
 
 #include <iostream>
 
-class Domestico {
-   private:
+using namespace std;
+
+class AnimalDomestico{
+
+   protected:
+
+   	string nome_animal;
+   	string nome_dono;
+
    public:
-    Domestico();
-    ~Domestico();
+
+    AnimalDomestico(string nome_animal, string nome_dono);
+
+    ~AnimalDomestico();
+
+    //getters
+    string getNome_animal();
+    string getNome_dono();
 };
 
 #endif

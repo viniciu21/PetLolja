@@ -1,4 +1,4 @@
-#include "./Funcionário.hpp"
+#include "./Funcionario.hpp"
 
 class FuncionarioVeterinario : public Funcionario {
    private:

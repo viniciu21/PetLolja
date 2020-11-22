@@ -1,11 +1,6 @@
 #include <iomanip>
 #include <iostream>
 
-using std::cout;
-using std::endl;
-using std::setfill;
-using std::setw;
-
 #include "../include/AnimalExotico.hpp"
 #include "../include/AnimalSilvestre.hpp"
 

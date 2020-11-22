@@ -47,6 +47,7 @@ class Animal {
     string getTipo_fecundacao();
     bool getTroca_pele();
     string getMaterial_eliminidado();
+    
     friend std::ostream& operator<<(std::ostream& os, Animal& a);
 };
 
