@@ -30,7 +30,7 @@ bool PetFera::cadastrarAnimal() {
     cout << "3 - cadastrar anfibio domestico" << endl;
     cin >> escolha;
     if (escolha == 1) {
-        AnfibioNativo* novo = new AnfibioNativo(1, "lagarto", "larga", "macho", "vet", "trata", "temperatura", "pele", "fecunda", true, "xixi", "nao sei", true, "terrestre", true, true, ameacado);
+        AnfibioNativo* novo = new AnfibioNativo(1, "lagarto", "larga", "macho", Repteis, "vet", "trata", "temperatura", "pele", "fecunda", true, "xixi", "nao sei", true, "terrestre", true, true, ameacado);
         this->anfibio_nativos.push_back(novo);
         for (auto& novo : this->anfibio_nativos) {
             cout << (*novo) << endl;

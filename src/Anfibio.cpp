@@ -5,6 +5,7 @@ Anfibio::Anfibio(
     string especie,
     string nome,
     string genero,
+    familia classe,
     string veterinario,
     string tratador,
     string tipo_temperatura,
@@ -13,28 +14,34 @@ Anfibio::Anfibio(
     bool troca_pele,
     string material_eliminidado,
     string habitat,
-    bool possui_ovos) :
-
-                        Animal(
-
-                            id,
-                            especie,
-                            nome,
-                            genero,
-                            veterinario,
-                            tratador,
-                            tipo_temperatura,
-                            tipo_pele,
-                            tipo_fecundacao,
-                            troca_pele,
-                            material_eliminidado),
+    bool possui_ovos) : Animal(id,
+                               especie,
+                               nome,
+                               genero,
+                               classe,
+                               veterinario,
+                               tratador,
+                               tipo_temperatura,
+                               tipo_pele,
+                               tipo_fecundacao,
+                               troca_pele,
+                               material_eliminidado),
                         habitat(habitat),
                         possui_ovos(possui_ovos) {}
 
 Anfibio::~Anfibio() {}
 
-ostream& operator<<(ostream& o, Anfibio& a) {
-    return a.imprimeDados(o);
+ostream& Anfibio::imprimeDados(ostream& o) const {
+    o << this->especie << "\n"
+      << this->genero << "\n"
+      << this->habitat << "\n"
+      << this->classe << "\n"
+      << this->id << "\n"
+      << this->material_eliminidado << "\n"
+      << this->nome << "\n"
+      << this->especie << "\n"
+      << this->habitat << "\n";
+    return o;
 }
 
 string Anfibio::getHabitat() {

@@ -13,6 +13,7 @@ AnfibioNativo::AnfibioNativo(
     string especie,
     string nome,
     string genero,
+    familia classe,
     string veterinario,
     string tratador,
     string tipo_temperatura,
@@ -29,6 +30,7 @@ AnfibioNativo::AnfibioNativo(
                                    especie,
                                    nome,
                                    genero,
+                                   classe,
                                    veterinario,
                                    tratador,
                                    tipo_temperatura,
@@ -48,14 +50,11 @@ AnfibioNativo::~AnfibioNativo() {}
 
 // Getters
 
-std::ostream& operator<<(std::ostream& o, AnfibioNativo& an) {
-    return an.imprimeDados(o);
-}
-
 ostream& AnfibioNativo::imprimeDados(ostream& o) const {
     o << setfill(' ') << setw(10) << this->id
       << setfill(' ') << setw(10) << this->especie
       << setfill(' ') << setw(10) << this->nome
+      << this->classe << "\n"
       << setfill(' ') << setw(10) << this->genero
       << setfill(' ') << setw(10) << this->veterinario
       << setfill(' ') << setw(10) << this->tratador

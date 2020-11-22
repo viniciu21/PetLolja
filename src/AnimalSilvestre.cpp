@@ -25,7 +25,3 @@ bool AnimalSilvestre::getTerritorio_brasileiro() {
 enExtincao AnimalSilvestre::getExtincao() {
     return this->extincao;
 }
-
-ostream& operator<<(ostream& o, AnimalSilvestre& as) {
-    return as.imprimeDados(o);
-}

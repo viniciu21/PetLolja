@@ -19,7 +19,3 @@ AnimalNativo::AnimalNativo(
 AnimalNativo::~AnimalNativo() {}
 
 // Getters
-
-vector<AnimalNativo*> AnimalNativo::getNativos() {
-    return this->nativos;
-}

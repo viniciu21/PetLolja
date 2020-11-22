@@ -1,37 +1,28 @@
 #ifndef __EXOTICO__
 #define __EXOTICO__
 
-#include<iostream>
-#include<vector>
+#include <iostream>
+
 #include "AnimalSilvestre.hpp"
 
 using namespace std;
 
-class AnimalExotico: public AnimalSilvestre{
+class AnimalExotico : public AnimalSilvestre {
+   protected:
+    string pais_origem;
 
-protected:
-	string pais_origem;
-	vector<AnimalExotico*> exotico;
+   public:
+    AnimalExotico(
+        string aquatico_terrestre,
+        bool registro_ibama,
+        bool territorio_brasileiro,
+        enExtincao extincao,
+        string pais_origem);
 
-public:
+    ~AnimalExotico();
 
-	AnimalExotico(
-		string       aquatico_terrestre,
-		bool         registro_ibama,
-		bool         territorio_brasileiro,
-		enExtincao   extincao,
-		string pais_origem
-		);
-	
-	~AnimalExotico();
-	
-
-	// Getters
-	string   getPais_origem();
-	vector<AnimalExotico*> getExotico();
-
-	virtual ostream& imprimeDados(ostream& o) const = 0;
-
+    // Getters
+    string getPais_origem();
 };
 
 #endif

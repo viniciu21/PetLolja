@@ -10,13 +10,16 @@
 using namespace std;
 
 class AnfibioExotico : public Anfibio, AnimalExotico {
-   protected:
+   private:
+    ostream& imprimeDados(ostream& o) const;
+
    public:
     AnfibioExotico(
         int id,
         string especie,
         string nome,
         string genero,
+        familia classe,
         string veterinario,
         string tratador,
         string tipo_temperatura,
@@ -35,9 +38,6 @@ class AnfibioExotico : public Anfibio, AnimalExotico {
     ~AnfibioExotico();
 
     // Getters
-
-    friend std::ostream& operator<<(std::ostream& os, AnfibioExotico& a);
-    ostream& imprimeDados(ostream& o) const;
 };
 
 #endif

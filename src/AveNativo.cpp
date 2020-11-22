@@ -5,10 +5,10 @@ using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/AnfibioExotico.hpp"
-#include "../include/AnimalExotico.hpp"
+#include "../include/AnimalNativo.hpp"
+#include "../include/AveNativo.hpp"
 
-AnfibioExotico::AnfibioExotico(
+AveNativo::AveNativo(
     int id,
     string especie,
     string nome,
@@ -21,38 +21,36 @@ AnfibioExotico::AnfibioExotico(
     string tipo_fecundacao,
     bool troca_pele,
     string material_eliminidado,
-    string habitat,
-    bool possui_ovos,
+    string tamanhoDoBico,
+    string envergaduraAsas,
     string aquatico_terrestre,
     bool registro_ibama,
     bool territorio_brasileiro,
-    enExtincao extincao,
-    string pais_origem) : Anfibio(id,
-                                  especie,
-                                  nome,
-                                  genero,
-                                  classe,
-                                  veterinario,
-                                  tratador,
-                                  tipo_temperatura,
-                                  tipo_pele,
-                                  tipo_fecundacao,
-                                  troca_pele,
-                                  material_eliminidado,
-                                  habitat,
-                                  possui_ovos),
-                          AnimalExotico(
-                              aquatico_terrestre,
-                              registro_ibama,
-                              territorio_brasileiro,
-                              extincao,
-                              pais_origem) {}
+    enExtincao extincao) : Ave(id,
+                               especie,
+                               nome,
+                               genero,
+                               classe,
+                               veterinario,
+                               tratador,
+                               tipo_temperatura,
+                               tipo_pele,
+                               tipo_fecundacao,
+                               troca_pele,
+                               material_eliminidado,
+                               tamanhoDoBico,
+                               envergaduraAsas),
+                           AnimalNativo(
+                               aquatico_terrestre,
+                               registro_ibama,
+                               territorio_brasileiro,
+                               extincao) {}
 
-AnfibioExotico::~AnfibioExotico() {}
+AveNativo::~AveNativo() {}
 
 // Getters
 
-ostream& AnfibioExotico::imprimeDados(ostream& o) const {
+ostream& AveNativo::imprimeDados(ostream& o) const {
     o << setfill(' ') << setw(10) << this->id
       << setfill(' ') << setw(10) << this->especie
       << setfill(' ') << setw(10) << this->nome

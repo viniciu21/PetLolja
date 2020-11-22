@@ -24,10 +24,6 @@ AnimalExotico::~AnimalExotico() {}
 
 // Getters
 
-vector<AnimalExotico*> AnimalExotico::getExotico() {
-    return this->exotico;
-}
-
 string AnimalExotico::getPais_origem() {
     return this->pais_origem;
 }
