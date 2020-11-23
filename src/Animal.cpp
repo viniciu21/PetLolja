@@ -16,6 +16,7 @@ Animal::Animal(
     this->id = id;
     this->especie = especie;
     this->genero = genero;
+    this->nome = nome;
     this->classe = classe;
     this->veterinario = veterinario;
     this->tratador = tratador;
