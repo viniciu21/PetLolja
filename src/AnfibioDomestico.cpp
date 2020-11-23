@@ -47,16 +47,21 @@ AnfibioDomestico::~AnfibioDomestico() {}
 // Getters
 
 ostream& AnfibioDomestico::imprimeDados(ostream& o) const {
-    o << setfill(' ') << setw(10) << this->id
-      << setfill(' ') << setw(10) << this->especie
-      << setfill(' ') << setw(10) << this->nome
-      << this->classe << "\n"
-      << setfill(' ') << setw(10) << this->genero
-      << setfill(' ') << setw(10) << this->tipo_temperatura
-      << setfill(' ') << setw(10) << this->tipo_pele
-      << setfill(' ') << setw(10) << this->material_eliminidado
-      << setfill(' ') << setw(10) << this->nome_animal
-      << setfill(' ') << setw(10) << this->nome_dono
-      << setfill(' ') << setw(6);
+    o << std::endl
+      << "============== Anfibio Doméstico ============" << std::endl
+      << "ID                    | " << this->id << std::endl
+      << "Classe                | Anfibio" << std::endl
+      << "Nome                  | " << nome << std::endl
+      << "Nome Cientifico       | " << this->especie << std::endl
+      << "Sexo                  | " << this->genero << std::endl
+      << "Material Eleiminado   | " << this->material_eliminidado << std::endl
+      << "Dieta                 | " << this->habitat << std::endl
+      << "Veterinario           | "
+      << "" << std::endl
+      << "Tratador              | "
+      << "" << std::endl
+      << "Nome de Batismo       | " << this->nome_animal << std::endl
+      << "Habitat               | " << this->habitat << std::endl;
+
     return o;
 }

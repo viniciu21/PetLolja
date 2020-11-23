@@ -10,21 +10,19 @@
 using namespace std;
 
 class AnfibioDomestico : public Anfibio, AnimalDomestico {
-    
    private:
     ostream& imprimeDados(ostream& o) const;
 
    protected:
-
    public:
     AnfibioDomestico(
         int id,
         string especie,
         string nome,
-        string genero,
+        t_genero genero,
         familia classe,
-        string veterinario,
-        string tratador,
+        Funcionario* veterinario,
+        Funcionario* tratador,
         string tipo_temperatura,
         string tipo_pele,
         string tipo_fecundacao,

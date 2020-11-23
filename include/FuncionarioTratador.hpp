@@ -1,4 +1,6 @@
-#include "./Funcionario.hpp"
+#ifndef __FUNCIONARIOTRATADOR__
+#define __FUNCIONARIOTRATADOR__
+#include "Funcionario.hpp"
 
 enum nivelDeSeguranca {
     Verde = 5,
@@ -12,6 +14,7 @@ class FuncionarioTratador : public Funcionario {
     std::ostream& imprimeDados(std::ostream& os) const;
 
    public:
+    FuncionarioTratador();
     FuncionarioTratador(string nome,
                         string cpf,
                         tipoFunca classificacao,
@@ -20,3 +23,5 @@ class FuncionarioTratador : public Funcionario {
                         nivelDeSeguranca classificacaoDeSeguranca);
     ~FuncionarioTratador();
 };
+
+#endif

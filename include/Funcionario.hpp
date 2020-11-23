@@ -1,3 +1,5 @@
+#ifndef __FUNCIONARIO__
+#define __FUNCIONARIO__
 #include <iostream>
 
 using std::string;
@@ -9,6 +11,8 @@ enum tipoFunca {
 
 class Funcionario {
    private:
+    virtual std::ostream& imprimeDados(std::ostream&) const = 0;
+
    protected:
     string nome;
     string cpf;
@@ -17,7 +21,8 @@ class Funcionario {
     string email;
 
    public:
-    virtual std::ostream& imprimeDados(std::ostream&) const = 0;
+    Funcionario();
+
     Funcionario(
         string nome,
         string cpf,
@@ -40,3 +45,5 @@ class Funcionario {
 
     friend std::ostream& operator<<(std::ostream& o, Funcionario& f);
 };
+
+#endif

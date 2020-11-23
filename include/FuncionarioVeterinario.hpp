@@ -1,11 +1,14 @@
-#include "./Funcionario.hpp"
+#ifndef __FUNCIONARIOVETERINARIO__
+#define __FUNCIONARIOVETERINARIO__
+#include "Funcionario.hpp"
 
 class FuncionarioVeterinario : public Funcionario {
    private:
     bool isInscritoCRMV;
+    std::ostream& imprimeDados(std::ostream& os) const;
 
    public:
-    std::ostream& imprimeDados(std::ostream& os) const;
+    FuncionarioVeterinario();
     FuncionarioVeterinario(string nome,
                            string cpf,
                            tipoFunca classificacao,
@@ -14,3 +17,5 @@ class FuncionarioVeterinario : public Funcionario {
                            bool isInscritoCRMV);
     ~FuncionarioVeterinario();
 };
+
+#endif
