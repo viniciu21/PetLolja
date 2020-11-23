@@ -1,4 +1,4 @@
-#include "./Funcionário.hpp"
+#include "./Funcionario.hpp"
 
 enum nivelDeSeguranca {
     Verde = 5,
