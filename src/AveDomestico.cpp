@@ -1,14 +1,13 @@
+#include "../include/AveDomestico.hpp"
+
 #include <iomanip>
 #include <iostream>
-
 using std::cout;
 using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/AnfibioDomestico.hpp"
-
-AnfibioDomestico::AnfibioDomestico(
+AveDomestico::AveDomestico(
     int id,
     string especie,
     string nome,
@@ -21,32 +20,32 @@ AnfibioDomestico::AnfibioDomestico(
     string tipo_fecundacao,
     bool troca_pele,
     string material_eliminidado,
-    string habitat,
-    bool possui_ovos,
+    string tamanhoDoBico,
+    string envergaduraAsas,
     string nome_animal,
-    string nome_dono) : Anfibio(id,
-                                especie,
-                                nome,
-                                genero,
-                                classe,
-                                veterinario,
-                                tratador,
-                                tipo_temperatura,
-                                tipo_pele,
-                                tipo_fecundacao,
-                                troca_pele,
-                                material_eliminidado,
-                                habitat,
-                                possui_ovos),
+    string nome_dono) : Ave(id,
+                            especie,
+                            nome,
+                            genero,
+                            classe,
+                            veterinario,
+                            tratador,
+                            tipo_temperatura,
+                            tipo_pele,
+                            tipo_fecundacao,
+                            troca_pele,
+                            material_eliminidado,
+                            tamanhoDoBico,
+                            envergaduraAsas),
                         AnimalDomestico(
                             nome_animal,
                             nome_dono) {}
 
-AnfibioDomestico::~AnfibioDomestico() {}
+AveDomestico::~AveDomestico() {
+    std::cout << "ave morrendo";
+}
 
-// Getters
-
-ostream& AnfibioDomestico::imprimeDados(ostream& o) const {
+ostream& AveDomestico::imprimeDados(ostream& o) const {
     o << setfill(' ') << setw(10) << this->id
       << setfill(' ') << setw(10) << this->especie
       << setfill(' ') << setw(10) << this->nome
@@ -55,8 +54,8 @@ ostream& AnfibioDomestico::imprimeDados(ostream& o) const {
       << setfill(' ') << setw(10) << this->tipo_temperatura
       << setfill(' ') << setw(10) << this->tipo_pele
       << setfill(' ') << setw(10) << this->material_eliminidado
-      << setfill(' ') << setw(10) << this->nome_animal
       << setfill(' ') << setw(10) << this->nome_dono
-      << setfill(' ') << setw(6);
+      << "\n";
+
     return o;
 }

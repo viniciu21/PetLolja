@@ -1,23 +1,31 @@
 #include <iostream>
 
-#include "../include/Anfibio.hpp"
+#include "../include/AnfibioExotico.hpp"
 #include "../include/AnfibioNativo.hpp"
-#include "../include/Animal.hpp"
-#include "../include/AnimalNativo.hpp"
-#include "../include/AnimalSilvestre.hpp"
+#include "../include/AveDomestico.hpp"
 #include "../include/AveExotica.hpp"
+#include "../include/FuncionarioTratador.hpp"
 #include "../include/FuncionarioVeterinario.hpp"
-#include "../include/PetFera.hpp"
 
 int main() {
     // PetFera loja;
     // loja.menu();
 
-    // Animal *novo = new AveExotica(1, "mamador", "pru", "M", Mamiferos, "nome", "lala", "32", "lala", "sexual", true, "coco", "grande", "grande", "aquatico", true, true, ameacado, "lala");
+    // Funcionario* lista[2];
 
-    Funcionario *novo = new FuncionarioVeterinario("jamir", "lala", Tratador, "12", "asdas", true);
+    Funcionario *novo = new FuncionarioTratador("nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario *novo2 = new FuncionarioVeterinario("nome", "cpf", Veterinario, "asd", "masd", true);
 
-    std::cout << *novo << "\n";
+    Animal *pru = new AnfibioExotico(1, "lala", "nome", M, Aves, novo2, novo, "1", "2", "3", true, "coco", "12", true, "aquatico", true, true, ameacado, "brasil");
+
+    Animal *pru2 = new AnfibioNativo(1, "lala", "nome", F, Anfibios, novo2, novo, "1", "2", "3", true, "coco", "haha", true, "aquatioc", true, true, ameacado);
+
+    Animal *pru3 = new AveDomestico(1, "lala", "nome", F, Anfibios, novo2, novo, "1", "2", "3", true, "coco", "10", "10", "prupru", "vinicius");
+
+    cout
+        << *pru << "\n";
+    cout << *pru2 << "\n";
+    cout << *pru3 << "\n";
 
     return 0;
 }

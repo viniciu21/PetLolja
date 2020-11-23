@@ -12,10 +12,10 @@ AnfibioExotico::AnfibioExotico(
     int id,
     string especie,
     string nome,
-    string genero,
+    t_genero genero,
     familia classe,
-    string veterinario,
-    string tratador,
+    Funcionario* veterinario,
+    Funcionario* tratador,
     string tipo_temperatura,
     string tipo_pele,
     string tipo_fecundacao,
@@ -58,8 +58,6 @@ ostream& AnfibioExotico::imprimeDados(ostream& o) const {
       << setfill(' ') << setw(10) << this->nome
       << this->classe << "\n"
       << setfill(' ') << setw(10) << this->genero
-      << setfill(' ') << setw(10) << this->veterinario
-      << setfill(' ') << setw(10) << this->tratador
       << setfill(' ') << setw(10) << this->tipo_temperatura
       << setfill(' ') << setw(10) << this->tipo_pele
       << setfill(' ') << setw(10) << this->material_eliminidado

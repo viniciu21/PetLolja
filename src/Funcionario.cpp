@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+Funcionario::Funcionario() {}
+
 Funcionario::Funcionario(string nome,
                          string cpf,
                          tipoFunca classificacao,

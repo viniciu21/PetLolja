@@ -4,26 +4,27 @@ Animal::Animal(
     int id,
     string especie,
     string nome,
-    string genero,
+    t_genero genero,
     familia classe,
-    string veterinario,
-    string tratador,
+    Funcionario* veterinario,
+    Funcionario* tratador,
     string tipo_temperatura,
     string tipo_pele,
     string tipo_fecundacao,
     bool troca_pele,
-    string material_eliminidado) : id(id),
-                                   especie(especie),
-                                   nome(nome),
-                                   genero(genero),
-                                   classe(classe),
-                                   veterinario(veterinario),
-                                   tratador(tratador),
-                                   tipo_temperatura(tipo_temperatura),
-                                   tipo_pele(tipo_pele),
-                                   tipo_fecundacao(tipo_fecundacao),
-                                   troca_pele(troca_pele),
-                                   material_eliminidado(material_eliminidado) {}
+    string material_eliminidado) {
+    this->id = id;
+    this->especie = especie;
+    this->genero = genero;
+    this->classe = classe;
+    this->veterinario = veterinario;
+    this->tratador = tratador;
+    this->tipo_temperatura = tipo_temperatura;
+    this->tipo_pele = tipo_pele;
+    this->tipo_fecundacao = tipo_fecundacao;
+    this->troca_pele = troca_pele;
+    this->material_eliminidado = material_eliminidado;
+};
 
 Animal::~Animal() {}
 
@@ -40,15 +41,15 @@ string Animal::getNome() {
     return this->nome;
 }
 
-string Animal::getGenero() {
+t_genero Animal::getGenero() {
     return this->genero;
 }
 
-string Animal::getVeterinario() {
+Funcionario* Animal::getVeterinario() {
     return this->veterinario;
 }
 
-string Animal::getTratador() {
+Funcionario* Animal::getTratador() {
     return this->tratador;
 }
 

@@ -1,5 +1,7 @@
 #include "../include/FuncionarioTratador.hpp"
 
+FuncionarioTratador::FuncionarioTratador() {}
+
 FuncionarioTratador::FuncionarioTratador(
     string nome,
     string cpf,

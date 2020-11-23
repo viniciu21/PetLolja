@@ -1,5 +1,7 @@
 #include "../include/FuncionarioVeterinario.hpp"
 
+FuncionarioVeterinario::FuncionarioVeterinario() {}
+
 FuncionarioVeterinario::FuncionarioVeterinario(string nome,
                                                string cpf,
                                                tipoFunca classificacao,
