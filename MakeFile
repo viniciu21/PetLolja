@@ -17,55 +17,55 @@ all : $(OBJS)
 $(BIN)/main.o : $(SRC)/main.cpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/main.cpp -o $@
 
-$(BIN)/Anfibio.o : $(SRC)/Anfibio.cpp $(INC)/Anfibio.hpp 
+$(BIN)/Anfibio.o : $(SRC)/Anfibio.cpp $(INC)/Anfibio.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/Anfibio.cpp -o $@
 
-$(BIN)/AnfibioDomestico.o : $(SRC)/AnfibioDomestico.cpp $(INC)/AnfibioDomestico.hpp 
+$(BIN)/AnfibioDomestico.o : $(SRC)/AnfibioDomestico.cpp $(INC)/AnfibioDomestico.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AnfibioDomestico.cpp -o $@
 
-$(BIN)/AnfibioExotico.o : $(SRC)/AnfibioExotico.cpp $(INC)/AnfibioExotico.hpp 
+$(BIN)/AnfibioExotico.o : $(SRC)/AnfibioExotico.cpp $(INC)/AnfibioExotico.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AnfibioExotico.cpp -o $@
 
-$(BIN)/AnfibioNativo.o : $(SRC)/AnfibioNativo.cpp $(INC)/AnfibioNativo.hpp 
+$(BIN)/AnfibioNativo.o : $(SRC)/AnfibioNativo.cpp $(INC)/AnfibioNativo.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AnfibioNativo.cpp -o $@
 
-$(BIN)/Animal.o : $(SRC)/Animal.cpp $(INC)/Animal.hpp 
+$(BIN)/Animal.o : $(SRC)/Animal.cpp $(INC)/Animal.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/Animal.cpp -o $@
 
-$(BIN)/AnimalDomestico.o : $(SRC)/AnimalDomestico.cpp $(INC)/AnimalDomestico.hpp 
+$(BIN)/AnimalDomestico.o : $(SRC)/AnimalDomestico.cpp $(INC)/AnimalDomestico.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AnimalDomestico.cpp -o $@
 
-$(BIN)/AnimalExotico.o : $(SRC)/AnimalExotico.cpp $(INC)/AnimalExotico.hpp 
+$(BIN)/AnimalExotico.o : $(SRC)/AnimalExotico.cpp $(INC)/AnimalExotico.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AnimalExotico.cpp -o $@
 
-$(BIN)/AnimalNativo.o : $(SRC)/AnimalNativo.cpp $(INC)/AnimalNativo.hpp 
+$(BIN)/AnimalNativo.o : $(SRC)/AnimalNativo.cpp $(INC)/AnimalNativo.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AnimalNativo.cpp -o $@
 
-$(BIN)/AnimalSilvestre.o : $(SRC)/AnimalSilvestre.cpp $(INC)/AnimalSilvestre.hpp 
+$(BIN)/AnimalSilvestre.o : $(SRC)/AnimalSilvestre.cpp $(INC)/AnimalSilvestre.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AnimalSilvestre.cpp -o $@
 
-$(BIN)/Ave.o : $(SRC)/Ave.cpp $(INC)/Ave.hpp 
+$(BIN)/Ave.o : $(SRC)/Ave.cpp $(INC)/Ave.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/Ave.cpp -o $@
 
-$(BIN)/AveDomestico.o : $(SRC)/AveDomestico.cpp $(INC)/AveDomestico.hpp 
+$(BIN)/AveDomestico.o : $(SRC)/AveDomestico.cpp $(INC)/AveDomestico.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AveDomestico.cpp -o $@
 
-$(BIN)/AveExotica.o : $(SRC)/AveExotica.cpp $(INC)/AveExotica.hpp 
+$(BIN)/AveExotica.o : $(SRC)/AveExotica.cpp $(INC)/AveExotica.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AveExotica.cpp -o $@
 
-$(BIN)/AveNativo.o : $(SRC)/AveNativo.cpp $(INC)/AveNativo.hpp 
+$(BIN)/AveNativo.o : $(SRC)/AveNativo.cpp $(INC)/AveNativo.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/AveNativo.cpp -o $@
 
-$(BIN)/FuncionarioTratador.o : $(SRC)/FuncionarioTratador.cpp $(INC)/FuncionarioTratador.hpp 
+$(BIN)/FuncionarioTratador.o : $(SRC)/FuncionarioTratador.cpp $(INC)/FuncionarioTratador.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/FuncionarioTratador.cpp -o $@
 
-$(BIN)/FuncionarioVeterinario.o : $(SRC)/FuncionarioVeterinario.cpp $(INC)/FuncionarioVeterinario.hpp 
+$(BIN)/FuncionarioVeterinario.o : $(SRC)/FuncionarioVeterinario.cpp $(INC)/FuncionarioVeterinario.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/FuncionarioVeterinario.cpp -o $@
 
-$(BIN)/Funcionario.o : $(SRC)/Funcionario.cpp $(INC)/Funcionario.hpp 
+$(BIN)/Funcionario.o : $(SRC)/Funcionario.cpp $(INC)/Funcionario.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/Funcionario.cpp -o $@
 
-$(BIN)/PetFera.o : $(SRC)/PetFera.cpp $(INC)/PetFera.hpp 
+$(BIN)/PetFera.o : $(SRC)/PetFera.cpp $(INC)/PetFera.hpp
 	$(CC) $(CPPFLAGS) -c $(SRC)/PetFera.cpp -o $@
 
 clean:

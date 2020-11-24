@@ -9,9 +9,9 @@ using std::string;
 class Ave : public Animal {
    private:
     virtual ostream& imprimeDados(ostream&) const = 0;
+    // virtual istream& pegarDados(istream&);
 
    protected:
-    
     string envergaduraAsas;
     string tamanhoDoBico;
 
