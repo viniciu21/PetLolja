@@ -32,15 +32,6 @@ Anfibio::Anfibio(
 Anfibio::~Anfibio() {}
 
 ostream& Anfibio::imprimeDados(ostream& o) const {
-    o << this->especie << "\n"
-      << this->genero << "\n"
-      << this->habitat << "\n"
-      << this->classe << "\n"
-      << this->id << "\n"
-      << this->material_eliminidado << "\n"
-      << this->nome << "\n"
-      << this->especie << "\n"
-      << this->habitat << "\n";
     return o;
 }
 

@@ -19,19 +19,19 @@ Ave::Ave(
     string material_eliminidado,
     string envergaduraAsas,
     string tamanhoDoBico) : Animal(id,
-                                     especie,
-                                     nome,
-                                     genero,
-                                     classe,
-                                     veterinario,
-                                     tratador,
-                                     tipo_temperatura,
-                                     tipo_pele,
-                                     tipo_fecundacao,
-                                     troca_pele,
-                                     material_eliminidado),
-                              envergaduraAsas(envergaduraAsas),
-                              tamanhoDoBico(tamanhoDoBico){};
+                                   especie,
+                                   nome,
+                                   genero,
+                                   classe,
+                                   veterinario,
+                                   tratador,
+                                   tipo_temperatura,
+                                   tipo_pele,
+                                   tipo_fecundacao,
+                                   troca_pele,
+                                   material_eliminidado),
+                            envergaduraAsas(envergaduraAsas),
+                            tamanhoDoBico(tamanhoDoBico){};
 
 string Ave::getEnvergaduraAsas() {
     return this->envergaduraAsas;
@@ -42,15 +42,6 @@ string Ave::getTamanhoDoBico() {
 };
 
 ostream& Ave::imprimeDados(ostream& o) const {
-    o << this->especie << "\n"
-      << this->genero << "\n"
-      << this->envergaduraAsas << "\n"
-      << this->classe << "\n"
-      << this->id << "\n"
-      << this->material_eliminidado << "\n"
-      << this->nome << "\n"
-      << this->especie << "\n"
-      << this->tamanhoDoBico << "\n";
     return o;
 }
 
