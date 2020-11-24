@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class AnfibioDomestico : public Anfibio, AnimalDomestico {
+class AnfibioDomestico : public Anfibio, AnimalDomestico{
    private:
     ostream& imprimeDados(ostream& o) const;
 

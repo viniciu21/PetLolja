@@ -11,8 +11,9 @@ class Ave : public Animal {
     virtual ostream& imprimeDados(ostream&) const = 0;
 
    protected:
-    string tamanhoDoBico;
+    
     string envergaduraAsas;
+    string tamanhoDoBico;
 
    public:
     // Ave();

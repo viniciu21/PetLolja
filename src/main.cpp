@@ -7,11 +7,10 @@
 #include "../include/AveExotica.hpp"
 #include "../include/FuncionarioTratador.hpp"
 #include "../include/FuncionarioVeterinario.hpp"
+#include "../include/PetFera.hpp"
 
 int main() {
-    // PetFera loja;
-    // loja.menu();
-
+    
     // Funcionario* lista[2];
 
     Funcionario *novo = new FuncionarioTratador("nome", "cpf", Tratador, "asd", "masd", Verde);
@@ -23,5 +22,10 @@ int main() {
 
     cout << pru3->getNome() << "\n";
     cout << novo->getNome() << "\n";
+
+
+    Petfera loja;
+    loja.cadastrarAnimal();
+
     return 0;
 }
