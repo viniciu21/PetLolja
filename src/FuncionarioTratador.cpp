@@ -3,12 +3,13 @@
 FuncionarioTratador::FuncionarioTratador() {}
 
 FuncionarioTratador::FuncionarioTratador(
+    int id,
     string nome,
     string cpf,
     tipoFunca classificacao,
     string celularProfissional,
     string email,
-    nivelDeSeguranca classificacaoDeSeguranca) : Funcionario(nome, cpf, classificacao, celularProfissional, email), classificacaoDeSeguranca(classificacaoDeSeguranca) {}
+    nivelDeSeguranca classificacaoDeSeguranca) : Funcionario(id, nome, cpf, classificacao, celularProfissional, email), classificacaoDeSeguranca(classificacaoDeSeguranca) {}
 
 std::ostream& FuncionarioTratador::imprimeDados(std::ostream& os) const {
     os << std::endl

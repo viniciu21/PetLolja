@@ -57,12 +57,13 @@ class Petfera {
 	 * Tratamentos
 	*/
 
-    int leID(string str_prompt);
+    // int leID(string str_prompt);
     string leString(string str_prompt);
     t_genero leGenero(string str_prompt);
     bool leBool(string str_prompt);
+    Funcionario* pegarFuncionario();
     //familia leClasse(string str_prompt);
-    int le1ou0(string str_prompt);
+    // int le1ou0(string str_prompt);
 
    private:
     vector<Animal*> animalStore;

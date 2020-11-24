@@ -9,12 +9,13 @@ class FuncionarioVeterinario : public Funcionario {
 
    public:
     FuncionarioVeterinario();
-    FuncionarioVeterinario(string nome,
-                           string cpf,
-                           tipoFunca classificacao,
-                           string celularProfissional,
-                           string email,
-                           bool isInscritoCRMV);
+    FuncionarioVeterinario(
+        int id, string nome,
+        string cpf,
+        tipoFunca classificacao,
+        string celularProfissional,
+        string email,
+        bool isInscritoCRMV);
     ~FuncionarioVeterinario();
 };
 

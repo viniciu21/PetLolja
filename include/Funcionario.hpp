@@ -14,6 +14,7 @@ class Funcionario {
     virtual std::ostream& imprimeDados(std::ostream&) const = 0;
 
    protected:
+    int id;
     string nome;
     string cpf;
     tipoFunca classificacao;
@@ -24,6 +25,7 @@ class Funcionario {
     Funcionario();
 
     Funcionario(
+        int id,
         string nome,
         string cpf,
         tipoFunca classificacao,

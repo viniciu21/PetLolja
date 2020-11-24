@@ -4,11 +4,12 @@
 
 Funcionario::Funcionario() {}
 
-Funcionario::Funcionario(string nome,
-                         string cpf,
-                         tipoFunca classificacao,
-                         string celularProfissional,
-                         string email) : nome(nome), cpf(cpf), classificacao(classificacao), celularProfissional(celularProfissional), email(email){};
+Funcionario::Funcionario(
+    int id, string nome,
+    string cpf,
+    tipoFunca classificacao,
+    string celularProfissional,
+    string email) : id(id), nome(nome), cpf(cpf), classificacao(classificacao), celularProfissional(celularProfissional), email(email){};
 
 string Funcionario::getNome() {
     return this->nome;
