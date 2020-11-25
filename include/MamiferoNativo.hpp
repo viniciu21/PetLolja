@@ -1,0 +1,41 @@
+#ifndef __MamiferoNativo__
+#define __MamiferoNativo__
+
+#include <iostream>
+
+#include "../include/AnimalNativo.hpp"
+#include "Mamifero.hpp"
+
+using std::string;
+
+class MamiferoNativo : public Mamifero, AnimalNativo
+{
+private:
+    virtual ostream &imprimeDados(ostream &o) const;
+
+public:
+    MamiferoNativo(int id,
+                   string especie,
+                   string nome,
+                   string genero,
+                   familia classe,
+                   string veterinario,
+                   string tratador,
+                   string tipo_temperatura,
+                   string tipo_pele,
+                   string tipo_fecundacao,
+                   bool troca_pele,
+                   string material_eliminado,
+                   bool tem_dentes,
+                   pelos pelagem,
+                   TipoDeGestacao tipo_gestacao,
+                   TipoDeMamifero tipo_mamifero,
+                   string aquatico_terrestre,
+                   bool registro_ibama,
+                   bool territorio_brasileiro,
+                   enExtincao extincao);
+
+    ~MamiferoNativo();
+};
+
+#endif
