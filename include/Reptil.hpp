@@ -7,21 +7,21 @@
 using std::string;
 class Reptil : public Animal {
    private:
-    virtual ostream& imprimeDados(ostream& o);
+    ostream& imprimeDados(ostream& o) const;
     
    public:
     Reptil(int id,
         string especie,
         string nome,
-        string genero,
+        t_genero genero,
         familia classe,
-        string veterinario,
-        string tratador,
+        Funcionario* veterinario,
+        Funcionario* tratador,
         string tipo_temperatura,
         string tipo_pele,
         string tipo_fecundacao,
         bool troca_pele,
-        string material_eliminado
+        string material_eliminidado
         );
 
     ~Reptil();

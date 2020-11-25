@@ -15,17 +15,17 @@ private:
 
 public:
     ReptilDomestico(int id,
-                    string especie,
-                    string nome,
-                    string genero,
-                    familia classe,
-                    string veterinario,
-                    string tratador,
-                    string tipo_temperatura,
-                    string tipo_pele,
-                    string tipo_fecundacao,
-                    bool troca_pele,
-                    string material_eliminado,
+        string especie,
+        string nome,
+        t_genero genero,
+        familia classe,
+        Funcionario* veterinario,
+        Funcionario* tratador,
+        string tipo_temperatura,
+        string tipo_pele,
+        string tipo_fecundacao,
+        bool troca_pele,
+        string material_eliminidado,
                     string nome_animal,
                     string nome_dono);
 

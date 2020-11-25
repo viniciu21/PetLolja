@@ -1,14 +1,14 @@
 #include <iomanip>
 #include <iostream>
+
 using std::cout;
 using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/AnimalExotico.hpp"
-#include "../include/AveExotica.hpp"
+#include "../include/ReptilExotico.hpp"
 
-AveExotica::AveExotica(
+ReptilExotico::ReptilExotico(
     int id,
     string especie,
     string nome,
@@ -21,46 +21,44 @@ AveExotica::AveExotica(
     string tipo_fecundacao,
     bool troca_pele,
     string material_eliminidado,
-    string tamanhoDoBico,
-    string envergaduraAsas,
     string aquatico_terrestre,
     bool registro_ibama,
     bool territorio_brasileiro,
     enExtincao extincao,
-    string pais_origem) : Ave(id,
-                              especie,
-                              nome,
-                              genero,
-                              classe,
-                              veterinario,
-                              tratador,
-                              tipo_temperatura,
-                              tipo_pele,
-                              tipo_fecundacao,
-                              troca_pele,
-                              material_eliminidado,
-                              tamanhoDoBico,
-                              envergaduraAsas),
+    string pais_origem) : Reptil(id,
+                                   especie,
+                                   nome,
+                                   genero,
+                                   classe,
+                                   veterinario,
+                                   tratador,
+                                   tipo_temperatura,
+                                   tipo_pele,
+                                   tipo_fecundacao,
+                                   troca_pele,
+                                   material_eliminidado),
                           AnimalExotico(aquatico_terrestre,
                                         registro_ibama,
                                         territorio_brasileiro,
                                         extincao,
                                         pais_origem){};
 
-AveExotica::~AveExotica(){};
+ReptilExotico::~ReptilExotico() {}
 
-ostream &AveExotica::imprimeDados(ostream &o) const
+ostream &ReptilExotico::imprimeDados(ostream &o) const
 {
-
     o << std::endl
-
-      << "============== Ave Exotico ============" << std::endl
+      << "============== Ave Domestico ============" << std::endl
       << "ID                    | " << this->id << std::endl
-      << "Classe                | Anfibio" << std::endl
+      << "Classe                | Ave" << std::endl
       << "Nome                  | " << this->nome << std::endl
       << "Nome Cientifico       | " << this->especie << std::endl
       << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
-      << "Material Eleiminado   | " << this->material_eliminidado << std::endl
+      << "Temperatura           | " << this->tipo_temperatura << std::endl
+      << "Pele                  | " << this->tipo_pele << std::endl
+      << "Fecundacao            | " << this->tipo_fecundacao << std::endl
+      << "Troca de Pele         | " << this->troca_pele << std::endl
+      << "Material Eliminado    | " << this->material_eliminidado << std::endl
       << "Veterinario           | "
       << "" << std::endl
       << "Tratador              | "
@@ -69,9 +67,7 @@ ostream &AveExotica::imprimeDados(ostream &o) const
       << "Registro Ibama        | " << this->registro_ibama << std::endl
       << "Territorio Brasileiro | " << this->territorio_brasileiro << std::endl
       << "Ameacado de Extinsao  | " << (this->extincao == ameacado ? "Risco de extincao" : "Nao corre risco de extincao") << std::endl
-      << "Pais Origem           | " << this->pais_origem << std::endl
-      << "Tamanho do bico       | " << this->tamanhoDoBico << std::endl
-      << "Envergadura           | " << this->envergaduraAsas << std::endl;
+      << "Pais Origem           | " << this->pais_origem << std::endl;
 
     return o;
 }

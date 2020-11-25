@@ -33,28 +33,36 @@ class Mamifero : public Animal {
 
 
    protected:
+    pelos pelagem;
+    bool tem_dentes;
+    TipoDeGestacao tipo_gestacao;
+    TipoDeMamifero tipo_mamifero;
 
    public:
 
     Mamifero(int id,
         string especie,
         string nome,
-        string genero,
+        t_genero genero,
         familia classe,
-        string veterinario,
-        string tratador,
+        Funcionario* veterinario,
+        Funcionario* tratador,
         string tipo_temperatura,
         string tipo_pele,
         string tipo_fecundacao,
         bool troca_pele,
-        string material_eliminado,
+        string material_eliminidado,
         bool tem_dentes,
         pelos pelagem,
         TipoDeGestacao tipo_gestacao,
-        TipoDeMamifero tipo_mamifero
-        );
+        TipoDeMamifero tipo_mamifero);
 
     ~Mamifero();
+
+    bool getDentes();
+    pelos getPelagem();
+    TipoDeGestacao getTipoGestacao();
+    TipoDeMamifero getTipoMamifero();
 
 };
 
