@@ -65,6 +65,21 @@ class Animal {
     bool getTroca_pele();
     string getMaterial_eliminidado();
 
+    // Setters
+
+    void setEspecie(string especie);
+    void setNome(string nome);
+/*  void setGenero(t_genero genero);
+    void setVeterinario(Funcionario* veterinario);
+    void setTratador(Funcionario* tratador);*/
+    void setTipo_temperatura(string temperatura);
+    void setTipo_pele(string pele);
+    void setTipo_fecundacao(string fecundacao);
+    void setTroca_pele(bool troca_pele);
+    void setMaterial_eliminidado(string material_eliminidado);
+
+
+
     friend std::ostream& operator<<(std::ostream& os, Animal& a);
 };
 

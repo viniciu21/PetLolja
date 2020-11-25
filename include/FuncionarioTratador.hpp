@@ -15,7 +15,8 @@ class FuncionarioTratador : public Funcionario {
 
    public:
     FuncionarioTratador();
-    FuncionarioTratador(string nome,
+    FuncionarioTratador(int id,
+                        string nome,
                         string cpf,
                         tipoFunca classificacao,
                         string celularProfissional,

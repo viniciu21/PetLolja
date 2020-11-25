@@ -33,11 +33,9 @@ void Petfera::inicio() {
 }
 
 void Petfera::PetferaMenu(int& escolha) {
-    cout << escolha << "\n";
-
     cout << "# Bem Vindo ao PetFera  # "
          << "\n"
-         << "# Temos as seguintes opções : # "
+         << "# Temos as seguintes opcaos : # "
          << "\n"
          << "    1 -> Adicionar animal "
          << "\n"
@@ -47,7 +45,7 @@ void Petfera::PetferaMenu(int& escolha) {
          << "\n"
          << "    4 -> Remover funcionario "
          << "\n"
-         << "    5 -> Atualizar dados de um animal "
+         << "    5 -> Atualizar dados de um animal"
          << "\n"
          << "    6 -> Listar animais por funcionario "
          << "\n"
@@ -55,11 +53,13 @@ void Petfera::PetferaMenu(int& escolha) {
          << "\n"
          << "    8 -> Listar todos funcionarios "
          << "\n"
-         << "    9 -> Listar todos animais "
+         << "    9 -> Atualizar dados de um funcionario"
+         << "\n"
+         << "    10 -> Listar todos animais "
          << "\n"
          << "    0 -> Sair " << std::endl;
 
-    cout << "Escolha uma opção"
+    cout << "Escolha uma Opcao"
          << "\n";
     cin >> escolha;
 
@@ -75,8 +75,9 @@ void Petfera::PetferaMenu(int& escolha) {
             cadastrarAnimal();
             break;
         case 2:
-            cout << "Vamos la cadastrar um animal"
+            cout << "Vamos la cadastrar um funcionario"
                  << "\n";
+            cadastrarFuncionario();
             break;
         case 3:
             cout << "Vamos la cadastrar um animal"
@@ -87,8 +88,10 @@ void Petfera::PetferaMenu(int& escolha) {
                  << "\n";
             break;
         case 5:
-            cout << "Vamos la cadastrar um animal"
+            cout << "Vamos la atualizar os dados"
                  << "\n";
+
+            atualizarDadosAnimal_interface();
             break;
         case 6:
             cout << "Vamos la cadastrar um animal"
@@ -99,10 +102,20 @@ void Petfera::PetferaMenu(int& escolha) {
                  << "\n";
             break;
         case 8:
-            cout << "Vamos la cadastrar um animal"
+            cout << "Aqui estão todo os Funcionarios na Petfera"
                  << "\n";
+            for (auto& novo : this->funcionarioStore) {
+                cout << (*novo) << endl;
+            }
+
             break;
         case 9:
+            cout << "Vamos la atualizar os dados"
+                 << "\n";
+
+            atualizarDadosFuncionario_interface();
+            break;
+        case 10:
             cout << "Aqui estão todo os animais na Petfera"
                  << "\n";
 
@@ -112,7 +125,7 @@ void Petfera::PetferaMenu(int& escolha) {
             break;
         default:
             cout << "\033[1;33m"
-                 << "Não temos essa opção, Escolha de 0-9"
+                 << "Não temos essa Opcao, Escolha de 0-9"
                  << "\033[0m"
                  << "\n";
             break;
@@ -124,9 +137,11 @@ void Petfera::PetferaMenu(int& escolha) {
 *	que irão efetivar as operações.
 **/
 
+//Funcionario* Petfera::pegarFuncionario() {}
+
 void Petfera::cadastrarAveDomestico() {
-    Funcionario* novo = new FuncionarioTratador("nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario("nome", "cpf", Veterinario, "asd", "masd", true);
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "Vinicius", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "Mathias", "cpf", Veterinario, "asd", "masd", true);
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -143,31 +158,14 @@ void Petfera::cadastrarAveDomestico() {
 
     Animal* criado = new AveDomestico(this->animalStore.size(), especie, nome, genero, Aves, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, nome_animal, nome_dono);
 
-    short salvar;
-    cout << (*criado) << "\n";
-    cout << "Deseja salvar ? 1 para Sim e 2 para N"
+    cout << "Salvando Animal"
          << "\n";
-    cin >> salvar;
-    switch (salvar) {
-        case 1:
-            cout << "Salvando Animal"
-                 << "\n";
-            adicionarAnimal(criado);
-            break;
-        case 2:
-            cout << "Descartando Animal"
-                 << "\n";
-            break;
-        default:
-            cout << "Opção inexistente, voltando para o inicio"
-                 << "\n";
-            break;
-    }
+    adicionarAnimal(criado);
 }
 
 void Petfera::cadastrarAveExotica() {
-    Funcionario* novo = new FuncionarioTratador("nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario("nome", "cpf", Veterinario, "asd", "masd", true);
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -187,31 +185,12 @@ void Petfera::cadastrarAveExotica() {
 
     Animal* criado = new AveExotica(this->animalStore.size(), especie, nome, genero, Aves, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
 
-    short salvar;
-    cout << (*criado) << "\n";
-    cout << "Deseja salvar ? 1 para Sim e 2 para N"
-         << "\n";
-    cin >> salvar;
-    switch (salvar) {
-        case 1:
-            cout << "Salvando Animal"
-                 << "\n";
-            adicionarAnimal(criado);
-            break;
-        case 2:
-            cout << "Descartando Animal"
-                 << "\n";
-            break;
-        default:
-            cout << "Opção inexistente, voltando para o inicio"
-                 << "\n";
-            break;
-    }
+    adicionarAnimal(criado);
 }
 
 void Petfera::cadastrarAveNativa() {
-    Funcionario* novo = new FuncionarioTratador("nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario("nome", "cpf", Veterinario, "asd", "masd", true);
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -230,31 +209,14 @@ void Petfera::cadastrarAveNativa() {
 
     Animal* criado = new AveNativo(this->animalStore.size(), especie, nome, genero, Aves, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
 
-    short salvar;
-    cout << (*criado) << "\n";
-    cout << "Deseja salvar ? 1 para Sim e 2 para N"
+    cout << "Salvando Animal"
          << "\n";
-    cin >> salvar;
-    switch (salvar) {
-        case 1:
-            cout << "Salvando Animal"
-                 << "\n";
-            adicionarAnimal(criado);
-            break;
-        case 2:
-            cout << "Descartando Animal"
-                 << "\n";
-            break;
-        default:
-            cout << "Opção inexistente, voltando para o inicio"
-                 << "\n";
-            break;
-    }
+    adicionarAnimal(criado);
 }
 
 void Petfera::cadastrarAnfibioDomestico() {
-    Funcionario* novo = new FuncionarioTratador("nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario("nome", "cpf", Veterinario, "asd", "masd", true);
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -271,31 +233,14 @@ void Petfera::cadastrarAnfibioDomestico() {
 
     Animal* criado = new AnfibioDomestico(this->animalStore.size(), especie, nome, genero, Anfibios, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, nome_animal, nome_dono);
 
-    short salvar;
-    cout << (*criado) << "\n";
-    cout << "Deseja salvar ? 1 para Sim e 2 para N"
+    cout << "Salvando Animal"
          << "\n";
-    cin >> salvar;
-    switch (salvar) {
-        case 1:
-            cout << "Salvando Animal"
-                 << "\n";
-            adicionarAnimal(criado);
-            break;
-        case 2:
-            cout << "Descartando Animal"
-                 << "\n";
-            break;
-        default:
-            cout << "Opção inexistente, voltando para o inicio"
-                 << "\n";
-            break;
-    }
+    adicionarAnimal(criado);
 }
 
 void Petfera::cadastrarAnfibioExotico() {
-    Funcionario* novo = new FuncionarioTratador("nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario("nome", "cpf", Veterinario, "asd", "masd", true);
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -315,31 +260,14 @@ void Petfera::cadastrarAnfibioExotico() {
 
     Animal* criado = new AnfibioExotico(this->animalStore.size(), especie, nome, genero, Anfibios, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
 
-    short salvar;
-    cout << (*criado) << "\n";
-    cout << "Deseja salvar ? 1 para Sim e 2 para Nãp"
+    cout << "Salvando Animal"
          << "\n";
-    cin >> salvar;
-    switch (salvar) {
-        case 1:
-            cout << "Salvando Animal"
-                 << "\n";
-            adicionarAnimal(criado);
-            break;
-        case 2:
-            cout << "Descartando Animal"
-                 << "\n";
-            break;
-        default:
-            cout << "Opção inexistente, voltando para o inicio"
-                 << "\n";
-            break;
-    }
+    adicionarAnimal(criado);
 }
 
 void Petfera::cadastrarAnfibioNativo() {
-    Funcionario* novo = new FuncionarioTratador("nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario("nome", "cpf", Veterinario, "asd", "masd", true);
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -359,32 +287,15 @@ void Petfera::cadastrarAnfibioNativo() {
 
     Animal* criado = new AnfibioNativo(this->animalStore.size(), especie, nome, genero, Anfibios, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
 
-    short salvar;
-    cout << (*criado) << "\n";
-    cout << "Deseja salvar ? 1 para Sim e 2 para Nãp"
+    cout << "Salvando Animal"
          << "\n";
-    cin >> salvar;
-    switch (salvar) {
-        case 1:
-            cout << "Salvando Animal"
-                 << "\n";
-            adicionarAnimal(criado);
-            break;
-        case 2:
-            cout << "Descartando Animal"
-                 << "\n";
-            break;
-        default:
-            cout << "Opção inexistente, voltando para o inicio"
-                 << "\n";
-            break;
-    }
+    adicionarAnimal(criado);
 }
 
 void Petfera::cadastrarAnimal() {
     short escolhaTipo;
 
-    cout << "Opção Escolhida: Animal" << endl;
+    cout << "Opcao Escolhida: Animal" << endl;
     cout << "Escolha abaixo o tipo de animal para cadastro: " << endl;
     cout << " 1 - Cadastrar Anfibio" << endl;
     cout << " 2 - Cadastrar Mamifero" << endl;
@@ -414,7 +325,7 @@ void Petfera::cadastrarAnimal() {
             break;
 
         default:
-            cout << "Opção Invalida, retornando..." << endl;
+            cout << "Opcao Invalida, retornando..." << endl;
             break;
     }
 }
@@ -447,12 +358,13 @@ void Petfera::cadastrarAnfibio() {
             cadastrarAnfibioNativo();
             break;
         default:
-            cout << "Opção inválida, retornando..."
+            cout << "Opcao invalida, retornando..."
                  << "\n";
             break;
     }
 
 }  // Interface com o usuário
+
 void Petfera::cadastrarAve() {
     short escolhaSilvestre;
 
@@ -481,50 +393,82 @@ void Petfera::cadastrarAve() {
             cadastrarAveNativa();
             break;
         default:
-            cout << "Opção inválida, retornando..."
+            cout << "Opcao invalida, retornando..."
                  << "\n";
             break;
     }
 }  // Interface com o usuário
-void Petfera::cadastrarFuncionario() {}  // Interface com o usuário
-void Petfera::cadastrarVeterinario() {}  // Interface com o usuário
-void Petfera::cadastrarTratador() {}     // Interface com o usuário
+
+void Petfera::cadastrarFuncionario() {
+    short escolha;
+
+    cout << "Opcao Escolhida: Cadastrar Funcionário" << endl;
+    cout << "Escolha abaixo o tipo de funcionario para cadastro: " << endl;
+    cout << " 1 - Funcionario Tratador" << endl;
+    cout << " 2 - Funcionario Veterinario" << endl;
+
+    cin >> escolha;
+
+    switch (escolha) {
+        case 1:
+            cout << "Vamos cadastrar um Funcionario Tratador" << endl;
+            cadastrarTratador();
+            break;
+        case 2:
+            cout << "Vamos cadastrar um Funcionario Tratador" << endl;
+            cadastrarVeterinario();
+    }
+
+}  // Interface com o usuário
+
+void Petfera::cadastrarVeterinario() {
+    string nome = leString("Digite o nome do Funcionario \n");
+    string cpf = leString("Digite o cpf do Funcionario \n");
+    tipoFunca classificacao = Veterinario;
+    string celular = leString("Digite o celular do Funcionário \n");
+    string email = leString("Digite o emil do Funcionário \n");
+    bool inscritoCRMV = leBool("Digite S para se o funcionario esta inscrito no CRMV e N para se não está \n");
+
+    Funcionario* novo = new FuncionarioVeterinario(this->funcionarioStore.size(), nome, cpf, classificacao, celular, email, inscritoCRMV);
+
+    adicionarFuncionario(novo);
+}  // Interface com o usuário
+
+void Petfera::cadastrarTratador() {
+    string nome = leString("Digite o nome do Funcionario \n");
+    string cpf = leString("Digite o cpf do Funcionario \n");
+    tipoFunca classificacao = Tratador;
+    string celular = leString("Digite o celular do Funcionário \n");
+    string email = leString("Digite o emil do Funcionário \n");
+    nivelDeSeguranca seguranca = Verde;
+
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), nome, cpf, classificacao, celular, email, seguranca);
+
+    adicionarFuncionario(novo);
+}  // Interface com o usuário
 
 /*
  * Métodos internos para realizar as operações.
  */
 bool Petfera::adicionarAnimal(Animal* novo_animal) {
+    cout << "Salvando Animal"
+         << "\n";
     this->animalStore.push_back(novo_animal);
     return true;
 }
 
 bool Petfera::adicionarFuncionario(Funcionario* novo_funcionario) {
+    cout << "Salvando funcionario"
+         << "\n";
+    funcionarioStore.push_back(novo_funcionario);
     return true;
-}
-
-int Petfera::leID(string str_prompt) {
-    int id;
-    string linha;
-    getline(cin, linha);  // apenas para limpar a entrada
-    cout << str_prompt;
-    while (getline(cin, linha)) {
-        std::stringstream ss(linha);
-        if (ss >> id) {
-            if (ss.eof()) {
-                break;
-            }
-        }
-        cout << "Valor invalido. Tente Novamente" << endl;
-        cout << str_prompt;
-    }
-
-    return id;
 }
 
 string Petfera::leString(string str_prompt) {
     string var;
     cout << str_prompt;
     cin >> var;
+    // getline(cin, var);
     return var;
 }
 
@@ -552,79 +496,203 @@ t_genero Petfera::leGenero(string str_prompt) {
     return genero;
 }
 
-/*familia Petfera::leClasse(string str_prompt){
-
-	string classe;
-	familia classe_tratado;
-
-	do{
-		cout << str_prompt;
-		cin >> classe;
-
-		if (classe == "Mamiferos" || classe == "mamiferos"){
-
-				classe_tratado = Mamiferos;
-				classe = "Mamiferos";
-				break;
-
-			}else if(classe == "Aves" || classe == "aves"){
-
-				classe_tratado = Aves;
-				classe = "Aves";
-				break;
-
-			}
-			else if(classe == "Anfibios" || classe == "anfibios"){
-
-				classe_tratado = Anfibios;
-				classe = "Anfibios";
-				break;
-
-
-			}else if(classe == "Repteis" || classe == "repteis"){
-
-				classe_tratado = Repteis;
-				classe = "Repteis";
-				break;
-
-			}
-
-	}while((classe != "Mamiferos" || classe != "Aves") || (classe != "Anfibios" || classe != "Repteis"));
-
-    return classe_tratado;
-
-}
-
-*/
-
-int Petfera::le1ou0(string str_prompt) {
-    int num;
-
-    while (num != 1 || num != 2) {
-        num = leID(str_prompt);
-
-        if (num > 2 || num < 1) {
-            cout << str_prompt;
-        }
-
-        if (num == 1 || num == 2) {
-            break;
-        }
-    }
-
-    return num;
-}
-
 bool Petfera::leBool(string str_prompt) {
-    cout << str_prompt;
     string resposta;
-    cin >> resposta;
-    // while ((resposta == "S" && resposta == "s") || (resposta == "N" && resposta == "n")) {
-    //     cout << str_prompt;
-    // }
+    do {
+        cout << str_prompt;
+        cin >> resposta;
+    } while ((resposta != "S" && resposta != "s") && (resposta != "N" && resposta != "n"));
     if (resposta == "S" || resposta == "s") {
         return true;
     } else {
         return false;
     }
+}
+
+void Petfera::atualizarDadosAnimal_interface(){
+
+    int id_animal;
+    string alterar_string;
+    bool alterar_bool;
+    short escolha;
+
+    cout << "ID do animal a ser atualizado: ";
+    cin >> id_animal;
+    
+    for (auto& animal : this->animalStore){
+
+        if (id_animal == animal->getId()){
+
+            atualizar_menu_animal();
+           
+            cin >> escolha;
+
+            if (escolha == 1){
+
+                cout << "Digite a nova especie \n";
+
+                cin >> alterar_string;
+
+                animal->setEspecie(alterar_string);
+
+            }else if(escolha == 2){
+
+                cout << "Digite o novo nome \n";
+
+                cin >> alterar_string;
+
+                animal->setNome(alterar_string);  
+
+            }else if(escolha == 3){
+
+                cout << "Digite o novo tipo de temperatura \n";
+
+                cin >> alterar_string;
+
+                animal->setTipo_temperatura(alterar_string);     
+            }
+            else if(escolha == 4){
+
+                cout << "Digite o novo tipo de pele \n";
+
+                cin >> alterar_string;
+
+                animal->setTipo_pele(alterar_string);     
+            }
+            else if(escolha == 5){
+
+                cout << "Digite o novo tipo de fecundacao \n";
+
+                cin >> alterar_string;
+
+                animal->setTipo_fecundacao(alterar_string);     
+            }
+            else if(escolha == 6){
+
+                cout << "Digite de S se troca de pele ou N se nao troca \n";
+
+                cin >> alterar_bool;
+
+                animal->setTroca_pele(alterar_bool);     
+            }
+            else if(escolha == 7){
+
+                cout << "Digite o novo material eliminado \n";
+
+                cin >> alterar_string;
+
+                animal->setMaterial_eliminidado(alterar_string);     
+            }
+
+        }else{
+
+            cout << "ID nao encontrado, retornando...";
+        }
+    }
+}
+
+
+void Petfera::atualizar_menu_animal(){
+
+    cout << "o que vc quer atualizar? "
+         << "\n"
+         << "# Temos as seguintes opcao : # "
+         << "\n"
+         << "    1 -> Alterar nome cientifico do animal"
+         << "\n"
+         << "    2 -> Alterar Nome do animal"
+         << "\n"
+         << "    3 -> Alterar Tipo de temperatura do animal"
+         << "\n"
+         << "    4 -> Alterar Tipo de pele do animal"
+         << "\n"
+         << "    5 -> Alterar Tipo de fecundacao do animal"
+         << "\n"
+         << "    6 -> Alterar Troca de pele do animal"
+         << "\n"
+         << "    7 -> Alterar Material eliminado do animal"
+         << endl;
+
+    cout << "Escolha uma opcao"
+         << "\n";
+}
+
+
+void Petfera::atualizarDadosFuncionario_interface(){
+
+    int id_funcionario;
+    string alterar_string;
+    short escolha;
+
+    cout << "ID do funcionario a ser atualizado: ";
+    cin >> id_funcionario;
+    
+    for (auto& funcionario : this->funcionarioStore){
+
+        if (id_funcionario == funcionario->getId()){
+
+            atualizar_menu_funcionario();
+           
+            cin >> escolha;
+
+            if (escolha == 1){
+
+                cout << "Digite o novo nome \n";
+
+                cin >> alterar_string;
+
+                funcionario->setNome(alterar_string);
+
+            }else if(escolha == 2){
+
+                cout << "Digite o novo cpf \n";
+
+                cin >> alterar_string;
+
+                funcionario->setCpf(alterar_string);  
+
+            }else if(escolha == 3){
+
+                cout << "Digite o novo cell \n";
+
+                cin >> alterar_string;
+
+                funcionario->setCelularProfissional(alterar_string);     
+            }
+            else if(escolha == 4){
+
+                cout << "Digite o novo email \n";
+
+                cin >> alterar_string;
+
+                funcionario->setEmail(alterar_string);     
+            }
+            
+
+        }else{
+
+            cout << "ID nao encontrado, retornando...";
+        }
+    }
+}
+
+
+
+void Petfera::atualizar_menu_funcionario(){
+
+    cout << "o que vc quer atualizar? "
+         << "\n"
+         << "# Temos as seguintes opcao : # "
+         << "\n"
+         << "    1 -> Alterar nome "
+         << "\n"
+         << "    2 -> Alterar cpf"
+         << "\n"
+         << "    3 -> Alterar numero do telefone"
+         << "\n"
+         << "    4 -> Alterar email"
+         << endl;
+
+    cout << "Escolha uma opcao"
+         << "\n";
 }

@@ -50,19 +50,25 @@ AveExotica::AveExotica(
 AveExotica::~AveExotica(){};
 
 ostream& AveExotica::imprimeDados(ostream& o) const {
-    o << setfill(' ') << setw(10) << this->id
-      << setfill(' ') << setw(10) << this->especie
-      << setfill(' ') << setw(10) << this->nome
-      << this->classe << "\n"
-      << *this->veterinario << "\n"
-      << setfill(' ') << setw(10) << this->genero
-      << setfill(' ') << setw(10) << this->tipo_temperatura
-      << setfill(' ') << setw(10) << this->tipo_pele
-      << setfill(' ') << setw(10) << this->material_eliminidado
-      << setfill(' ') << setw(10) << this->aquatico_terrestre
-      << setfill(' ') << setw(10) << this->registro_ibama
-      << setfill(' ') << setw(10) << this->territorio_brasileiro
-      << setfill(' ') << setw(10) << (this->extincao == ameacado ? "Risco de extincao" : "Nao corre risco de extincao")
-      << setfill(' ') << setw(6);
+
+      o << std::endl
+
+        << "============== Ave Exotico ============" << std::endl
+        << "ID                    | " << this->id << std::endl
+        << "Classe                | Anfibio" << std::endl
+        << "Nome                  | " << this->nome << std::endl
+        << "Nome Cientifico       | " << this->especie << std::endl
+        << "Sexo                  | " << (this->genero==F ? "Femea" : "Macho") << std::endl 
+        << "Material Eleiminado   | " << this->material_eliminidado << std::endl
+        << "Veterinario           | " << "" << std::endl
+        << "Tratador              | " << "" << std::endl
+        << "Aquatico ou Terrestre | " << this->aquatico_terrestre << std::endl
+        << "Registro Ibama        | " << this->registro_ibama << std::endl
+        << "Territorio Brasileiro | " << this->territorio_brasileiro << std::endl
+        << "Ameacado de Extinsao  | " << (this->extincao == ameacado ? "Risco de extincao" : "Nao corre risco de extincao") << std::endl
+        << "Pais Origem           | " << this->pais_origem << std::endl
+        << "Tamanho do bico       | " << this->tamanhoDoBico << std::endl
+        << "Envergadura           | " << this->envergaduraAsas << std::endl;
+        
     return o;
 }
