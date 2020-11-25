@@ -33,6 +33,7 @@ class Funcionario {
         string email);
     ~Funcionario();
 
+    int getId();
     string getNome();
     string getCpf();
     tipoFunca getClassicicacao();

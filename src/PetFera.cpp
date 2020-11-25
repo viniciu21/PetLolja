@@ -35,7 +35,7 @@ void Petfera::inicio() {
 void Petfera::PetferaMenu(int& escolha) {
     cout << "# Bem Vindo ao PetFera  # "
          << "\n"
-         << "# Temos as seguintes opções : # "
+         << "# Temos as seguintes opcaos : # "
          << "\n"
          << "    1 -> Adicionar animal "
          << "\n"
@@ -45,7 +45,7 @@ void Petfera::PetferaMenu(int& escolha) {
          << "\n"
          << "    4 -> Remover funcionario "
          << "\n"
-         << "    5 -> Atualizar dados de um animal "
+         << "    5 -> Atualizar dados de um animal"
          << "\n"
          << "    6 -> Listar animais por funcionario "
          << "\n"
@@ -53,11 +53,13 @@ void Petfera::PetferaMenu(int& escolha) {
          << "\n"
          << "    8 -> Listar todos funcionarios "
          << "\n"
-         << "    9 -> Listar todos animais "
+         << "    9 -> Atualizar dados de um funcionario"
+         << "\n"
+         << "    10 -> Listar todos animais "
          << "\n"
          << "    0 -> Sair " << std::endl;
 
-    cout << "Escolha uma opção"
+    cout << "Escolha uma Opcao"
          << "\n";
     cin >> escolha;
 
@@ -86,8 +88,10 @@ void Petfera::PetferaMenu(int& escolha) {
                  << "\n";
             break;
         case 5:
-            cout << "Vamos la cadastrar um animal"
+            cout << "Vamos la atualizar os dados"
                  << "\n";
+
+            atualizarDadosAnimal_interface();
             break;
         case 6:
             cout << "Vamos la cadastrar um animal"
@@ -106,6 +110,12 @@ void Petfera::PetferaMenu(int& escolha) {
 
             break;
         case 9:
+            cout << "Vamos la atualizar os dados"
+                 << "\n";
+
+            atualizarDadosFuncionario_interface();
+            break;
+        case 10:
             cout << "Aqui estão todo os animais na Petfera"
                  << "\n";
 
@@ -115,7 +125,7 @@ void Petfera::PetferaMenu(int& escolha) {
             break;
         default:
             cout << "\033[1;33m"
-                 << "Não temos essa opção, Escolha de 0-9"
+                 << "Não temos essa Opcao, Escolha de 0-9"
                  << "\033[0m"
                  << "\n";
             break;
@@ -127,7 +137,7 @@ void Petfera::PetferaMenu(int& escolha) {
 *	que irão efetivar as operações.
 **/
 
-Funcionario* Petfera::pegarFuncionario() {}
+//Funcionario* Petfera::pegarFuncionario() {}
 
 void Petfera::cadastrarAveDomestico() {
     Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "Vinicius", "cpf", Tratador, "asd", "masd", Verde);
@@ -285,7 +295,7 @@ void Petfera::cadastrarAnfibioNativo() {
 void Petfera::cadastrarAnimal() {
     short escolhaTipo;
 
-    cout << "Opção Escolhida: Animal" << endl;
+    cout << "Opcao Escolhida: Animal" << endl;
     cout << "Escolha abaixo o tipo de animal para cadastro: " << endl;
     cout << " 1 - Cadastrar Anfibio" << endl;
     cout << " 2 - Cadastrar Mamifero" << endl;
@@ -315,7 +325,7 @@ void Petfera::cadastrarAnimal() {
             break;
 
         default:
-            cout << "Opção Invalida, retornando..." << endl;
+            cout << "Opcao Invalida, retornando..." << endl;
             break;
     }
 }
@@ -348,12 +358,13 @@ void Petfera::cadastrarAnfibio() {
             cadastrarAnfibioNativo();
             break;
         default:
-            cout << "Opção inválida, retornando..."
+            cout << "Opcao invalida, retornando..."
                  << "\n";
             break;
     }
 
 }  // Interface com o usuário
+
 void Petfera::cadastrarAve() {
     short escolhaSilvestre;
 
@@ -382,15 +393,16 @@ void Petfera::cadastrarAve() {
             cadastrarAveNativa();
             break;
         default:
-            cout << "Opção inválida, retornando..."
+            cout << "Opcao invalida, retornando..."
                  << "\n";
             break;
     }
 }  // Interface com o usuário
+
 void Petfera::cadastrarFuncionario() {
     short escolha;
 
-    cout << "Opção Escolhida: Cadastrar Funcionário" << endl;
+    cout << "Opcao Escolhida: Cadastrar Funcionário" << endl;
     cout << "Escolha abaixo o tipo de funcionario para cadastro: " << endl;
     cout << " 1 - Funcionario Tratador" << endl;
     cout << " 2 - Funcionario Veterinario" << endl;
@@ -408,6 +420,7 @@ void Petfera::cadastrarFuncionario() {
     }
 
 }  // Interface com o usuário
+
 void Petfera::cadastrarVeterinario() {
     string nome = leString("Digite o nome do Funcionario \n");
     string cpf = leString("Digite o cpf do Funcionario \n");
@@ -420,6 +433,7 @@ void Petfera::cadastrarVeterinario() {
 
     adicionarFuncionario(novo);
 }  // Interface com o usuário
+
 void Petfera::cadastrarTratador() {
     string nome = leString("Digite o nome do Funcionario \n");
     string cpf = leString("Digite o cpf do Funcionario \n");
@@ -493,4 +507,192 @@ bool Petfera::leBool(string str_prompt) {
     } else {
         return false;
     }
+}
+
+void Petfera::atualizarDadosAnimal_interface(){
+
+    int id_animal;
+    string alterar_string;
+    bool alterar_bool;
+    short escolha;
+
+    cout << "ID do animal a ser atualizado: ";
+    cin >> id_animal;
+    
+    for (auto& animal : this->animalStore){
+
+        if (id_animal == animal->getId()){
+
+            atualizar_menu_animal();
+           
+            cin >> escolha;
+
+            if (escolha == 1){
+
+                cout << "Digite a nova especie \n";
+
+                cin >> alterar_string;
+
+                animal->setEspecie(alterar_string);
+
+            }else if(escolha == 2){
+
+                cout << "Digite o novo nome \n";
+
+                cin >> alterar_string;
+
+                animal->setNome(alterar_string);  
+
+            }else if(escolha == 3){
+
+                cout << "Digite o novo tipo de temperatura \n";
+
+                cin >> alterar_string;
+
+                animal->setTipo_temperatura(alterar_string);     
+            }
+            else if(escolha == 4){
+
+                cout << "Digite o novo tipo de pele \n";
+
+                cin >> alterar_string;
+
+                animal->setTipo_pele(alterar_string);     
+            }
+            else if(escolha == 5){
+
+                cout << "Digite o novo tipo de fecundacao \n";
+
+                cin >> alterar_string;
+
+                animal->setTipo_fecundacao(alterar_string);     
+            }
+            else if(escolha == 6){
+
+                cout << "Digite de S se troca de pele ou N se nao troca \n";
+
+                cin >> alterar_bool;
+
+                animal->setTroca_pele(alterar_bool);     
+            }
+            else if(escolha == 7){
+
+                cout << "Digite o novo material eliminado \n";
+
+                cin >> alterar_string;
+
+                animal->setMaterial_eliminidado(alterar_string);     
+            }
+
+        }else{
+
+            cout << "ID nao encontrado, retornando...";
+        }
+    }
+}
+
+
+void Petfera::atualizar_menu_animal(){
+
+    cout << "o que vc quer atualizar? "
+         << "\n"
+         << "# Temos as seguintes opcao : # "
+         << "\n"
+         << "    1 -> Alterar nome cientifico do animal"
+         << "\n"
+         << "    2 -> Alterar Nome do animal"
+         << "\n"
+         << "    3 -> Alterar Tipo de temperatura do animal"
+         << "\n"
+         << "    4 -> Alterar Tipo de pele do animal"
+         << "\n"
+         << "    5 -> Alterar Tipo de fecundacao do animal"
+         << "\n"
+         << "    6 -> Alterar Troca de pele do animal"
+         << "\n"
+         << "    7 -> Alterar Material eliminado do animal"
+         << endl;
+
+    cout << "Escolha uma opcao"
+         << "\n";
+}
+
+
+void Petfera::atualizarDadosFuncionario_interface(){
+
+    int id_funcionario;
+    string alterar_string;
+    short escolha;
+
+    cout << "ID do funcionario a ser atualizado: ";
+    cin >> id_funcionario;
+    
+    for (auto& funcionario : this->funcionarioStore){
+
+        if (id_funcionario == funcionario->getId()){
+
+            atualizar_menu_funcionario();
+           
+            cin >> escolha;
+
+            if (escolha == 1){
+
+                cout << "Digite o novo nome \n";
+
+                cin >> alterar_string;
+
+                funcionario->setNome(alterar_string);
+
+            }else if(escolha == 2){
+
+                cout << "Digite o novo cpf \n";
+
+                cin >> alterar_string;
+
+                funcionario->setCpf(alterar_string);  
+
+            }else if(escolha == 3){
+
+                cout << "Digite o novo cell \n";
+
+                cin >> alterar_string;
+
+                funcionario->setCelularProfissional(alterar_string);     
+            }
+            else if(escolha == 4){
+
+                cout << "Digite o novo email \n";
+
+                cin >> alterar_string;
+
+                funcionario->setEmail(alterar_string);     
+            }
+            
+
+        }else{
+
+            cout << "ID nao encontrado, retornando...";
+        }
+    }
+}
+
+
+
+void Petfera::atualizar_menu_funcionario(){
+
+    cout << "o que vc quer atualizar? "
+         << "\n"
+         << "# Temos as seguintes opcao : # "
+         << "\n"
+         << "    1 -> Alterar nome "
+         << "\n"
+         << "    2 -> Alterar cpf"
+         << "\n"
+         << "    3 -> Alterar numero do telefone"
+         << "\n"
+         << "    4 -> Alterar email"
+         << endl;
+
+    cout << "Escolha uma opcao"
+         << "\n";
 }

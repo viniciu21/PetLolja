@@ -11,6 +11,9 @@ Funcionario::Funcionario(
     string celularProfissional,
     string email) : id(id), nome(nome), cpf(cpf), classificacao(classificacao), celularProfissional(celularProfissional), email(email){};
 
+int Funcionario::getId() {
+    return this->id;
+}
 string Funcionario::getNome() {
     return this->nome;
 }
