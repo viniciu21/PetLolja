@@ -48,7 +48,9 @@ AnfibioExotico::AnfibioExotico(
                               extincao,
                               pais_origem) {}
 
-AnfibioExotico::~AnfibioExotico() {}
+AnfibioExotico::~AnfibioExotico() {
+  cout << "Animal removido com sucesso" << endl;
+}
 
 // Getters
 

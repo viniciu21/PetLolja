@@ -34,10 +34,10 @@ class Petfera {
     void cadastrarAve();       // Interface com o usuário
     void cadastrarReptil();    // Interface com o usuário
     void cadastrarMamifero();  // Interface com o usuário
+
     void atualizar_menu_animal();
-    void atualizarDadosAnimal_interface();
     void atualizar_menu_funcionario();
-    void atualizarDadosFuncionario_interface();
+
 
     void cadastrarFuncionario();  // Interface com o usuário
     void cadastrarVeterinario();  // Interface com o usuário
@@ -51,11 +51,18 @@ class Petfera {
     void cadastrarAveExotica();
     void cadastrarAveNativa();
 
+    void removerAnimal();
+    void removerFuncionario();
     /*
 	 * Métodos internos para realizar as operações.
 	 */
     bool adicionarAnimal(Animal* novo_animal);
     bool adicionarFuncionario(Funcionario* novo_funcionario);
+
+    bool atualizar_dados_funcionario();
+    bool atualizar_dados_animal();
+
+
 
     /*
 	 * Tratamentos
@@ -70,8 +77,11 @@ class Petfera {
     // int le1ou0(string str_prompt);
 
    private:
+    
     vector<Animal*> animalStore;
+    int animais_cadastrados = 0;
     vector<Funcionario*> funcionarioStore;
+    int funcionarios_cadastrados = 0;
 };
 
 #endif

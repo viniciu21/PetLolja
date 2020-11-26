@@ -42,7 +42,7 @@ AveDomestico::AveDomestico(
                             nome_dono) {}
 
 AveDomestico::~AveDomestico() {
-    std::cout << "ave morrendo";
+      cout << "Animal removido com sucesso" << endl;
 }
 
 ostream& AveDomestico::imprimeDados(ostream& o) const {

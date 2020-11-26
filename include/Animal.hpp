@@ -50,7 +50,8 @@ class Animal {
            string tipo_fecundacao,
            bool troca_pele,
            string material_eliminidado);
-    ~Animal();
+    
+    virtual ~Animal()=0;
 
     // Getters
     int getId();

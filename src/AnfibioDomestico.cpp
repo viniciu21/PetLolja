@@ -42,7 +42,9 @@ AnfibioDomestico::AnfibioDomestico(
                             nome_animal,
                             nome_dono) {}
 
-AnfibioDomestico::~AnfibioDomestico() {}
+AnfibioDomestico::~AnfibioDomestico() {
+  cout << "Animal removido com sucesso" << endl;
+}
 
 // Getters
 

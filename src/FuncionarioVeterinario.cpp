@@ -2,6 +2,10 @@
 
 FuncionarioVeterinario::FuncionarioVeterinario() {}
 
+FuncionarioVeterinario::~FuncionarioVeterinario() {
+  std::cout << "Funcionario removido" << std::endl;
+}
+
 FuncionarioVeterinario::FuncionarioVeterinario(
     int id, string nome,
     string cpf,

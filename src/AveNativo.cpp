@@ -45,7 +45,9 @@ AveNativo::AveNativo(
                                territorio_brasileiro,
                                extincao) {}
 
-AveNativo::~AveNativo() {}
+AveNativo::~AveNativo() {
+    cout << "Animal removido com sucesso" << endl;
+}
 
 // Getters
 

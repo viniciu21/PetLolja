@@ -47,7 +47,9 @@ AveExotica::AveExotica(
                                         extincao,
                                         pais_origem){};
 
-AveExotica::~AveExotica(){};
+AveExotica::~AveExotica(){
+    cout << "Animal removido com sucesso" << endl;
+};
 
 ostream& AveExotica::imprimeDados(ostream& o) const {
 

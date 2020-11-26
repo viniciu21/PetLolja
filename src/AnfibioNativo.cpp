@@ -46,7 +46,10 @@ AnfibioNativo::AnfibioNativo(
                                territorio_brasileiro,
                                extincao) {}
 
-AnfibioNativo::~AnfibioNativo() {}
+AnfibioNativo::~AnfibioNativo() {
+  
+  cout << "Animal removido com sucesso" << endl; 
+}
 
 // Getters
 
