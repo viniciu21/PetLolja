@@ -27,7 +27,7 @@ void Petfera::inicio() {
     int escolha = 0;
     PetferaMenu(escolha);
 
-    while (escolha != 0) {
+    while (escolha != 11) {
         PetferaMenu(escolha);
     }
 }
@@ -60,17 +60,19 @@ void Petfera::PetferaMenu(int& escolha) {
          << "\n"
          << "    10 -> Listar todos animais "
          << "\n"
-         << "    0 -> Sair " << std::endl;
+         << "    11 -> Sair " << std::endl;
 
     cout << "Escolha uma Opcao"
          << "\n";
 
-    cin >> escolha_str;    
+    cin >> escolha_str;   
+    stringstream ss;  
+    ss << escolha_str; 
+    ss >> escolha;
 
-    escolha = std::stoi(escolha_str);
 
     switch (escolha) {
-        case 0:
+        case 11:
             cout << "\033[1;33m" << "Muito obrigado e volte sempre!!"  << "\033[0m" << "\n";
             break;
         case 1:
@@ -150,7 +152,7 @@ void Petfera::PetferaMenu(int& escolha) {
             break;
         default:
             cout << "\033[1;33m"
-                 << "Nao temos essa Opcao, Escolha de 0-10"
+                 << "Nao temos essa Opcao, Escolha de 1-11"
                  << "\033[0m"
                  << "\n";
             break;
@@ -375,6 +377,7 @@ void Petfera::cadastrarAnfibioNativo() {
 
 void Petfera::cadastrarAnimal() {
     short escolhaTipo;
+    string escolha_str;
 
     cout << "\nOpcao Escolhida: Animal\n" << endl;
     cout << "Escolha abaixo o tipo de animal para cadastro: \n" << endl;
@@ -382,8 +385,12 @@ void Petfera::cadastrarAnimal() {
     cout << " 2 - Cadastrar Mamifero" << endl;
     cout << " 3 - Cadastrar Ave" << endl;
     cout << " 4 - Cadastrar Reptil" << endl;
+    cout << " 5 - Voltar para o menu" << endl;
 
-    cin >> escolhaTipo;
+    cin >> escolha_str;   
+    stringstream ss;  
+    ss << escolha_str; 
+    ss >> escolhaTipo;
 
     switch (escolhaTipo) {
         case 1:
@@ -405,22 +412,37 @@ void Petfera::cadastrarAnimal() {
                  << "\n";
             break;
 
+        case 5:
+
+            inicio();
+       
+        break;
+
         default:
-            cout << "Opcao Invalida, retornando..." << endl;
+
+            cout << "\033[1;33m" << "Nao temos essa Opcao, Escolha de 1-5" << "\033[0m" << "\n";
+            cadastrarAnimal();
+
             break;
     }
 }
 
 void Petfera::cadastrarAnfibio() {
     short escolhaSilvestre;
+    string escolha_str;
 
     cout << "\nOpcao Escolhida: Anfibio\n" << endl;
     cout << "Escolha abaixo o tipo de Anfibio para cadastro: \n" << endl;
     cout << " 1 - Cadastrar Anfibio Domestico" << endl;
     cout << " 2 - Cadastrar Anfibio Exotico" << endl;
     cout << " 3 - Cadastrar Anfibio Nativo" << endl;
+    cout << " 4 - voltar para cadastro de animal" << endl;
 
-    cin >> escolhaSilvestre;
+
+    cin >> escolha_str;   
+    stringstream ss;  
+    ss << escolha_str; 
+    ss >> escolhaSilvestre;
 
     switch (escolhaSilvestre) {
         case 1:
@@ -437,10 +459,17 @@ void Petfera::cadastrarAnfibio() {
             cout << "Salvando Anfibio Nativo"
                  << "\n";
             cadastrarAnfibioNativo();
-            break;
+        case 4:
+
+            cadastrarAnimal();
+       
+        break;
+
         default:
-            cout << "Opcao invalida, retornando..."
-                 << "\n";
+
+            cout << "\033[1;33m" << "Nao temos essa Opcao, Escolha de 1-4" << "\033[0m" << "\n";
+            cadastrarAnfibio();
+            
             break;
     }
 
@@ -448,14 +477,20 @@ void Petfera::cadastrarAnfibio() {
 
 void Petfera::cadastrarAve() {
     short escolhaSilvestre;
+    string escolha_str;
 
     cout << "\nOpcao Escolhida: Ave\n" << endl;
     cout << "Escolha abaixo o tipo de Ave para cadastro: \n" << endl;
     cout << " 1 - Cadastrar Ave Domestico" << endl;
     cout << " 2 - Cadastrar Ave Exotico" << endl;
     cout << " 3 - Cadastrar Ave Nativo" << endl;
+    cout << " 4 - voltar para cadastro de animal" << endl;
 
-    cin >> escolhaSilvestre;
+    cin >> escolha_str;   
+    stringstream ss;  
+    ss << escolha_str; 
+    ss >> escolhaSilvestre;
+
 
     switch (escolhaSilvestre) {
         case 1:
@@ -472,23 +507,40 @@ void Petfera::cadastrarAve() {
             cout << "Salvando Ave Nativo"
                  << "\n";
             cadastrarAveNativa();
+
             break;
+
+        case 4:
+
+            cadastrarAnimal();
+       
+        break;
+
         default:
-            cout << "Opcao invalida, retornando..."
-                 << "\n";
+
+            cout << "\033[1;33m" << "Nao temos essa Opcao, Escolha de 1-4" << "\033[0m" << "\n";
+            cadastrarAve();
+            
             break;
     }
 }  // Interface com o usuário
 
 void Petfera::cadastrarFuncionario() {
     short escolha;
+    string escolha_str;
 
     cout << "\nOpcao Escolhida: Cadastrar funcionario\n" << endl;
     cout << "Escolha abaixo o tipo de funcionario para cadastro: \n" << endl;
     cout << " 1 - Funcionario Tratador" << endl;
     cout << " 2 - Funcionario Veterinario" << endl;
+    cout << " 3 - Voltar para o menu" << endl;
 
-    cin >> escolha;
+
+    cin >> escolha_str;   
+    stringstream ss;  
+    ss << escolha_str; 
+    ss >> escolha;
+
 
     switch (escolha) {
         case 1:
@@ -498,6 +550,19 @@ void Petfera::cadastrarFuncionario() {
         case 2:
             cout << "Vamos cadastrar um Funcionario Tratador" << endl;
             cadastrarVeterinario();
+        break;
+        case 3:
+         
+            inicio();
+
+        break;
+        default:
+
+         cout << "\033[1;33m" << "Nao temos essa Opcao, Escolha de 1-3" << "\033[0m" << "\n";
+         cadastrarFuncionario();
+
+        break;
+
     }
 
 }  // Interface com o usuário
