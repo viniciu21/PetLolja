@@ -5,11 +5,19 @@
 #include <string>
 #include <vector>
 
+
 #include "AnfibioDomestico.hpp"
 #include "AnfibioExotico.hpp"
 #include "AnfibioNativo.hpp"
 #include "AveDomestico.hpp"
 #include "AveExotica.hpp"
+#include "AveNativo.hpp"
+#include "ReptilDomestico.hpp"
+#include "ReptilExotico.hpp"
+#include "ReptilNativo.hpp"
+#include "MamiferoDomestico.hpp"
+#include "MamiferoExotico.hpp"
+#include "MamiferoNativo.hpp"
 #include "Funcionario.hpp"
 #include "FuncionarioTratador.hpp"
 #include "FuncionarioVeterinario.hpp"
@@ -51,6 +59,13 @@ class Petfera {
     void cadastrarAveExotica();
     void cadastrarAveNativa();
 
+    void cadastrarReptilDomestico();
+    void cadastrarReptilExotico();
+    void cadastrarReptilNativo();
+
+    void cadastrarMamiferoDomestico();
+    void cadastrarMamiferoExotico();
+    void cadastrarMamiferoNativo();
     /*
 	 * Métodos internos para realizar as operações.
 	 */
@@ -66,6 +81,9 @@ class Petfera {
     t_genero leGenero(string str_prompt);
     bool leBool(string str_prompt);
     Funcionario* pegarFuncionario();
+    pelos lePelo(string str_prompt);
+    TipoDeGestacao leGestacao(string str_prompt);
+    TipoDeMamifero leMamifero(string str_prompt);
     //familia leClasse(string str_prompt);
     // int le1ou0(string str_prompt);
 
