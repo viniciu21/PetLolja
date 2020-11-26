@@ -32,33 +32,28 @@ Mamifero::Mamifero(
                                            tipo_fecundacao,
                                            troca_pele,
                                            material_eliminidado),
-                                           tem_dentes(tem_dentes), 
-                                           pelagem(pelagem),
-                                           tipo_gestacao(tipo_gestacao), 
-                                           tipo_mamifero(tipo_mamifero){};
+                                    tem_dentes(tem_dentes),
+                                    pelagem(pelagem),
+                                    tipo_gestacao(tipo_gestacao),
+                                    tipo_mamifero(tipo_mamifero){};
 
-pelos Mamifero::getPelagem()
-{
-    return this->pelagem;
-};
-
-bool Mamifero::getDentes()
-{
+bool Mamifero::getDentes() {
     return this->tem_dentes;
 };
 
-TipoDeGestacao Mamifero::getTipoGestacao()
-{
+pelos Mamifero::getPelagem() {
+    return this->pelagem;
+};
+
+TipoDeGestacao Mamifero::getTipoGestacao() {
     return this->tipo_gestacao;
 }
 
-TipoDeMamifero Mamifero::getTipoMamifero()
-{
+TipoDeMamifero Mamifero::getTipoMamifero() {
     return this->tipo_mamifero;
 }
 
-ostream &Mamifero::imprimeDados(ostream &o) const
-{
+ostream &Mamifero::imprimeDados(ostream &o) const {
     return o;
 }
 
