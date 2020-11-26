@@ -31,7 +31,8 @@ class Funcionario {
         tipoFunca classificacao,
         string celularProfissional,
         string email);
-    ~Funcionario();
+    
+    virtual ~Funcionario() = 0;
 
     int getId();
     string getNome();

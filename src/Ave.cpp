@@ -45,4 +45,5 @@ ostream& Ave::imprimeDados(ostream& o) const {
     return o;
 }
 
-Ave::~Ave() {}
+Ave::~Ave() {
+}

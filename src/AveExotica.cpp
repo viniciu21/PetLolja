@@ -14,8 +14,8 @@ AveExotica::AveExotica(
     string nome,
     t_genero genero,
     familia classe,
-    Funcionario *veterinario,
-    Funcionario *tratador,
+    Funcionario* veterinario,
+    Funcionario* tratador,
     string tipo_temperatura,
     string tipo_pele,
     string tipo_fecundacao,
@@ -47,13 +47,12 @@ AveExotica::AveExotica(
                                         extincao,
                                         pais_origem){};
 
-AveExotica::~AveExotica(){};
+AveExotica::~AveExotica() {
+    cout << "Animal removido com sucesso" << endl;
+};
 
-ostream &AveExotica::imprimeDados(ostream &o) const
-{
-
+ostream& AveExotica::imprimeDados(ostream& o) const {
     o << std::endl
-
       << "============== Ave Exotico ============" << std::endl
       << "ID                    | " << this->id << std::endl
       << "Classe                | Anfibio" << std::endl
@@ -61,10 +60,6 @@ ostream &AveExotica::imprimeDados(ostream &o) const
       << "Nome Cientifico       | " << this->especie << std::endl
       << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
       << "Material Eleiminado   | " << this->material_eliminidado << std::endl
-      << "Veterinario           | "
-      << "" << std::endl
-      << "Tratador              | "
-      << "" << std::endl
       << "Aquatico ou Terrestre | " << this->aquatico_terrestre << std::endl
       << "Registro Ibama        | " << this->registro_ibama << std::endl
       << "Territorio Brasileiro | " << this->territorio_brasileiro << std::endl

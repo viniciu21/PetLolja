@@ -46,23 +46,22 @@ AnfibioNativo::AnfibioNativo(
                                territorio_brasileiro,
                                extincao) {}
 
-AnfibioNativo::~AnfibioNativo() {}
+AnfibioNativo::~AnfibioNativo() {
+    cout << "Animal removido com sucesso" << endl;
+}
 
 // Getters
 
 ostream& AnfibioNativo::imprimeDados(ostream& o) const {
-
-      o << std::endl
+    o << std::endl
       << "============== Anfibio Nativo ============" << std::endl
       << "ID                    | " << this->id << std::endl
       << "Classe                | Anfibio" << std::endl
       << "Nome                  | " << this->nome << std::endl
       << "Nome Cientifico       | " << this->especie << std::endl
-      << "Sexo                  | " << (this->genero==F ? "Femea" : "Macho") << std::endl 
-      << "Habitat               | " << this->habitat << std::endl 
+      << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
+      << "Habitat               | " << this->habitat << std::endl
       << "Material Eleiminado   | " << this->material_eliminidado << std::endl
-      << "Veterinario           | " << "" << std::endl
-      << "Tratador              | " << "" << std::endl
       << "Aquatico ou Terrestre | " << this->aquatico_terrestre << std::endl
       << "Registro Ibama        | " << this->registro_ibama << std::endl
       << "Territorio Brasileiro | " << this->territorio_brasileiro << std::endl

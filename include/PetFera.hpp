@@ -5,22 +5,21 @@
 #include <string>
 #include <vector>
 
-
 #include "AnfibioDomestico.hpp"
 #include "AnfibioExotico.hpp"
 #include "AnfibioNativo.hpp"
 #include "AveDomestico.hpp"
 #include "AveExotica.hpp"
 #include "AveNativo.hpp"
-#include "ReptilDomestico.hpp"
-#include "ReptilExotico.hpp"
-#include "ReptilNativo.hpp"
-#include "MamiferoDomestico.hpp"
-#include "MamiferoExotico.hpp"
-#include "MamiferoNativo.hpp"
 #include "Funcionario.hpp"
 #include "FuncionarioTratador.hpp"
 #include "FuncionarioVeterinario.hpp"
+#include "MamiferoDomestico.hpp"
+#include "MamiferoExotico.hpp"
+#include "MamiferoNativo.hpp"
+#include "ReptilDomestico.hpp"
+#include "ReptilExotico.hpp"
+#include "ReptilNativo.hpp"
 
 using std::string;
 using std::vector;
@@ -42,10 +41,9 @@ class Petfera {
     void cadastrarAve();       // Interface com o usuário
     void cadastrarReptil();    // Interface com o usuário
     void cadastrarMamifero();  // Interface com o usuário
+
     void atualizar_menu_animal();
-    void atualizarDadosAnimal_interface();
     void atualizar_menu_funcionario();
-    void atualizarDadosFuncionario_interface();
 
     void cadastrarFuncionario();  // Interface com o usuário
     void cadastrarVeterinario();  // Interface com o usuário
@@ -66,11 +64,18 @@ class Petfera {
     void cadastrarMamiferoDomestico();
     void cadastrarMamiferoExotico();
     void cadastrarMamiferoNativo();
+    void removerAnimal();
+    void removerFuncionario();
     /*
 	 * Métodos internos para realizar as operações.
 	 */
     bool adicionarAnimal(Animal* novo_animal);
     bool adicionarFuncionario(Funcionario* novo_funcionario);
+
+    bool atualizar_dados_funcionario();
+    bool atualizar_dados_animal();
+    bool atualizar_funcionario(int escolha, Funcionario* funcionario);
+    bool atualizar_animal(int escolha, Animal* animal);
 
     /*
 	 * Tratamentos
@@ -84,12 +89,23 @@ class Petfera {
     pelos lePelo(string str_prompt);
     TipoDeGestacao leGestacao(string str_prompt);
     TipoDeMamifero leMamifero(string str_prompt);
+    Funcionario* pegarVeterinario();
+    Funcionario* pegarTratador();
+    nivelDeSeguranca leNivelDeSeguranca();
+
     //familia leClasse(string str_prompt);
     // int le1ou0(string str_prompt);
 
+    void listarAnimaisPorFunca();
+    void listarTodosAnimais();
+    void listarTodosFuncaionarios();
+    void listarAnimaisPorClasse();
+
    private:
     vector<Animal*> animalStore;
+    int animais_cadastrados = 0;
     vector<Funcionario*> funcionarioStore;
+    int funcionarios_cadastrados = 0;
 };
 
 #endif
