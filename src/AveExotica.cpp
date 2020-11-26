@@ -53,7 +53,6 @@ AveExotica::~AveExotica() {
 
 ostream& AveExotica::imprimeDados(ostream& o) const {
     o << std::endl
-
       << "============== Ave Exotico ============" << std::endl
       << "ID                    | " << this->id << std::endl
       << "Classe                | Anfibio" << std::endl

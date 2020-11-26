@@ -10,9 +10,16 @@
 #include "AnfibioNativo.hpp"
 #include "AveDomestico.hpp"
 #include "AveExotica.hpp"
+#include "AveNativo.hpp"
 #include "Funcionario.hpp"
 #include "FuncionarioTratador.hpp"
 #include "FuncionarioVeterinario.hpp"
+#include "MamiferoDomestico.hpp"
+#include "MamiferoExotico.hpp"
+#include "MamiferoNativo.hpp"
+#include "ReptilDomestico.hpp"
+#include "ReptilExotico.hpp"
+#include "ReptilNativo.hpp"
 
 using std::string;
 using std::vector;
@@ -50,6 +57,13 @@ class Petfera {
     void cadastrarAveExotica();
     void cadastrarAveNativa();
 
+    void cadastrarReptilDomestico();
+    void cadastrarReptilExotico();
+    void cadastrarReptilNativo();
+
+    void cadastrarMamiferoDomestico();
+    void cadastrarMamiferoExotico();
+    void cadastrarMamiferoNativo();
     void removerAnimal();
     void removerFuncionario();
     /*
@@ -71,6 +85,10 @@ class Petfera {
     string leString(string str_prompt);
     t_genero leGenero(string str_prompt);
     bool leBool(string str_prompt);
+    Funcionario* pegarFuncionario();
+    pelos lePelo(string str_prompt);
+    TipoDeGestacao leGestacao(string str_prompt);
+    TipoDeMamifero leMamifero(string str_prompt);
     Funcionario* pegarVeterinario();
     Funcionario* pegarTratador();
     nivelDeSeguranca leNivelDeSeguranca();

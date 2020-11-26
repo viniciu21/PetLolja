@@ -14,7 +14,6 @@
 #include "../include/MamiferoDomestico.hpp"
 #include "../include/MamiferoExotico.hpp"
 #include "../include/MamiferoNativo.hpp"
-#include "../include/Reptil.hpp"
 #include "../include/ReptilDomestico.hpp"
 #include "../include/ReptilExotico.hpp"
 #include "../include/ReptilNativo.hpp"
@@ -448,7 +447,6 @@ void Petfera::cadastrarAnfibioNativo() {
     bool registro_ibama = leBool("Digite S se o animal possui registro no ibama e N se o animal nao registro no Ibama \n");
     bool territorio_brasileiro = false;
     enExtincao extincao = nao_ameacado;
-    string pais_origem = leString("Digite qual o pais que ele foi encontrado");
 
     Animal* criado = new AnfibioNativo(this->animalStore.size(), especie, nome, genero, Anfibios, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
 
@@ -459,6 +457,167 @@ void Petfera::cadastrarAnfibioNativo() {
         cout << "Erro no cadastro, tente novamente " << endl;
         cadastrarAnfibioNativo();
     }
+}
+
+void Petfera::cadastrarReptilDomestico() {
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+
+    string especie = leString("Digite o nome cientifico para o animal \n");
+    string nome = leString("Digite o nome popular para o animal \n");
+    t_genero genero = leGenero("Digite F para femea e M para macho \n");
+    string tipo_temperatura = leString("Digite o tipo de temperatura do animal \n");
+    string tipo_pele = leString("Digite o tipo de pele do animal \n");
+    string tipo_fecundacao = leString("Digite o tipo de fecundacao do animal \n");
+    string material_eliminidado = leString("Digite o tipo de material eliminidado pelo animal \n");
+    string habitat = leString("Digite o tipo de habitat do animal \n");
+    bool troca_pele = leBool("Digite S se o animal troca de pele ou N se o animal nao troca de pele \n");
+    string nome_animal = leString("Digite um nome para o animal \n");
+    string nome_dono = leString("Digite um nome do dono para o animal \n");
+
+    Animal* criado = new ReptilDomestico(this->animalStore.size(), especie, nome, genero, Repteis, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, nome_animal, nome_dono);
+
+    cout << "Salvando Animal"
+         << "\n";
+    adicionarAnimal(criado);
+}
+
+void Petfera::cadastrarReptilExotico() {
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+
+    string especie = leString("Digite o nome cientifico para o animal \n");
+    string nome = leString("Digite o nome popular para o animal \n");
+    t_genero genero = leGenero("Digite F para femea e M para macho \n");
+    string tipo_temperatura = leString("Digite o tipo de temperatura do animal \n");
+    string tipo_pele = leString("Digite o tipo de pele do animal \n");
+    string tipo_fecundacao = leString("Digite o tipo de fecundacao do animal \n");
+    string material_eliminidado = leString("Digite o tipo de material eliminidado pelo animal \n");
+    string habitat = leString("Digite o tipo de habitat do animal \n");
+    bool troca_pele = leBool("Digite S se o animal troca de pele ou N se o animal nao troca de pele \n");
+    string aquatico_terrestre = leString("Digite se o animal é aquatico ou terrestre \n");
+    bool registro_ibama = leBool("Digite S se o animal possui registro no ibama e N se o animal nao registro no Ibama \n");
+    bool territorio_brasileiro = false;
+    enExtincao extincao = nao_ameacado;
+    string pais_origem = leString("Digite qual o pais que ele foi encontrado");
+
+    Animal* criado = new ReptilExotico(this->animalStore.size(), especie, nome, genero, Repteis, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
+
+    cout << "Salvando Animal"
+         << "\n";
+    adicionarAnimal(criado);
+}
+
+void Petfera::cadastrarReptilNativo() {
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+
+    string especie = leString("Digite o nome cientifico para o animal \n");
+    string nome = leString("Digite o nome popular para o animal \n");
+    t_genero genero = leGenero("Digite F para femea e M para macho \n");
+    string tipo_temperatura = leString("Digite o tipo de temperatura do animal \n");
+    string tipo_pele = leString("Digite o tipo de pele do animal \n");
+    string tipo_fecundacao = leString("Digite o tipo de fecundacao do animal \n");
+    string material_eliminidado = leString("Digite o tipo de material eliminidado pelo animal \n");
+    string habitat = leString("Digite o tipo de habitat do animal \n");
+    bool troca_pele = leBool("Digite S se o animal troca de pele ou N se o animal nao troca de pele \n");
+    string aquatico_terrestre = leString("Digite se o animal é aquatico ou terrestre \n");
+    bool registro_ibama = leBool("Digite S se o animal possui registro no ibama e N se o animal nao registro no Ibama \n");
+    bool territorio_brasileiro = false;
+    enExtincao extincao = nao_ameacado;
+    string pais_origem = leString("Digite qual o pais que ele foi encontrado");
+
+    Animal* criado = new ReptilNativo(this->animalStore.size(), especie, nome, genero, Repteis, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
+
+    cout << "Salvando Animal"
+         << "\n";
+    adicionarAnimal(criado);
+}
+
+void Petfera::cadastrarMamiferoDomestico() {
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+
+    string especie = leString("Digite o nome cientifico para o animal \n");
+    string nome = leString("Digite o nome popular para o animal \n");
+    t_genero genero = leGenero("Digite F para femea e M para macho \n");
+    string tipo_temperatura = leString("Digite o tipo de temperatura do animal \n");
+    string tipo_pele = leString("Digite o tipo de pele do animal \n");
+    string tipo_fecundacao = leString("Digite o tipo de fecundacao do animal \n");
+    string material_eliminidado = leString("Digite o tipo de material eliminidado pelo animal \n");
+    string habitat = leString("Digite o tipo de habitat do animal \n");
+    bool troca_pele = leBool("Digite S se o animal troca de pele ou N se o animal nao troca de pele \n");
+    bool tem_dentes = leBool("Digite S se o animal possui dentes ou N se o animal nao possui dentes \n");
+    pelos pelagem = lePelo("Digite o número correspondende à pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
+    TipoDeGestacao tipo_gestacao = leGestacao("Digite o número que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
+    TipoDeMamifero tipo_mamifero = leMamifero("Digite o número que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador");
+    string nome_animal = leString("Digite um nome para o animal \n");
+    string nome_dono = leString("Digite um nome do dono para o animal \n");
+
+    Animal* criado = new MamiferoDomestico(this->animalStore.size(), especie, nome, genero, Mamiferos, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, nome_animal, nome_dono);
+
+    cout << "Salvando Animal"
+         << "\n";
+    adicionarAnimal(criado);
+}
+
+void Petfera::cadastrarMamiferoExotico() {
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+
+    string especie = leString("Digite o nome cientifico para o animal \n");
+    string nome = leString("Digite o nome popular para o animal \n");
+    t_genero genero = leGenero("Digite F para femea e M para macho \n");
+    string tipo_temperatura = leString("Digite o tipo de temperatura do animal \n");
+    string tipo_pele = leString("Digite o tipo de pele do animal \n");
+    string tipo_fecundacao = leString("Digite o tipo de fecundacao do animal \n");
+    string material_eliminidado = leString("Digite o tipo de material eliminidado pelo animal \n");
+    string habitat = leString("Digite o tipo de habitat do animal \n");
+    bool troca_pele = leBool("Digite S se o animal troca de pele ou N se o animal nao troca de pele \n");
+    bool tem_dentes = leBool("Digite S se o animal possui dentes ou N se o animal nao possui dentes \n");
+    pelos pelagem = lePelo("Digite o número correspondende à pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
+    TipoDeGestacao tipo_gestacao = leGestacao("Digite o número que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
+    TipoDeMamifero tipo_mamifero = leMamifero("Digite o número que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador");
+    string aquatico_terrestre = leString("Digite se o animal é aquatico ou terrestre \n");
+    bool registro_ibama = leBool("Digite S se o animal possui registro no ibama e N se o animal nao registro no Ibama \n");
+    bool territorio_brasileiro = false;
+    enExtincao extincao = nao_ameacado;
+    string pais_origem = leString("Digite qual o pais que ele foi encontrado");
+
+    Animal* criado = new MamiferoExotico(this->animalStore.size(), especie, nome, genero, Mamiferos, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
+
+    cout << "Salvando Animal"
+         << "\n";
+    adicionarAnimal(criado);
+}
+
+void Petfera::cadastrarMamiferoNativo() {
+    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
+    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+
+    string especie = leString("Digite o nome cientifico para o animal \n");
+    string nome = leString("Digite o nome popular para o animal \n");
+    t_genero genero = leGenero("Digite F para femea e M para macho \n");
+    string tipo_temperatura = leString("Digite o tipo de temperatura do animal \n");
+    string tipo_pele = leString("Digite o tipo de pele do animal \n");
+    string tipo_fecundacao = leString("Digite o tipo de fecundacao do animal \n");
+    string material_eliminidado = leString("Digite o tipo de material eliminidado pelo animal \n");
+    string habitat = leString("Digite o tipo de habitat do animal \n");
+    bool troca_pele = leBool("Digite S se o animal troca de pele ou N se o animal nao troca de pele \n");
+    bool tem_dentes = leBool("Digite S se o animal possui dentes ou N se o animal nao possui dentes \n");
+    pelos pelagem = lePelo("Digite o número correspondende à pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
+    TipoDeGestacao tipo_gestacao = leGestacao("Digite o número que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
+    TipoDeMamifero tipo_mamifero = leMamifero("Digite o número que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador");
+    string aquatico_terrestre = leString("Digite se o animal é aquatico ou terrestre \n");
+    bool registro_ibama = leBool("Digite S se o animal possui registro no ibama e N se o animal nao registro no Ibama \n");
+    bool territorio_brasileiro = false;
+    enExtincao extincao = nao_ameacado;
+
+    Animal* criado = new MamiferoNativo(this->animalStore.size(), especie, nome, genero, Mamiferos, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
+
+    cout << "Salvando Animal"
+         << "\n";
+    adicionarAnimal(criado);
 }
 
 void Petfera::cadastrarAnimal() {
@@ -498,6 +657,7 @@ void Petfera::cadastrarAnimal() {
         case 4:
             cout << "cadastrando Reptil"
                  << "\n";
+            cadastrarReptil();
             break;
 
         case 5:
@@ -623,6 +783,75 @@ void Petfera::cadastrarAve() {
             break;
     }
 }  // Interface com o usuário
+
+//Change
+void Petfera::cadastrarMamifero() {
+    short escolhaSilvestre;
+
+    cout << "Opcao Escolhida: Mamifero" << endl;
+    cout << "Escolha abaixo o tipo de Mamifero para cadastro: " << endl;
+    cout << " 1 - Cadastrar Mamifero Domestico" << endl;
+    cout << " 2 - Cadastrar Mamifero Exotico" << endl;
+    cout << " 3 - Cadastrar Mamifero Nativo" << endl;
+
+    cin >> escolhaSilvestre;
+
+    switch (escolhaSilvestre) {
+        case 1:
+            cout << "Salvando Mamifero Domestico"
+                 << "\n";
+            cadastrarAveDomestico();
+            break;
+        case 2:
+            cout << "Salvando Mamifero Exotico"
+                 << "\n";
+            cadastrarAveExotica();
+            break;
+        case 3:
+            cout << "Salvando Mamifero Nativo"
+                 << "\n";
+            cadastrarAveNativa();
+            break;
+        default:
+            cout << "Opcao invalida, retornando..."
+                 << "\n";
+            break;
+    }
+}
+
+void Petfera::cadastrarReptil() {
+    short escolhaSilvestre;
+
+    cout << "Opcaoo Escolhida: Anfibio" << endl;
+    cout << "Escolha abaixo o tipo de Anfibio para cadastro: " << endl;
+    cout << " 1 - Cadastrar Anfibio Domestico" << endl;
+    cout << " 2 - Cadastrar Anfibio Exotico" << endl;
+    cout << " 3 - Cadastrar Anfibio Nativo" << endl;
+
+    cin >> escolhaSilvestre;
+
+    switch (escolhaSilvestre) {
+        case 1:
+            cout << "Salvando Reptil Domestico"
+                 << "\n";
+            cadastrarReptilDomestico();
+            break;
+        case 2:
+            cout << "Salvando Reptil Exotico"
+                 << "\n";
+            cadastrarReptilExotico();
+            break;
+        case 3:
+            cout << "Salvando Reptil Nativo"
+                 << "\n";
+            cadastrarReptilNativo();
+            break;
+        default:
+            cout << "Opcao invalida, retornando..."
+                 << "\n";
+            break;
+    }
+}
 
 void Petfera::cadastrarFuncionario() {
     short escolha;
@@ -790,6 +1019,33 @@ bool Petfera::leBool(string str_prompt) {
     }
 }
 
+pelos Petfera::lePelo(string str_prompt) {
+    int resposta;
+
+    cout << str_prompt;
+    cin >> resposta;
+
+    return pelos(resposta - 1);
+}
+
+TipoDeGestacao Petfera::leGestacao(string str_prompt) {
+    int resposta;
+
+    cout << str_prompt;
+    cin >> resposta;
+
+    return TipoDeGestacao(resposta - 1);
+}
+
+TipoDeMamifero Petfera::leMamifero(string str_prompt) {
+    int resposta;
+
+    cout << str_prompt;
+    cin >> resposta;
+
+    return TipoDeMamifero(resposta - 1);
+}
+
 bool Petfera::atualizar_dados_animal() {
     int id_animal;
     short escolha;
@@ -801,7 +1057,6 @@ bool Petfera::atualizar_dados_animal() {
 
     for (auto& animal : this->animalStore) {
         if (id_animal == animal->getId()) {
-
             atualizar_menu_animal();
 
             cin >> escolha_str;
@@ -810,7 +1065,7 @@ bool Petfera::atualizar_dados_animal() {
 
             atualizar_animal(escolha, animal);
 
-        }else {
+        } else {
             cout << "ID nao encontrado, retornando...";
         }
     }
@@ -862,11 +1117,10 @@ bool Petfera::atualizar_dados_funcionario() {
 
             atualizar_funcionario(escolha, funcionario);
             break;
-           
-        }else {
+
+        } else {
             cout << "ID nao encontrado, retornando...";
         }
-
     }
 
     return true;
@@ -927,13 +1181,10 @@ void Petfera::removerFuncionario() {
     }
 }
 
-
-bool Petfera::atualizar_funcionario(int escolha, Funcionario* funcionario){
-
+bool Petfera::atualizar_funcionario(int escolha, Funcionario* funcionario) {
     string alterar_string;
 
     if (escolha == 1) {
-
         cout << "Digite o novo nome \n";
 
         cin >> alterar_string;
@@ -960,68 +1211,66 @@ bool Petfera::atualizar_funcionario(int escolha, Funcionario* funcionario){
 
         funcionario->setEmail(alterar_string);
 
-    }else if( escolha == 0 || escolha > 4){
-
+    } else if (escolha == 0 || escolha > 4) {
         cout << "Erro, escolha apenas entre 1-4";
         return false;
     }
 
     return true;
-}   
+}
 
-bool Petfera::atualizar_animal(int escolha, Animal* animal){
+bool Petfera::atualizar_animal(int escolha, Animal* animal) {
     bool alterar_bool;
     string alterar_string;
-     if (escolha == 1) {
-            cout << "Digite a nova especie \n";
+    if (escolha == 1) {
+        cout << "Digite a nova especie \n";
 
-            cin >> alterar_string;
+        cin >> alterar_string;
 
-            animal->setEspecie(alterar_string);
+        animal->setEspecie(alterar_string);
 
-        } else if (escolha == 2) {
-            cout << "Digite o novo nome \n";
+    } else if (escolha == 2) {
+        cout << "Digite o novo nome \n";
 
-            cin >> alterar_string;
+        cin >> alterar_string;
 
-            animal->setNome(alterar_string);
+        animal->setNome(alterar_string);
 
-        } else if (escolha == 3) {
-            cout << "Digite o novo tipo de temperatura \n";
+    } else if (escolha == 3) {
+        cout << "Digite o novo tipo de temperatura \n";
 
-            cin >> alterar_string;
+        cin >> alterar_string;
 
-            animal->setTipo_temperatura(alterar_string);
-        } else if (escolha == 4) {
-            cout << "Digite o novo tipo de pele \n";
+        animal->setTipo_temperatura(alterar_string);
+    } else if (escolha == 4) {
+        cout << "Digite o novo tipo de pele \n";
 
-            cin >> alterar_string;
+        cin >> alterar_string;
 
-            animal->setTipo_pele(alterar_string);
-        } else if (escolha == 5) {
-            cout << "Digite o novo tipo de fecundacao \n";
+        animal->setTipo_pele(alterar_string);
+    } else if (escolha == 5) {
+        cout << "Digite o novo tipo de fecundacao \n";
 
-            cin >> alterar_string;
+        cin >> alterar_string;
 
-            animal->setTipo_fecundacao(alterar_string);
-        } else if (escolha == 6) {
-            cout << "Digite de S se troca de pele ou N se nao troca \n";
+        animal->setTipo_fecundacao(alterar_string);
+    } else if (escolha == 6) {
+        cout << "Digite de S se troca de pele ou N se nao troca \n";
 
-            cin >> alterar_bool;
+        cin >> alterar_bool;
 
-            animal->setTroca_pele(alterar_bool);
-        } else if (escolha == 7) {
-            cout << "Digite o novo material eliminado \n";
+        animal->setTroca_pele(alterar_bool);
+    } else if (escolha == 7) {
+        cout << "Digite o novo material eliminado \n";
 
-            cin >> alterar_string;
+        cin >> alterar_string;
 
-            animal->setMaterial_eliminidado(alterar_string);
+        animal->setMaterial_eliminidado(alterar_string);
 
-        }else if( escolha == 0 || escolha > 7){
-
-            cout << "Erro, escolha apenas entre 1-7";
-            return false;
-        }
+    } else if (escolha == 0 || escolha > 7) {
+        cout << "Erro, escolha apenas entre 1-7";
+        return false;
+    }
 
     return true;
-}   
+}
