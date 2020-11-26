@@ -60,6 +60,8 @@ class Petfera {
 
     bool atualizar_dados_funcionario();
     bool atualizar_dados_animal();
+    bool atualizar_funcionario(int escolha, Funcionario* funcionario);
+    bool atualizar_animal(int escolha, Animal* animal);
 
     /*
 	 * Tratamentos

@@ -134,7 +134,7 @@ void Petfera::PetferaMenu(int& escolha) {
             atualizar_dados_funcionario();
             break;
         case 10:
-            cout << "Está é a lista de todos os animais da Petfera"
+            cout << "Esta e a lista de todos os animais da Petfera"
                  << "\n";
             listarTodosAnimais();
             break;
@@ -234,7 +234,7 @@ void Petfera::listarAnimaisPorClasse() {
 void Petfera::listarAnimaisPorFunca() {
     int id;
     listarTodosFuncaionarios();
-    cout << "Por favor escolha o id do funcionário que você quer listar os animais atribuidos a ele"
+    cout << "Por favor escolha o id do funcionario que voce quer listar os animais atribuidos a ele"
          << "\n";
     cin >> id;
     for (auto&& funcaId : this->animalStore) {
@@ -792,66 +792,25 @@ bool Petfera::leBool(string str_prompt) {
 
 bool Petfera::atualizar_dados_animal() {
     int id_animal;
-    string alterar_string;
-    bool alterar_bool;
     short escolha;
+    string escolha_str;
+    stringstream ss;
 
     cout << "ID do animal a ser atualizado: ";
     cin >> id_animal;
 
     for (auto& animal : this->animalStore) {
         if (id_animal == animal->getId()) {
+
             atualizar_menu_animal();
 
-            cin >> escolha;
+            cin >> escolha_str;
+            ss << escolha_str;
+            ss >> escolha;
 
-            if (escolha == 1) {
-                cout << "Digite a nova especie \n";
+            atualizar_animal(escolha, animal);
 
-                cin >> alterar_string;
-
-                animal->setEspecie(alterar_string);
-
-            } else if (escolha == 2) {
-                cout << "Digite o novo nome \n";
-
-                cin >> alterar_string;
-
-                animal->setNome(alterar_string);
-
-            } else if (escolha == 3) {
-                cout << "Digite o novo tipo de temperatura \n";
-
-                cin >> alterar_string;
-
-                animal->setTipo_temperatura(alterar_string);
-            } else if (escolha == 4) {
-                cout << "Digite o novo tipo de pele \n";
-
-                cin >> alterar_string;
-
-                animal->setTipo_pele(alterar_string);
-            } else if (escolha == 5) {
-                cout << "Digite o novo tipo de fecundacao \n";
-
-                cin >> alterar_string;
-
-                animal->setTipo_fecundacao(alterar_string);
-            } else if (escolha == 6) {
-                cout << "Digite de S se troca de pele ou N se nao troca \n";
-
-                cin >> alterar_bool;
-
-                animal->setTroca_pele(alterar_bool);
-            } else if (escolha == 7) {
-                cout << "Digite o novo material eliminado \n";
-
-                cin >> alterar_string;
-
-                animal->setMaterial_eliminidado(alterar_string);
-            }
-
-        } else {
+        }else {
             cout << "ID nao encontrado, retornando...";
         }
     }
@@ -887,6 +846,8 @@ bool Petfera::atualizar_dados_funcionario() {
     int id_funcionario;
     string alterar_string;
     short escolha;
+    string escolha_str;
+    stringstream ss;
 
     cout << "ID do funcionario a ser atualizado: ";
     cin >> id_funcionario;
@@ -895,39 +856,17 @@ bool Petfera::atualizar_dados_funcionario() {
         if (id_funcionario == funcionario->getId()) {
             atualizar_menu_funcionario();
 
-            cin >> escolha;
+            cin >> escolha_str;
+            ss << escolha_str;
+            ss >> escolha;
 
-            if (escolha == 1) {
-                cout << "Digite o novo nome \n";
-
-                cin >> alterar_string;
-
-                funcionario->setNome(alterar_string);
-
-            } else if (escolha == 2) {
-                cout << "Digite o novo cpf \n";
-
-                cin >> alterar_string;
-
-                funcionario->setCpf(alterar_string);
-
-            } else if (escolha == 3) {
-                cout << "Digite o novo cell \n";
-
-                cin >> alterar_string;
-
-                funcionario->setCelularProfissional(alterar_string);
-            } else if (escolha == 4) {
-                cout << "Digite o novo email \n";
-
-                cin >> alterar_string;
-
-                funcionario->setEmail(alterar_string);
-            }
-
-        } else {
+            atualizar_funcionario(escolha, funcionario);
+            break;
+           
+        }else {
             cout << "ID nao encontrado, retornando...";
         }
+
     }
 
     return true;
@@ -987,3 +926,102 @@ void Petfera::removerFuncionario() {
         index++;
     }
 }
+
+
+bool Petfera::atualizar_funcionario(int escolha, Funcionario* funcionario){
+
+    string alterar_string;
+
+    if (escolha == 1) {
+
+        cout << "Digite o novo nome \n";
+
+        cin >> alterar_string;
+
+        funcionario->setNome(alterar_string);
+
+    } else if (escolha == 2) {
+        cout << "Digite o novo cpf \n";
+
+        cin >> alterar_string;
+
+        funcionario->setCpf(alterar_string);
+
+    } else if (escolha == 3) {
+        cout << "Digite o novo cell \n";
+
+        cin >> alterar_string;
+
+        funcionario->setCelularProfissional(alterar_string);
+    } else if (escolha == 4) {
+        cout << "Digite o novo email \n";
+
+        cin >> alterar_string;
+
+        funcionario->setEmail(alterar_string);
+
+    }else if( escolha == 0 || escolha > 4){
+
+        cout << "Erro, escolha apenas entre 1-4";
+        return false;
+    }
+
+    return true;
+}   
+
+bool Petfera::atualizar_animal(int escolha, Animal* animal){
+    bool alterar_bool;
+    string alterar_string;
+     if (escolha == 1) {
+            cout << "Digite a nova especie \n";
+
+            cin >> alterar_string;
+
+            animal->setEspecie(alterar_string);
+
+        } else if (escolha == 2) {
+            cout << "Digite o novo nome \n";
+
+            cin >> alterar_string;
+
+            animal->setNome(alterar_string);
+
+        } else if (escolha == 3) {
+            cout << "Digite o novo tipo de temperatura \n";
+
+            cin >> alterar_string;
+
+            animal->setTipo_temperatura(alterar_string);
+        } else if (escolha == 4) {
+            cout << "Digite o novo tipo de pele \n";
+
+            cin >> alterar_string;
+
+            animal->setTipo_pele(alterar_string);
+        } else if (escolha == 5) {
+            cout << "Digite o novo tipo de fecundacao \n";
+
+            cin >> alterar_string;
+
+            animal->setTipo_fecundacao(alterar_string);
+        } else if (escolha == 6) {
+            cout << "Digite de S se troca de pele ou N se nao troca \n";
+
+            cin >> alterar_bool;
+
+            animal->setTroca_pele(alterar_bool);
+        } else if (escolha == 7) {
+            cout << "Digite o novo material eliminado \n";
+
+            cin >> alterar_string;
+
+            animal->setMaterial_eliminidado(alterar_string);
+
+        }else if( escolha == 0 || escolha > 7){
+
+            cout << "Erro, escolha apenas entre 1-7";
+            return false;
+        }
+
+    return true;
+}   
