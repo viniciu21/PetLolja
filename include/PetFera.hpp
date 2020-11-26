@@ -38,7 +38,6 @@ class Petfera {
     void atualizar_menu_animal();
     void atualizar_menu_funcionario();
 
-
     void cadastrarFuncionario();  // Interface com o usuário
     void cadastrarVeterinario();  // Interface com o usuário
     void cadastrarTratador();     // Interface com o usuário
@@ -62,8 +61,6 @@ class Petfera {
     bool atualizar_dados_funcionario();
     bool atualizar_dados_animal();
 
-
-
     /*
 	 * Tratamentos
 	*/
@@ -72,12 +69,19 @@ class Petfera {
     string leString(string str_prompt);
     t_genero leGenero(string str_prompt);
     bool leBool(string str_prompt);
-    Funcionario* pegarFuncionario();
+    Funcionario* pegarVeterinario();
+    Funcionario* pegarTratador();
+    nivelDeSeguranca leNivelDeSeguranca();
+
     //familia leClasse(string str_prompt);
     // int le1ou0(string str_prompt);
 
+    void listarAnimaisPorFunca();
+    void listarTodosAnimais();
+    void listarTodosFuncaionarios();
+    void listarAnimaisPorClasse();
+
    private:
-    
     vector<Animal*> animalStore;
     int animais_cadastrados = 0;
     vector<Funcionario*> funcionarioStore;

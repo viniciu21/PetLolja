@@ -43,7 +43,7 @@ AnfibioDomestico::AnfibioDomestico(
                             nome_dono) {}
 
 AnfibioDomestico::~AnfibioDomestico() {
-  cout << "Animal removido com sucesso" << endl;
+    cout << "Animal removido com sucesso" << endl;
 }
 
 // Getters
@@ -55,14 +55,12 @@ ostream& AnfibioDomestico::imprimeDados(ostream& o) const {
       << "Classe                | Anfibio" << std::endl
       << "Nome                  | " << this->nome << std::endl
       << "Nome Cientifico       | " << this->especie << std::endl
-      << "Sexo                  | " << (this->genero==F ? "Femea" : "Macho") << std::endl 
+      << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
       << "Temperatura           | " << this->tipo_temperatura << std::endl
       << "Pele                  | " << this->tipo_pele << std::endl
       << "Fecundacao            | " << this->tipo_fecundacao << std::endl
       << "Troca de Pele         | " << this->troca_pele << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
-      << "Veterinario           | " << "" << std::endl
-      << "Tratador              | " << "" << std::endl
       << "Nome de Batismo       | " << this->nome_animal << std::endl
       << "Nome Dono             | " << this->nome_dono << std::endl;
 
