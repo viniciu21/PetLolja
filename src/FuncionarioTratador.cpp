@@ -9,6 +9,14 @@ FuncionarioTratador::~FuncionarioTratador() {
   std::cout << "Funcionario removido" << std::endl;
 }
 
+
+nivelDeSeguranca FuncionarioTratador::getClassificacaoDeSeguranca(){
+  return this->classificacaoDeSeguranca;
+}
+void FuncionarioTratador::setClassificacaoDeSeguranca(nivelDeSeguranca classi){
+  this->classificacaoDeSeguranca = classi;
+}
+
 FuncionarioTratador::FuncionarioTratador(
     int id,
     string nome,

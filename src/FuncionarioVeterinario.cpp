@@ -6,6 +6,14 @@ FuncionarioVeterinario::~FuncionarioVeterinario() {
   std::cout << "Funcionario removido" << std::endl;
 }
 
+bool FuncionarioVeterinario::getIsInscritoCRMV(){
+  return this->isInscritoCRMV;
+}
+
+void FuncionarioVeterinario::setIsInscritoCRMV(bool crmv){
+  this->isInscritoCRMV = crmv;
+}
+
 FuncionarioVeterinario::FuncionarioVeterinario(
     int id, string nome,
     string cpf,

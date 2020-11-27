@@ -17,6 +17,10 @@ class FuncionarioVeterinario : public Funcionario {
         string email,
         bool isInscritoCRMV);
     ~FuncionarioVeterinario();
+
+
+    bool getIsInscritoCRMV();
+    void setIsInscritoCRMV(bool crmv);
 };
 
 #endif

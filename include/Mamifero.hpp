@@ -33,8 +33,8 @@ class Mamifero : public Animal {
 
 
    protected:
-    pelos pelagem;
     bool tem_dentes;
+    pelos pelagem;
     TipoDeGestacao tipo_gestacao;
     TipoDeMamifero tipo_mamifero;
 

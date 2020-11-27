@@ -23,6 +23,11 @@ class FuncionarioTratador : public Funcionario {
                         string email,
                         nivelDeSeguranca classificacaoDeSeguranca);
     ~FuncionarioTratador();
+
+
+
+    nivelDeSeguranca getClassificacaoDeSeguranca();
+    void setClassificacaoDeSeguranca(nivelDeSeguranca classi);
 };
 
 #endif

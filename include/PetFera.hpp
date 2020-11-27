@@ -43,7 +43,6 @@ class Petfera {
     void cadastrarMamifero();  // Interface com o usuário
 
     void atualizar_menu_animal();
-    void atualizar_menu_funcionario();
 
     void cadastrarFuncionario();  // Interface com o usuário
     void cadastrarVeterinario();  // Interface com o usuário
@@ -74,8 +73,8 @@ class Petfera {
 
     bool atualizar_dados_funcionario();
     bool atualizar_dados_animal();
-    bool atualizar_funcionario(int escolha, Funcionario* funcionario);
-    bool atualizar_animal(int escolha, Animal* animal);
+    bool atualizar_funcionario(Funcionario* funcionario);
+    bool atualizar_animal(Animal* animal);
 
     /*
 	 * Tratamentos

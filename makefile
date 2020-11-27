@@ -9,7 +9,7 @@ PROG = $(BIN)/programa
 CC = g++
 CPPFLAGS = -Wall -std=c++11 -I./include
 
-OBJS = $(BIN)/main.o $(BIN)/Anfibio.o $(BIN)/AnfibioDomestico.o $(BIN)/AnfibioExotico.o $(BIN)/AnfibioNativo.o  $(BIN)/Animal.o $(BIN)/AnimalDomestico.o $(BIN)/AnimalExotico.o $(BIN)/AnimalNativo.o $(BIN)/AnimalSilvestre.o $(BIN)/Ave.o $(BIN)/AveDomestico.o $(BIN)/AveExotica.o $(BIN)/AveNativo.o $(BIN)/FuncionarioTratador.o $(BIN)/FuncionarioVeterinario.o $(BIN)/Funcionario.o $(BIN)/PetFera.o
+OBJS = $(BIN)/main.o $(BIN)/Anfibio.o $(BIN)/AnfibioDomestico.o $(BIN)/AnfibioExotico.o $(BIN)/AnfibioNativo.o  $(BIN)/Animal.o $(BIN)/AnimalDomestico.o $(BIN)/AnimalExotico.o $(BIN)/AnimalNativo.o $(BIN)/AnimalSilvestre.o $(BIN)/Ave.o $(BIN)/AveDomestico.o $(BIN)/AveExotica.o $(BIN)/AveNativo.o $(BIN)/FuncionarioTratador.o $(BIN)/FuncionarioVeterinario.o $(BIN)/Funcionario.o $(BIN)/PetFera.o $(BIN)/Mamifero.o $(BIN)/MamiferoDomestico.o $(BIN)/MamiferoExotico.o $(BIN)/MamiferoNativo.o  $(BIN)/Reptil.o $(BIN)/ReptilDomestico.o $(BIN)/ReptilExotico.o $(BIN)/ReptilNativo.o
 
 all : $(OBJS)
 	$(CC) $(OBJS) -o $(PROG)
@@ -67,6 +67,30 @@ $(BIN)/Funcionario.o : $(SRC)/Funcionario.cpp $(INC)/Funcionario.hpp
 
 $(BIN)/PetFera.o : $(SRC)/PetFera.cpp $(INC)/PetFera.hpp 
 	$(CC) $(CPPFLAGS) -c $(SRC)/PetFera.cpp -o $@
+
+$(BIN)/Mamifero.o : $(SRC)/Mamifero.cpp $(INC)/Mamifero.hpp 
+	$(CC) $(CPPFLAGS) -c $(SRC)/Mamifero.cpp -o $@
+
+$(BIN)/MamiferoDomestico.o : $(SRC)/MamiferoDomestico.cpp $(INC)/MamiferoDomestico.hpp 
+	$(CC) $(CPPFLAGS) -c $(SRC)/MamiferoDomestico.cpp -o $@
+
+$(BIN)/MamiferoExotico.o : $(SRC)/MamiferoExotico.cpp $(INC)/MamiferoExotico.hpp 
+	$(CC) $(CPPFLAGS) -c $(SRC)/MamiferoExotico.cpp -o $@
+
+$(BIN)/MamiferoNativo.o : $(SRC)/MamiferoNativo.cpp $(INC)/MamiferoNativo.hpp 
+	$(CC) $(CPPFLAGS) -c $(SRC)/MamiferoNativo.cpp -o $@
+
+$(BIN)/Reptil.o : $(SRC)/Reptil.cpp $(INC)/Reptil.hpp 
+	$(CC) $(CPPFLAGS) -c $(SRC)/Reptil.cpp -o $@
+
+$(BIN)/ReptilDomestico.o : $(SRC)/ReptilDomestico.cpp $(INC)/ReptilDomestico.hpp 
+	$(CC) $(CPPFLAGS) -c $(SRC)/ReptilDomestico.cpp -o $@
+
+$(BIN)/ReptilExotico.o : $(SRC)/ReptilExotico.cpp $(INC)/ReptilExotico.hpp 
+	$(CC) $(CPPFLAGS) -c $(SRC)/ReptilExotico.cpp -o $@
+
+$(BIN)/ReptilNativo.o : $(SRC)/ReptilNativo.cpp $(INC)/ReptilNativo.hpp 
+	$(CC) $(CPPFLAGS) -c $(SRC)/ReptilNativo.cpp -o $@
 
 clean:
 	rm -f core $(PROG) $(OBJS)

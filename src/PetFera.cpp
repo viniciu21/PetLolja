@@ -1048,22 +1048,14 @@ TipoDeMamifero Petfera::leMamifero(string str_prompt) {
 
 bool Petfera::atualizar_dados_animal() {
     int id_animal;
-    short escolha;
-    string escolha_str;
-    stringstream ss;
 
     cout << "ID do animal a ser atualizado: ";
     cin >> id_animal;
 
     for (auto& animal : this->animalStore) {
         if (id_animal == animal->getId()) {
-            atualizar_menu_animal();
 
-            cin >> escolha_str;
-            ss << escolha_str;
-            ss >> escolha;
-
-            atualizar_animal(escolha, animal);
+            atualizar_animal(animal);
 
         } else {
             cout << "ID nao encontrado, retornando...";
@@ -1073,76 +1065,30 @@ bool Petfera::atualizar_dados_animal() {
     return true;
 }
 
-void Petfera::atualizar_menu_animal() {
-    cout << "o que vc quer atualizar? "
-         << "\n"
-         << "# Temos as seguintes opcao : # "
-         << "\n"
-         << "    1 -> Alterar nome cientifico do animal"
-         << "\n"
-         << "    2 -> Alterar Nome do animal"
-         << "\n"
-         << "    3 -> Alterar Tipo de temperatura do animal"
-         << "\n"
-         << "    4 -> Alterar Tipo de pele do animal"
-         << "\n"
-         << "    5 -> Alterar Tipo de fecundacao do animal"
-         << "\n"
-         << "    6 -> Alterar Troca de pele do animal"
-         << "\n"
-         << "    7 -> Alterar Material eliminado do animal"
-         << endl;
-
-    cout << "Escolha uma opcao"
-         << "\n";
-}
 
 bool Petfera::atualizar_dados_funcionario() {
     int id_funcionario;
-    string alterar_string;
-    short escolha;
-    string escolha_str;
-    stringstream ss;
+
 
     cout << "ID do funcionario a ser atualizado: ";
     cin >> id_funcionario;
 
     for (auto& funcionario : this->funcionarioStore) {
         if (id_funcionario == funcionario->getId()) {
-            atualizar_menu_funcionario();
+    
 
-            cin >> escolha_str;
-            ss << escolha_str;
-            ss >> escolha;
-
-            atualizar_funcionario(escolha, funcionario);
+            atualizar_funcionario(funcionario);
             break;
-
-        } else {
+           
+        }else {
             cout << "ID nao encontrado, retornando...";
         }
+
     }
 
     return true;
 }
 
-void Petfera::atualizar_menu_funcionario() {
-    cout << "o que vc quer atualizar? "
-         << "\n"
-         << "# Temos as seguintes opcao : # "
-         << "\n"
-         << "    1 -> Alterar nome "
-         << "\n"
-         << "    2 -> Alterar cpf"
-         << "\n"
-         << "    3 -> Alterar numero do telefone"
-         << "\n"
-         << "    4 -> Alterar email"
-         << endl;
-
-    cout << "Escolha uma opcao"
-         << "\n";
-}
 
 void Petfera::removerAnimal() {
     int id;
@@ -1181,10 +1127,46 @@ void Petfera::removerFuncionario() {
     }
 }
 
-bool Petfera::atualizar_funcionario(int escolha, Funcionario* funcionario) {
+bool Petfera::atualizar_funcionario(Funcionario* funcionario){
+
+
     string alterar_string;
+    bool alterar_bool;
+    short escolha;
+    string escolha_str;
+    stringstream ss;
+
+    cout << "o que vc quer atualizar? "
+         << "\n"
+         << "# Temos as seguintes opcao : # "
+         << "\n"
+         << "    1 -> Alterar nome "
+         << "\n"
+         << "    2 -> Alterar cpf"
+         << "\n"
+         << "    3 -> Alterar numero do telefone"
+         << "\n"
+         << "    4 -> Alterar email"
+         << endl;
+
+         if (funcionario->getClassicicacao()  == Veterinario){
+             
+            cout << "    5 -> Alterar inscrição no CRMV" << endl;
+
+         }else if(funcionario->getClassicicacao()  == Tratador){
+
+            cout << "    6 -> Alterar nivel de seguranca" << endl;
+         }
+
+    cin >> escolha_str;
+    ss << escolha_str;
+    ss >> escolha;
+
+    cout << "Escolha uma opcao"
+         << "\n";
 
     if (escolha == 1) {
+
         cout << "Digite o novo nome \n";
 
         cin >> alterar_string;
@@ -1204,6 +1186,7 @@ bool Petfera::atualizar_funcionario(int escolha, Funcionario* funcionario) {
         cin >> alterar_string;
 
         funcionario->setCelularProfissional(alterar_string);
+
     } else if (escolha == 4) {
         cout << "Digite o novo email \n";
 
@@ -1211,17 +1194,70 @@ bool Petfera::atualizar_funcionario(int escolha, Funcionario* funcionario) {
 
         funcionario->setEmail(alterar_string);
 
-    } else if (escolha == 0 || escolha > 4) {
-        cout << "Erro, escolha apenas entre 1-4";
+    }
+    else if (escolha == 5) {
+
+        alterar_bool = leBool("Possui inscricao CRMV? [S/N]");
+
+        FuncionarioVeterinario* func_vet = dynamic_cast<FuncionarioVeterinario*>(funcionario);
+
+        func_vet->setIsInscritoCRMV(alterar_bool);
+
+    }
+    else if (escolha == 6) {
+
+        cout << "Digite o novo nivel\n";
+
+        nivelDeSeguranca seguranca = leNivelDeSeguranca();
+
+        FuncionarioTratador* func_trat = dynamic_cast<FuncionarioTratador*>(funcionario);
+
+        func_trat->setClassificacaoDeSeguranca(seguranca);
+
+    }else if( escolha == 0 || escolha > 4){
+
+        cout << "Erro, escolha apenas entre os valores informados";
         return false;
     }
 
     return true;
-}
+}   
 
-bool Petfera::atualizar_animal(int escolha, Animal* animal) {
+
+bool Petfera::atualizar_animal(Animal* animal) {
     bool alterar_bool;
     string alterar_string;
+    short escolha;
+    string escolha_str;
+    stringstream ss;
+
+  cout << "o que vc quer atualizar? "
+         << "\n"
+         << "# Temos as seguintes opcao : # "
+         << "\n"
+         << "    1 -> Alterar nome cientifico do animal"
+         << "\n"
+         << "    2 -> Alterar Nome do animal"
+         << "\n"
+         << "    3 -> Alterar Tipo de temperatura do animal"
+         << "\n"
+         << "    4 -> Alterar Tipo de pele do animal"
+         << "\n"
+         << "    5 -> Alterar Tipo de fecundacao do animal"
+         << "\n"
+         << "    6 -> Alterar Troca de pele do animal"
+         << "\n"
+         << "    7 -> Alterar Material eliminado do animal"
+         << endl;
+
+    cout << "Escolha uma opcao"
+         << "\n";
+
+    cin >> escolha_str;
+    ss << escolha_str;
+    ss >> escolha;
+
+
     if (escolha == 1) {
         cout << "Digite a nova especie \n";
 
