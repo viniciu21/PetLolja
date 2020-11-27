@@ -42,8 +42,6 @@ class Petfera {
     void cadastrarReptil();    // Interface com o usuário
     void cadastrarMamifero();  // Interface com o usuário
 
-    void atualizar_menu_animal();
-
     void cadastrarFuncionario();  // Interface com o usuário
     void cadastrarVeterinario();  // Interface com o usuário
     void cadastrarTratador();     // Interface com o usuário
