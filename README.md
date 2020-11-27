@@ -16,7 +16,7 @@ Na pasta bin (PetLolja\bin) execute:
 
 ## Como funciona?
 
-O programa irá funcionar como um programa do petshop permitindo o cadastramento, atualização, listagem de funcionarios e animais
+Irá funcionar como um programa de cadastramento de petshop permitindo a inserção, atualização e listagem de funcionarios e animais
 
 ## Feito por
 Thauanny Ramos
