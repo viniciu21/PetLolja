@@ -41,6 +41,14 @@ string Ave::getTamanhoDoBico() {
     return this->tamanhoDoBico;
 };
 
+void Ave::setEnvergaduraAsas(string asas){
+    this->envergaduraAsas = asas;
+};
+
+void Ave::setTamanhoDoBico(string bico){
+    this->tamanhoDoBico = bico;
+};
+
 ostream& Ave::imprimeDados(ostream& o) const {
     return o;
 }

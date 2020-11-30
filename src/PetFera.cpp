@@ -1229,6 +1229,8 @@ bool Petfera::atualizar_animal(Animal* animal) {
     string alterar_string;
     short escolha;
     string escolha_str;
+    pelos alterar_pelos;
+    TipoDeGestacao alterar_gestacao;
     stringstream ss;
 
   cout << "o que vc quer atualizar? "
@@ -1250,9 +1252,32 @@ bool Petfera::atualizar_animal(Animal* animal) {
          << "    7 -> Alterar Material eliminado do animal"
          << endl;
 
+        if (animal->getFamilia()  == Mamiferos){
+             
+            cout << "    8 -> Alterar se possui dentes" << endl;
+            cout << "    9 -> Alterar pelagem" << endl;
+            cout << "    10 -> Alterar tipo de gestacao" << endl;
+            cout << "    11 -> Alterar tipo de mamifero" << endl;
+
+         }else if(animal->getFamilia()  == Aves){
+
+            cout << "    12 -> Alterar envergadura da asa" << endl;
+            cout << "    13 -> Alterar tamanho do bico" << endl;
+
+         }else if(animal->getFamilia()  == Anfibios){
+
+            cout << "    14 -> Alterar habitat" << endl;
+            cout << "    15 -> Alterar se possui ovos" << endl;
+
+         }else if(animal->getFamilia()  == Repteis){
+
+           
+         }
+
     cout << "Escolha uma opcao"
          << "\n";
 
+    
     cin >> escolha_str;
     ss << escolha_str;
     ss >> escolha;
@@ -1303,8 +1328,78 @@ bool Petfera::atualizar_animal(Animal* animal) {
 
         animal->setMaterial_eliminidado(alterar_string);
 
-    } else if (escolha == 0 || escolha > 7) {
-        cout << "Erro, escolha apenas entre 1-7";
+    }else if (escolha == 8){
+
+        alterar_bool = leBool("Possui Dentes? [S/n]");
+
+        Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        mami_trat->setDentes(alterar_bool);
+
+    }else if (escolha == 9){
+
+        alterar_pelos =  lePelo("Digite o número correspondende à pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
+
+        Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        mami_trat->setPelagem(alterar_pelos);
+
+    }else if (escolha == 10){
+      
+        alterar_gestacao = leGestacao("Digite o número que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
+
+        Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        mami_trat->setTipoGestacao(alterar_gestacao);
+
+    }else if (escolha == 11){
+      
+        TipoDeMamifero tipo_mamifero = leMamifero("Digite o número que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador");
+
+        Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        mami_trat->setTipoMamifero(tipo_mamifero);
+
+    }else if(escolha == 12){
+
+        cout << "Digite o novo tipo de pele \n";
+
+        cin >> alterar_string;
+
+        Ave* ave_trat = dynamic_cast<Ave*>(animal);
+
+        ave_trat->setEnvergaduraAsas(alterar_string);
+
+    }else if(escolha == 13){
+
+        cout << "Digite o novo tipo de pele \n";
+
+        cin >> alterar_string;
+        
+        Ave* ave_trat = dynamic_cast<Ave*>(animal);
+
+        ave_trat->setTamanhoDoBico(alterar_string);
+
+    }else if(escolha == 14){
+
+        cout << "Digite o novo habitat \n";
+
+        cin >> alterar_string;
+        
+        Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
+
+        anfi_trat->setHabitat(alterar_string);
+
+    }else if(escolha == 15){
+
+        alterar_bool = leBool("Possui ovos? [S/n]");
+
+        Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
+
+        anfi_trat->setPossui_ovos(alterar_bool);
+
+    }else if (escolha == 0 || escolha > 15) {
+        cout << "Erro, escolha apenas as opções mostradas";
         return false;
     }
 

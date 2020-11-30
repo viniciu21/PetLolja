@@ -41,17 +41,34 @@ bool Mamifero::getDentes() {
     return this->tem_dentes;
 };
 
+void Mamifero::setDentes(bool dentes) {
+    this->tem_dentes = dentes;
+};
+
 pelos Mamifero::getPelagem() {
     return this->pelagem;
+};
+void  Mamifero::setPelagem(pelos pelos_) {
+    this->pelagem = pelos_;
 };
 
 TipoDeGestacao Mamifero::getTipoGestacao() {
     return this->tipo_gestacao;
 }
 
+void Mamifero::setTipoGestacao(TipoDeGestacao tipoDeGestacao_) {
+    this->tipo_gestacao = tipoDeGestacao_;
+}
+
 TipoDeMamifero Mamifero::getTipoMamifero() {
     return this->tipo_mamifero;
 }
+
+
+void Mamifero::setTipoMamifero(TipoDeMamifero tipoDeMamifero_) {
+    this->tipo_mamifero = tipoDeMamifero_;
+}
+
 
 ostream &Mamifero::imprimeDados(ostream &o) const {
     return o;

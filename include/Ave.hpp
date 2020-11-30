@@ -37,6 +37,9 @@ class Ave : public Animal {
 
     string getEnvergaduraAsas();
     string getTamanhoDoBico();
+
+    void setEnvergaduraAsas(string asas);
+    void setTamanhoDoBico(string bico);
 };
 
 #endif

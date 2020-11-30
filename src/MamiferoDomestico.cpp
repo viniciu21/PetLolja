@@ -70,8 +70,7 @@ ostream &MamiferoDomestico::imprimeDados(ostream &o) const
       << "Dentes                | " << this->tem_dentes << std::endl
       << "Pelagem               | " << this->pelagem << std::endl
       << "Tipo de gestacao      | " << this->tipo_gestacao << std::endl
-      << "Tipo do mamifero      | " << this->tipo_mamifero << std::endl
-      << "Nome Dono             | " << this->nome_dono << std::endl;
+      << "Tipo do mamifero      | " << this->tipo_mamifero << std::endl;
 
     return o;
 }

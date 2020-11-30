@@ -57,12 +57,13 @@ ostream& AnfibioDomestico::imprimeDados(ostream& o) const {
       << "Nome Cientifico       | " << this->especie << std::endl
       << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
       << "Temperatura           | " << this->tipo_temperatura << std::endl
+      << "Habitat               | " << this->habitat << std::endl
+      << "Posui ovos            | " << this->possui_ovos << std::endl
       << "Pele                  | " << this->tipo_pele << std::endl
       << "Fecundacao            | " << this->tipo_fecundacao << std::endl
       << "Troca de Pele         | " << this->troca_pele << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
-      << "Nome de Batismo       | " << this->nome_animal << std::endl
-      << "Nome Dono             | " << this->nome_dono << std::endl;
+      << "Nome de Batismo       | " << this->nome_animal << std::endl;
 
     return o;
 }

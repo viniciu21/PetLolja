@@ -34,6 +34,9 @@ class Anfibio : public Animal {
 
     string getHabitat();
     bool getPossui_ovos();
+
+    void setHabitat(string habitat_);
+    void setPossui_ovos(bool ovos);
 };
 
 #endif

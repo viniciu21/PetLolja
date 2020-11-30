@@ -39,5 +39,12 @@ string Anfibio::getHabitat() {
     return this->habitat;
 }
 bool Anfibio::getPossui_ovos() {
-    return possui_ovos;
+    return this->possui_ovos;
+}
+
+void Anfibio::setHabitat(string habitat_) {
+    this->habitat = habitat_;
+}
+void Anfibio::setPossui_ovos(bool ovos) {
+    this->possui_ovos = ovos;
 }

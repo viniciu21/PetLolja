@@ -64,6 +64,10 @@ class Mamifero : public Animal {
     TipoDeGestacao getTipoGestacao();
     TipoDeMamifero getTipoMamifero();
 
+    void setDentes(bool dentes);
+    void setPelagem(pelos pelos_);
+    void setTipoGestacao(TipoDeGestacao tipoDeGestacao_);
+    void setTipoMamifero(TipoDeMamifero tipoDeMamifero_);
 };
 
 #endif
