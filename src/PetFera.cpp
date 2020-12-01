@@ -257,15 +257,15 @@ void Petfera::listarTodosFuncaionarios() {
     cout << "Aqui estao todo os Funcionários do Petfera"
          << "\n\n";
 
-    if (animalStore.size() == 0) {
-        cout << "Não temos nenhum funcionário em nosso Banco de dados, por favor, cadastre um animal"
+    if (funcionarioStore.size() == 0) {
+        cout << "Não temos nenhum funcionário em nosso Banco de dados, por favor, cadastre um funcionario"
              << "\n"
              << "retornando"
              << "\n";
 
         inicio();
     }
-    for (auto& novo : this->animalStore) {
+    for (auto& novo : this->funcionarioStore) {
         cout << (*novo) << endl;
     }
     return;
