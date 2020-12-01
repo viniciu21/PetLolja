@@ -87,7 +87,6 @@ class Petfera {
     std::shared_ptr<Funcionario> pegarFuncionario();
     pelos lePelo(string str_prompt);
     TipoDeGestacao leGestacao(string str_prompt);
-    TipoDeMamifero leMamifero(string str_prompt);
     std::shared_ptr<Funcionario> pegarVeterinario();
     std::shared_ptr<Funcionario> pegarTratador();
     nivelDeSeguranca leNivelDeSeguranca();

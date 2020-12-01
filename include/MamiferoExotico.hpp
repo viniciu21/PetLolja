@@ -28,7 +28,6 @@ class MamiferoExotico : public Mamifero, AnimalExotico {
                     bool tem_dentes,
                     pelos pelagem,
                     TipoDeGestacao tipo_gestacao,
-                    TipoDeMamifero tipo_mamifero,
                     string aquatico_terrestre,
                     bool registro_ibama,
                     bool territorio_brasileiro,

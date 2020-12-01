@@ -25,7 +25,6 @@ class MamiferoDomestico : public Mamifero, AnimalDomestico {
                       bool tem_dentes,
                       pelos pelagem,
                       TipoDeGestacao tipo_gestacao,
-                      TipoDeMamifero tipo_mamifero,
                       string nome_animal,
                       string nome_dono);
 

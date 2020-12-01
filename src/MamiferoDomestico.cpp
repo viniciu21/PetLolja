@@ -24,7 +24,6 @@ MamiferoDomestico::MamiferoDomestico(
     bool tem_dentes,
     pelos pelagem,
     TipoDeGestacao tipo_gestacao,
-    TipoDeMamifero tipo_mamifero,
     string nome_animal,
     string nome_dono) : Mamifero(id,
                                  especie,
@@ -40,8 +39,7 @@ MamiferoDomestico::MamiferoDomestico(
                                  material_eliminidado,
                                  tem_dentes,
                                  pelagem,
-                                 tipo_gestacao,
-                                 tipo_mamifero),
+                                 tipo_gestacao),
                         AnimalDomestico(
                             nome_animal,
                             nome_dono) {}
@@ -63,10 +61,9 @@ ostream &MamiferoDomestico::imprimeDados(ostream &o) const {
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
       << "Nome de Batismo       | " << this->nome_animal << std::endl
       << "Nome do dono          | " << this->nome_dono << std::endl
-      << "Dentes                | " << this->tem_dentes << std::endl
-      << "Pelagem               | " << this->pelagem << std::endl
-      << "Tipo de gestacao      | " << this->tipo_gestacao << std::endl
-      << "Tipo do mamifero      | " << this->tipo_mamifero << std::endl;
+      << "Dentes                | " << (this->tem_dentes ? "Possui dentes" : "Não possui dentes") << std::endl
+      << "Pelagem               | " << (this->pelagem == 0 ? "Ausente" : this->pelagem == 1 ? "Reduzido" : "Normal") << std::endl
+      << "Tipo de gestacao      | " << (this->tipo_gestacao == 0 ? "Marsupial" : "Placentario") << std::endl;
 
     return o;
 }

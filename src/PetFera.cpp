@@ -244,12 +244,12 @@ void Petfera::listarAnimaisPorFunca() {
     cout << "Por favor escolha o id do funcionario que voce quer listar os animais atribuidos a ele"
          << "\n";
     cin >> id;
-    for (auto&& funcaId : this->animalStore) {
-        if (funcaId->getVeterinario()->getId() == id) {
-            cout << *(funcaId->getVeterinario()) << "\n";
+    for (auto&& animal : this->animalStore) {
+        if (animal->getVeterinario()->getId() == id) {
+            cout << *(animal) << "\n";
         }
-        if (funcaId->getTratador()->getId() == id) {
-            cout << *(funcaId->getVeterinario()) << "\n";
+        if (animal->getTratador()->getId() == id) {
+            cout << *(animal) << "\n";
         }
     }
 }
@@ -302,7 +302,6 @@ void Petfera::cadastrarAveDomestico() {
     string envergadura = leString("Digite a envergadura do animal \n");
     string tamanhoDoBico = leString("Digite o tamanho do bico do animal \n");
     string nome_animal = leString("Digite um nome para o animal \n");
-
 
     std::shared_ptr<Animal> criado = std::make_shared<AveDomestico>(this->animalStore.size(), especie, nome, genero, Aves, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, nome_animal, "sem dono");
 
@@ -550,10 +549,9 @@ void Petfera::cadastrarMamiferoDomestico() {
     bool tem_dentes = leBool("Digite S se o animal possui dentes ou N se o animal nao possui dentes \n");
     pelos pelagem = lePelo("Digite o numero correspondende a pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
     TipoDeGestacao tipo_gestacao = leGestacao("Digite o numero que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
-    TipoDeMamifero tipo_mamifero = leMamifero("Digite o numero que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador");
     string nome_animal = leString("Digite um nome para o animal \n");
 
-    std::shared_ptr<Animal> criado = std::make_shared<MamiferoDomestico>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, nome_animal, "sem dono");
+    std::shared_ptr<Animal> criado = std::make_shared<MamiferoDomestico>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, nome_animal, "sem dono");
 
     cout << "Salvando Animal"
          << "\n";
@@ -575,14 +573,13 @@ void Petfera::cadastrarMamiferoExotico() {
     bool tem_dentes = leBool("Digite S se o animal possui dentes ou N se o animal nao possui dentes \n");
     pelos pelagem = lePelo("Digite o numero correspondende a pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
     TipoDeGestacao tipo_gestacao = leGestacao("Digite o numero que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
-    TipoDeMamifero tipo_mamifero = leMamifero("Digite o numero que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador");
     string aquatico_terrestre = leString("Digite se o animal e aquatico ou terrestre \n");
     bool registro_ibama = leBool("Digite S se o animal possui registro no ibama e N se o animal nao registro no Ibama \n");
     bool territorio_brasileiro = false;
     enExtincao extincao = nao_ameacado;
     string pais_origem = leString("Digite qual o pais que ele foi encontrado");
 
-    std::shared_ptr<Animal> criado = std::make_shared<MamiferoExotico>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
+    std::shared_ptr<Animal> criado = std::make_shared<MamiferoExotico>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
 
     cout << "Salvando Animal"
          << "\n";
@@ -604,13 +601,13 @@ void Petfera::cadastrarMamiferoNativo() {
     bool tem_dentes = leBool("Digite S se o animal possui dentes ou N se o animal nao possui dentes \n");
     pelos pelagem = lePelo("Digite o numero correspondende a pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
     TipoDeGestacao tipo_gestacao = leGestacao("Digite o numero que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
-    TipoDeMamifero tipo_mamifero = leMamifero("Digite o numero que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador");
+
     string aquatico_terrestre = leString("Digite se o animal e aquatico ou terrestre \n");
     bool registro_ibama = leBool("Digite S se o animal possui registro no ibama e N se o animal nao registro no Ibama \n");
     bool territorio_brasileiro = true;
     enExtincao extincao = nao_ameacado;
 
-    std::shared_ptr<Animal> criado = std::make_shared<MamiferoNativo>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
+    std::shared_ptr<Animal> criado = std::make_shared<MamiferoNativo>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
 
     cout << "Salvando Animal"
          << "\n";
@@ -1059,15 +1056,6 @@ TipoDeGestacao Petfera::leGestacao(string str_prompt) {
     return TipoDeGestacao(resposta - 1);
 }
 
-TipoDeMamifero Petfera::leMamifero(string str_prompt) {
-    int resposta;
-
-    cout << str_prompt;
-    cin >> resposta;
-
-    return TipoDeMamifero(resposta - 1);
-}
-
 bool Petfera::atualizar_dados_animal() {
     int id_animal;
 
@@ -1215,18 +1203,16 @@ bool Petfera::atualizar_funcionario(std::shared_ptr<Funcionario> funcionario) {
         funcionario->setEmail(alterar_string);
 
     } else if (escolha == 5) {
-
         alterar_bool = leBool("Possui inscricao CRMV? [S/N]");
 
         shared_ptr<FuncionarioVeterinario> func_vet = dynamic_pointer_cast<FuncionarioVeterinario>(funcionario);
-        
+
         func_vet->setIsInscritoCRMV(alterar_bool);
 
     } else if (escolha == 6) {
         cout << "Digite o novo nivel\n";
 
         nivelDeSeguranca seguranca = leNivelDeSeguranca();
-
 
         shared_ptr<FuncionarioTratador> func_trat = dynamic_pointer_cast<FuncionarioTratador>(funcionario);
 
@@ -1272,7 +1258,6 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
         cout << "    8 -> Alterar se possui dentes" << endl;
         cout << "    9 -> Alterar pelagem" << endl;
         cout << "    10 -> Alterar tipo de gestacao" << endl;
-        cout << "    11 -> Alterar tipo de mamifero" << endl;
 
     } else if (animal->getFamilia() == Aves) {
         cout << "    12 -> Alterar envergadura da asa" << endl;
@@ -1345,7 +1330,6 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
         mami_trat->setDentes(alterar_bool);
 
     } else if (escolha == 9) {
-
         alterar_pelos = lePelo("Digite o numero correspondende a pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
 
         shared_ptr<Mamifero> mami_trat = dynamic_pointer_cast<Mamifero>(animal);
@@ -1353,25 +1337,17 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
         mami_trat->setPelagem(alterar_pelos);
 
     } else if (escolha == 10) {
-
         alterar_gestacao = leGestacao("Digite o numero que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
-
-         shared_ptr<Mamifero> mami_trat = dynamic_pointer_cast<Mamifero>(animal);
-
-        mami_trat->setTipoGestacao(alterar_gestacao);
-
-    } else if (escolha == 11) {
-        TipoDeMamifero tipo_mamifero = leMamifero("Digite o numero que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador\n");
 
         shared_ptr<Mamifero> mami_trat = dynamic_pointer_cast<Mamifero>(animal);
 
-        mami_trat->setTipoMamifero(tipo_mamifero);
+        mami_trat->setTipoGestacao(alterar_gestacao);
 
     } else if (escolha == 12) {
         cout << "Digite a nova envergadura \n";
 
         cin >> alterar_string;
-        
+
         shared_ptr<Ave> ave_trat = dynamic_pointer_cast<Ave>(animal);
 
         ave_trat->setEnvergaduraAsas(alterar_string);
@@ -1386,7 +1362,6 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
         ave_trat->setTamanhoDoBico(alterar_string);
 
     } else if (escolha == 14) {
-
         cout << "Digite o novo habitat \n";
 
         cin >> alterar_string;
@@ -1396,7 +1371,6 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
         anfi_trat->setHabitat(alterar_string);
 
     } else if (escolha == 15) {
-
         alterar_bool = leBool("Possui ovos? [S/n]");
 
         shared_ptr<Anfibio> anfi_trat = dynamic_pointer_cast<Anfibio>(animal);
@@ -1404,7 +1378,6 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
         anfi_trat->setPossui_ovos(alterar_bool);
 
     } else if (escolha == 0 || escolha > 15) {
-
         cout << "Erro, escolha apenas as opções mostradas";
 
         return false;

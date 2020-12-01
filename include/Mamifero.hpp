@@ -12,17 +12,6 @@ enum pelos {
     normal
 };
 
-enum TipoDeMamifero {
-    cursorial,
-    saltador,
-    plantigrado,
-    fossorial,
-    arboricola,
-    planador,
-    aquatico,
-    voador
-};
-
 enum TipoDeGestacao {
     marsupial,
     placentario
@@ -35,7 +24,6 @@ class Mamifero : public Animal {
     bool tem_dentes;
     pelos pelagem;
     TipoDeGestacao tipo_gestacao;
-    TipoDeMamifero tipo_mamifero;
 
    public:
     Mamifero(int id,
@@ -52,20 +40,17 @@ class Mamifero : public Animal {
              string material_eliminidado,
              bool tem_dentes,
              pelos pelagem,
-             TipoDeGestacao tipo_gestacao,
-             TipoDeMamifero tipo_mamifero);
+             TipoDeGestacao tipo_gestacao);
 
     ~Mamifero();
 
     bool getDentes();
     pelos getPelagem();
     TipoDeGestacao getTipoGestacao();
-    TipoDeMamifero getTipoMamifero();
 
     void setDentes(bool dentes);
     void setPelagem(pelos pelos_);
     void setTipoGestacao(TipoDeGestacao tipoDeGestacao_);
-    void setTipoMamifero(TipoDeMamifero tipoDeMamifero_);
 };
 
 #endif

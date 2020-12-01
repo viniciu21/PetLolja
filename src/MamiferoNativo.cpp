@@ -24,7 +24,6 @@ MamiferoNativo::MamiferoNativo(
     bool tem_dentes,
     pelos pelagem,
     TipoDeGestacao tipo_gestacao,
-    TipoDeMamifero tipo_mamifero,
     string aquatico_terrestre,
     bool registro_ibama,
     bool territorio_brasileiro,
@@ -42,8 +41,7 @@ MamiferoNativo::MamiferoNativo(
                                     material_eliminidado,
                                     tem_dentes,
                                     pelagem,
-                                    tipo_gestacao,
-                                    tipo_mamifero),
+                                    tipo_gestacao),
                            AnimalNativo(
                                aquatico_terrestre,
                                registro_ibama,
@@ -69,10 +67,9 @@ ostream &MamiferoNativo::imprimeDados(ostream &o) const {
       << "Registro Ibama        | " << this->registro_ibama << std::endl
       << "Territorio Brasileiro | " << this->territorio_brasileiro << std::endl
       << "Ameacado de Extinsao  | " << (this->extincao == ameacado ? "Risco de extincao" : "Nao corre risco de extincao") << std::endl
-      << "Dentes                | " << this->tem_dentes << std::endl
-      << "Pelagem               | " << this->pelagem << std::endl
-      << "Tipo de gestacao      | " << this->tipo_gestacao << std::endl
-      << "Tipo do mamifero      | " << this->tipo_mamifero << std::endl;
+      << "Dentes                | " << (this->tem_dentes ? "Possui dentes" : "Não possui dentes") << std::endl
+      << "Pelagem               | " << (this->pelagem == 0 ? "Ausente" : this->pelagem == 1 ? "Reduzido" : "Normal") << std::endl
+      << "Tipo de gestacao      | " << (this->tipo_gestacao == 0 ? "Marsupial" : "Placentario") << std::endl;
 
     return o;
 }

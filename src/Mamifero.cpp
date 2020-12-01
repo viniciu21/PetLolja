@@ -19,8 +19,7 @@ Mamifero::Mamifero(
     string material_eliminidado,
     bool tem_dentes,
     pelos pelagem,
-    TipoDeGestacao tipo_gestacao,
-    TipoDeMamifero tipo_mamifero) : Animal(id,
+    TipoDeGestacao tipo_gestacao) : Animal(id,
                                            especie,
                                            nome,
                                            genero,
@@ -34,8 +33,7 @@ Mamifero::Mamifero(
                                            material_eliminidado),
                                     tem_dentes(tem_dentes),
                                     pelagem(pelagem),
-                                    tipo_gestacao(tipo_gestacao),
-                                    tipo_mamifero(tipo_mamifero){};
+                                    tipo_gestacao(tipo_gestacao){};
 
 bool Mamifero::getDentes() {
     return this->tem_dentes;
@@ -58,14 +56,6 @@ TipoDeGestacao Mamifero::getTipoGestacao() {
 
 void Mamifero::setTipoGestacao(TipoDeGestacao tipoDeGestacao_) {
     this->tipo_gestacao = tipoDeGestacao_;
-}
-
-TipoDeMamifero Mamifero::getTipoMamifero() {
-    return this->tipo_mamifero;
-}
-
-void Mamifero::setTipoMamifero(TipoDeMamifero tipoDeMamifero_) {
-    this->tipo_mamifero = tipoDeMamifero_;
 }
 
 ostream &Mamifero::imprimeDados(ostream &o) const {
