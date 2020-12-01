@@ -59,6 +59,7 @@ ostream& AveDomestico::imprimeDados(ostream& o) const {
       << "Troca de Pele         | " << this->troca_pele << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
       << "Nome de Batismo       | " << this->nome_animal << std::endl
+      << "Nome do dono          | " << this->nome_dono << std::endl
       << "Tamanho do bico       | " << this->tamanhoDoBico << std::endl
       << "Envergadura           | " << this->envergaduraAsas << std::endl;
 

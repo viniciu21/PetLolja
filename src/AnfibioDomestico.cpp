@@ -63,7 +63,8 @@ ostream& AnfibioDomestico::imprimeDados(ostream& o) const {
       << "Fecundacao            | " << this->tipo_fecundacao << std::endl
       << "Troca de Pele         | " << this->troca_pele << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
-      << "Nome de Batismo       | " << this->nome_animal << std::endl;
+      << "Nome de Batismo       | " << this->nome_animal << std::endl
+      << "Nome do dono          | " << this->nome_dono << std::endl;
 
     return o;
 }
