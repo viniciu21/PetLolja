@@ -1049,21 +1049,58 @@ TipoDeMamifero Petfera::leMamifero(string str_prompt) {
 
 bool Petfera::atualizar_dados_animal() {
     int id_animal;
+    short escolhaAnimal;
+    string escolha_str;
 
     listarTodosAnimais();
 
+
+    cout << "Escolha abaixo o tipo de Animal para atualizar: \n"
+         << endl;
+    cout << " 1 - Atualizar Animal" << endl;
+    cout << " 2 - Atualizar Animal Nativo" << endl;
+    cout << " 3 - Atualizar Animal exotico" << endl;
+    cout << " 4 - voltar para cadastro de animal" << endl;
+
+    cin >> escolha_str;
+    stringstream ss;
+    ss << escolha_str;
+    ss >> escolhaAnimal;
     cout << "ID do animal a ser atualizado: ";
     cin >> id_animal;
-
     for (auto& animal : this->animalStore) {
         if (id_animal == animal->getId()) {
             atualizar_animal(animal);
+        switch (escolhaAnimal) {
+        case 1:
+            cout << "Atualizar Animal"
+                 << "\n";
+            atualizar_animal(animal);
+            break;
+        case 2:
+            cout << "Atualizar Animal Nativo"
+                 << "\n";            
+            atualizar_animal_nativo(animal);
+            break;
+        case 3:
+            cout << "Atualizar Animal exotico"
+                 << "\n";
+            atualizar_animal_exotico(animal);
 
+        default:
+
+            cout << "\033[1;33m"
+                 << "Nao temos essa Opcao, Escolha de 1-3"
+                 << "\033[0m"
+                 << "\n";
+            atualizar_dados_animal();
+
+            break;
+    }
         } else {
             cout << "ID nao encontrado, retornando...";
         }
     }
-
     return true;
 }
 
@@ -1259,9 +1296,7 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
         cout << "    14 -> Alterar habitat" << endl;
         cout << "    15 -> Alterar se possui ovos" << endl;
 
-    } else if (animal->getFamilia() == Repteis) {
-    }
-
+    } else if (animal->getFamilia() == Repteis) {}
     cout << "Escolha uma opcao"
          << "\n";
 
@@ -1382,4 +1417,405 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
     }
 
     return true;
+}
+
+
+
+
+bool Petfera::atualizar_animal_nativo(shared_ptr<AnimalNativo> animal) {
+    bool alterar_bool;
+    string alterar_string;
+    short escolha;
+    string escolha_str;
+    pelos alterar_pelos;
+    TipoDeGestacao alterar_gestacao;
+    stringstream ss;
+
+    cout << "o que vc quer atualizar? "
+         << "\n"
+         << "# Temos as seguintes opcao : # "
+         << "\n"
+         << "    1 -> Alterar nome cientifico do animal"
+         << "\n"
+         << "    2 -> Alterar Nome do animal"
+         << "\n"
+         << "    3 -> Alterar Tipo de temperatura do animal"
+         << "\n"
+         << "    4 -> Alterar Tipo de pele do animal"
+         << "\n"
+         << "    5 -> Alterar Tipo de fecundacao do animal"
+         << "\n"
+         << "    6 -> Alterar Troca de pele do animal"
+         << "\n"
+         << "    7 -> Alterar Material eliminado do animal"
+          << "\n"
+         << "    8 -> Alterar se o animal é aquatico ou terrestre"
+          << "\n"
+         << "    9 -> Alterar se o animal possui registro no Ibama"
+          << "\n"
+         << "    10 -> Alterar se o animal se encontra em território brasileiro"
+         << "\n"
+         << "    11 -> Alterar se o animal se encontra em extinção"
+         << endl;
+
+    
+
+    if (animal->getFamilia() == Mamiferos) {
+        cout << "    12 -> Alterar se possui dentes" << endl;
+        cout << "    13 -> Alterar pelagem" << endl;
+        cout << "    14 -> Alterar tipo de gestacao" << endl;
+        cout << "    15 -> Alterar tipo de mamifero" << endl;
+
+    } else if (animal->getFamilia() == Aves) {
+        cout << "    16 -> Alterar envergadura da asa" << endl;
+        cout << "    17 -> Alterar tamanho do bico" << endl;
+
+    } else if (animal->getFamilia() == Anfibios) {
+        cout << "    18 -> Alterar habitat" << endl;
+        cout << "    19 -> Alterar se possui ovos" << endl;
+
+    } else if (animal->getFamilia() == Repteis) {}
+
+
+    cout << "Escolha uma opcao"
+         << "\n";
+
+    cin >> escolha_str;
+    ss << escolha_str;
+    ss >> escolha;
+
+    if (escolha == 1) {
+        cout << "Digite a nova especie \n";
+
+        cin >> alterar_string;
+
+        animal->setEspecie(alterar_string);
+
+    } else if (escolha == 2) {
+        cout << "Digite o novo nome \n";
+
+        cin >> alterar_string;
+
+        animal->setNome(alterar_string);
+
+    } else if (escolha == 3) {
+        cout << "Digite o novo tipo de temperatura \n";
+
+        cin >> alterar_string;
+
+        animal->setTipo_temperatura(alterar_string);
+    } else if (escolha == 4) {
+        cout << "Digite o novo tipo de pele \n";
+
+        cin >> alterar_string;
+
+        animal->setTipo_pele(alterar_string);
+    } else if (escolha == 5) {
+        cout << "Digite o novo tipo de fecundacao \n";
+
+        cin >> alterar_string;
+
+        animal->setTipo_fecundacao(alterar_string);
+    } else if (escolha == 6) {
+        cout << "Digite de S se troca de pele ou N se nao troca \n";
+
+        cin >> alterar_bool;
+
+        animal->setTroca_pele(alterar_bool);
+    } else if (escolha == 7) {
+        cout << "Digite o novo material eliminado \n";
+
+        cin >> alterar_string;
+
+        animal->setMaterial_eliminidado(alterar_string);
+    }else if(escolha == 8){
+        cout << "Digite se o animal é aquatico ou terrestre \n";
+
+        cin >> alterar_string;
+
+        animal->setAquatico_terrestre(alterar_string);
+    }else if(escolha == 9){
+        alterar_bool = leBool("Possui registro Ibama? [S/n]");
+
+        animal->setRegistro_ibama(alterar_bool);
+    }else if(escolha == 10){
+        alterar_bool = leBool("O animal se encontra em território brasileiro? [S/n]");
+
+        animal->setTerritorio_brasileiro(alterar_bool);
+    }else if(escolha == 11){
+        //Ver se está em extinção
+
+        animal->setExtincao(nao_ameacado);
+    } else if (escolha == 12) {
+        alterar_bool = leBool("Possui Dentes? [S/n]");
+
+        // shared_ptr<Mamifero> mami_trat = dynamic_cast<Mamifero>(animal);
+
+        // mami_trat->setDentes(alterar_bool);
+
+    } else if (escolha == 13) {
+        alterar_pelos = lePelo("Digite o número correspondende à pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
+
+        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        // mami_trat->setPelagem(alterar_pelos);
+
+    } else if (escolha == 14) {
+        alterar_gestacao = leGestacao("Digite o número que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
+
+        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        // mami_trat->setTipoGestacao(alterar_gestacao);
+
+    } else if (escolha == 15) {
+        TipoDeMamifero tipo_mamifero = leMamifero("Digite o número que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador\n");
+
+        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        // mami_trat->setTipoMamifero(tipo_mamifero);
+
+    } else if (escolha == 16) {
+        cout << "Digite o novo tipo de pele \n";
+
+        cin >> alterar_string;
+
+        // Ave* ave_trat = dynamic_cast<Ave*>(animal);
+
+        // ave_trat->setEnvergaduraAsas(alterar_string);
+
+    } else if (escolha == 17) {
+        cout << "Digite o novo tipo de pele \n";
+
+        cin >> alterar_string;
+
+        // Ave* ave_trat = dynamic_cast<Ave*>(animal);
+
+        // ave_trat->setTamanhoDoBico(alterar_string);
+
+    } else if (escolha == 18) {
+        cout << "Digite o novo habitat \n";
+
+        cin >> alterar_string;
+
+        // Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
+
+        // anfi_trat->setHabitat(alterar_string);
+
+    } else if (escolha == 19) {
+        alterar_bool = leBool("Possui ovos? [S/n]");
+
+        // Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
+
+        // anfi_trat->setPossui_ovos(alterar_bool);
+
+    } else if (escolha == 0 || escolha > 19) {
+        cout << "Erro, escolha apenas as opções mostradas";
+        return false;
+    }
+
+    return true;
+
+}
+
+bool Petfera::atualizar_animal_exotico(shared_ptr<AnimalExotico> animal) {
+    bool alterar_bool;
+    string alterar_string;
+    short escolha;
+    string escolha_str;
+    pelos alterar_pelos;
+    TipoDeGestacao alterar_gestacao;
+    stringstream ss;
+
+    cout << "o que vc quer atualizar? "
+         << "\n"
+         << "# Temos as seguintes opcao : # "
+         << "\n"
+         << "    1 -> Alterar nome cientifico do animal"
+         << "\n"
+         << "    2 -> Alterar Nome do animal"
+         << "\n"
+         << "    3 -> Alterar Tipo de temperatura do animal"
+         << "\n"
+         << "    4 -> Alterar Tipo de pele do animal"
+         << "\n"
+         << "    5 -> Alterar Tipo de fecundacao do animal"
+         << "\n"
+         << "    6 -> Alterar Troca de pele do animal"
+         << "\n"
+         << "    7 -> Alterar Material eliminado do animal"
+          << "\n"
+         << "    8 -> Alterar se o animal é aquatico ou terrestre"
+          << "\n"
+         << "    9 -> Alterar se o animal possui registro no Ibama"
+          << "\n"
+         << "    10 -> Alterar se o animal se encontra em território brasileiro"
+         << "\n"
+         << "    11 -> Alterar se o animal se encontra em extinção"
+         << "\n"
+         << "    11 -> Alterar o país de origem do animal"
+         << endl;
+
+    
+
+    if (animal->getFamilia() == Mamiferos) {
+        cout << "    13 -> Alterar se possui dentes" << endl;
+        cout << "    14 -> Alterar pelagem" << endl;
+        cout << "    15 -> Alterar tipo de gestacao" << endl;
+        cout << "    16 -> Alterar tipo de mamifero" << endl;
+
+    } else if (animal->getFamilia() == Aves) {
+        cout << "    17 -> Alterar envergadura da asa" << endl;
+        cout << "    18 -> Alterar tamanho do bico" << endl;
+
+    } else if (animal->getFamilia() == Anfibios) {
+        cout << "    19 -> Alterar habitat" << endl;
+        cout << "    20 -> Alterar se possui ovos" << endl;
+
+    } else if (animal->getFamilia() == Repteis) {}
+
+
+    cout << "Escolha uma opcao"
+         << "\n";
+
+    cin >> escolha_str;
+    ss << escolha_str;
+    ss >> escolha;
+
+    if (escolha == 1) {
+        cout << "Digite a nova especie \n";
+
+        cin >> alterar_string;
+
+        animal->setEspecie(alterar_string);
+
+    } else if (escolha == 2) {
+        cout << "Digite o novo nome \n";
+
+        cin >> alterar_string;
+
+        animal->setNome(alterar_string);
+
+    } else if (escolha == 3) {
+        cout << "Digite o novo tipo de temperatura \n";
+
+        cin >> alterar_string;
+
+        animal->setTipo_temperatura(alterar_string);
+    } else if (escolha == 4) {
+        cout << "Digite o novo tipo de pele \n";
+
+        cin >> alterar_string;
+
+        animal->setTipo_pele(alterar_string);
+    } else if (escolha == 5) {
+        cout << "Digite o novo tipo de fecundacao \n";
+
+        cin >> alterar_string;
+
+        animal->setTipo_fecundacao(alterar_string);
+    } else if (escolha == 6) {
+        cout << "Digite de S se troca de pele ou N se nao troca \n";
+
+        cin >> alterar_bool;
+
+        animal->setTroca_pele(alterar_bool);
+    } else if (escolha == 7) {
+        cout << "Digite o novo material eliminado \n";
+
+        cin >> alterar_string;
+
+        animal->setMaterial_eliminidado(alterar_string);
+    }else if(escolha == 8){
+        cout << "Digite se o animal é aquatico ou terrestre \n";
+
+        cin >> alterar_string;
+
+        animal->setAquatico_terrestre(alterar_string);
+    }else if(escolha == 9){
+        alterar_bool = leBool("Possui registro Ibama? [S/n]");
+
+        animal->setRegistro_ibama(alterar_bool);
+    }else if(escolha == 10){
+        alterar_bool = leBool("O animal se encontra em território brasileiro? [S/n]");
+
+        animal->setTerritorio_brasileiro(alterar_bool);
+    }else if(escolha == 11){
+        //Ver se está em extinção
+
+        animal->setExtincao(nao_ameacado);
+    }else if(escolha == 12){
+        cout << "Digite o país de origem do animal \n";
+
+        cin >> alterar_string;
+
+        animal->setPais_origem(alterar_string);
+    } else if (escolha == 13) {
+        alterar_bool = leBool("Possui Dentes? [S/n]");
+
+        // shared_ptr<Mamifero> mami_trat = dynamic_cast<Mamifero>(animal);
+
+        // mami_trat->setDentes(alterar_bool);
+
+    } else if (escolha == 14) {
+        alterar_pelos = lePelo("Digite o número correspondende à pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
+
+        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        // mami_trat->setPelagem(alterar_pelos);
+
+    } else if (escolha == 15) {
+        alterar_gestacao = leGestacao("Digite o número que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
+
+        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        // mami_trat->setTipoGestacao(alterar_gestacao);
+
+    } else if (escolha == 16) {
+        TipoDeMamifero tipo_mamifero = leMamifero("Digite o número que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador\n");
+
+        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+
+        // mami_trat->setTipoMamifero(tipo_mamifero);
+
+    } else if (escolha == 17) {
+        cout << "Digite o novo tipo de pele \n";
+
+        cin >> alterar_string;
+
+        // Ave* ave_trat = dynamic_cast<Ave*>(animal);
+
+        // ave_trat->setEnvergaduraAsas(alterar_string);
+
+    } else if (escolha == 18) {
+        cout << "Digite o novo tipo de pele \n";
+
+        cin >> alterar_string;
+
+        // Ave* ave_trat = dynamic_cast<Ave*>(animal);
+
+        // ave_trat->setTamanhoDoBico(alterar_string);
+
+    } else if (escolha == 19) {
+        cout << "Digite o novo habitat \n";
+
+        cin >> alterar_string;
+
+        // Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
+
+        // anfi_trat->setHabitat(alterar_string);
+
+    } else if (escolha == 20) {
+        alterar_bool = leBool("Possui ovos? [S/n]");
+
+        // Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
+
+        // anfi_trat->setPossui_ovos(alterar_bool);
+
+    } else if (escolha == 0 || escolha > 20) {
+        cout << "Erro, escolha apenas as opções mostradas";
+        return false;
+    }
+
+    return true;
+
 }

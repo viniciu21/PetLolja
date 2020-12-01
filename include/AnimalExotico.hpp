@@ -23,6 +23,7 @@ class AnimalExotico : public AnimalSilvestre {
 
     // Getters
     string getPais_origem();
+    string setPais_origem(string pais_origem);
 };
 
 #endif

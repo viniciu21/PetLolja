@@ -10,7 +10,7 @@ enum enExtincao {
     nao_ameacado
 };
 
-class AnimalSilvestre {
+class AnimalSilvestre : public Animal{
    protected:
     string aquatico_terrestre;
     bool registro_ibama;
@@ -32,6 +32,11 @@ class AnimalSilvestre {
     bool getRegistro_ibama();
     bool getTerritorio_brasileiro();
     enExtincao getExtincao();
+
+    string setAquatico_terrestre(string aquatico_terrestre);
+    bool setRegistro_ibama(bool registro_ibama);
+    bool setTerritorio_brasileiro(bool territorio_brasileiro);
+    enExtincao setExtincao(enExtincao extincao);
 };
 
 #endif

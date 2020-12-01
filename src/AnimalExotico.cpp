@@ -22,3 +22,8 @@ AnimalExotico::~AnimalExotico() {}
 string AnimalExotico::getPais_origem() {
     return this->pais_origem;
 }
+
+
+string AnimalExotico::setPais_origem(string pais_origem) {
+   this->pais_origem = pais_origem;
+}

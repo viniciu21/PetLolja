@@ -25,3 +25,18 @@ bool AnimalSilvestre::getTerritorio_brasileiro() {
 enExtincao AnimalSilvestre::getExtincao() {
     return this->extincao;
 }
+
+
+//Setters
+string AnimalSilvestre::setAquatico_terrestre(string aquatico_terrestre) {
+    this->aquatico_terrestre = aquatico_terrestre;
+}
+bool AnimalSilvestre::setRegistro_ibama(bool registro_ibama) {
+    this->registro_ibama = registro_ibama;
+}
+bool AnimalSilvestre::setTerritorio_brasileiro(bool territorio_brasileiro) {
+    this->territorio_brasileiro = territorio_brasileiro;
+}
+enExtincao AnimalSilvestre::setExtincao(enExtincao extincao) {
+    this->extincao = extincao;
+}
