@@ -51,7 +51,7 @@ ostream &ReptilDomestico::imprimeDados(ostream &o) const {
       << "Temperatura           | " << this->tipo_temperatura << std::endl
       << "Pele                  | " << this->tipo_pele << std::endl
       << "Fecundacao            | " << this->tipo_fecundacao << std::endl
-      << "Troca de Pele         | " << this->troca_pele << std::endl
+      << "Troca de Pele         | " << (this->troca_pele == true ? "Sim" : "Não") << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
       << "Nome de Batismo       | " << this->nome_animal << std::endl
       << "Nome Dono             | " << this->nome_dono << std::endl;

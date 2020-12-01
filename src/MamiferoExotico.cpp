@@ -53,7 +53,7 @@ MamiferoExotico::~MamiferoExotico() {}
 
 ostream &MamiferoExotico::imprimeDados(ostream &o) const {
     o << std::endl
-      << "============== Mamifero Exótico ============" << std::endl
+      << "============== Mamifero Exotico ============" << std::endl
       << "ID                    | " << this->id << std::endl
       << "Classe                | Ave" << std::endl
       << "Nome                  | " << this->nome << std::endl
