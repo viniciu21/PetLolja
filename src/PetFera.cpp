@@ -1194,18 +1194,19 @@ bool Petfera::atualizar_funcionario(std::shared_ptr<Funcionario> funcionario) {
         funcionario->setEmail(alterar_string);
 
     } else if (escolha == 5) {
+
         alterar_bool = leBool("Possui inscricao CRMV? [S/N]");
 
-        // FuncionarioVeterinario* func_vet = dynamic_cast<FuncionarioVeterinario*>(funcionario);
-
-        // func_vet->setIsInscritoCRMV(alterar_bool);
+        shared_ptr<FuncionarioVeterinario> func_vet = dynamic_pointer_cast<FuncionarioVeterinario>(funcionario);
+        
+        //func_vet->setIsInscritoCRMV(alterar_bool);
 
     } else if (escolha == 6) {
         cout << "Digite o novo nivel\n";
 
         nivelDeSeguranca seguranca = leNivelDeSeguranca();
 
-        // FuncionarioTratador* func_trat = dynamic_cast<FuncionarioTratador*>(funcionario);
+        // FuncionarioTratador* func_trat = dynamic_pointer_cast<FuncionarioTratador*>(funcionario);
 
         // func_trat->setClassificacaoDeSeguranca(seguranca);
 
@@ -1317,28 +1318,28 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
     } else if (escolha == 8) {
         alterar_bool = leBool("Possui Dentes? [S/n]");
 
-        // shared_ptr<Mamifero> mami_trat = dynamic_cast<Mamifero>(animal);
+        shared_ptr<Mamifero> mami_trat = dynamic_pointer_cast<Mamifero>(animal);
 
-        // mami_trat->setDentes(alterar_bool);
+        mami_trat->setDentes(alterar_bool);
 
     } else if (escolha == 9) {
         alterar_pelos = lePelo("Digite o número correspondende à pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
 
-        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+         //Mamifero* mami_trat = dynamic_pointer_cast<Mamifero*>(animal);
 
-        // mami_trat->setPelagem(alterar_pelos);
+         //mami_trat->setPelagem(alterar_pelos);
 
     } else if (escolha == 10) {
         alterar_gestacao = leGestacao("Digite o número que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
 
-        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+        // Mamifero* mami_trat = dynamic_pointer_cast<Mamifero*>(animal);
 
         // mami_trat->setTipoGestacao(alterar_gestacao);
 
     } else if (escolha == 11) {
         TipoDeMamifero tipo_mamifero = leMamifero("Digite o número que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador\n");
 
-        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+        // Mamifero* mami_trat = dynamic_pointer_cast<Mamifero*>(animal);
 
         // mami_trat->setTipoMamifero(tipo_mamifero);
 
@@ -1347,7 +1348,7 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
 
         cin >> alterar_string;
 
-        // Ave* ave_trat = dynamic_cast<Ave*>(animal);
+        // Ave* ave_trat = dynamic_pointer_cast<Ave*>(animal);
 
         // ave_trat->setEnvergaduraAsas(alterar_string);
 
@@ -1356,7 +1357,7 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
 
         cin >> alterar_string;
 
-        // Ave* ave_trat = dynamic_cast<Ave*>(animal);
+        // Ave* ave_trat = dynamic_pointer_cast<Ave*>(animal);
 
         // ave_trat->setTamanhoDoBico(alterar_string);
 
@@ -1365,14 +1366,14 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
 
         cin >> alterar_string;
 
-        // Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
+        // Anfibio* anfi_trat = dynamic_pointer_cast<Anfibio*>(animal);
 
         // anfi_trat->setHabitat(alterar_string);
 
     } else if (escolha == 15) {
         alterar_bool = leBool("Possui ovos? [S/n]");
 
-        // Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
+        // Anfibio* anfi_trat = dynamic_pointer_cast<Anfibio*>(animal);
 
         // anfi_trat->setPossui_ovos(alterar_bool);
 

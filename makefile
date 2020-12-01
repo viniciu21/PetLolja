@@ -7,7 +7,7 @@ INC = ./include
 
 PROG = $(BIN)/programa
 CC = g++
-CPPFLAGS = -Wall -std=c++11 -I./include
+CPPFLAGS = -Wall -std=c++14 -I./include
 
 OBJS = $(BIN)/main.o $(BIN)/Anfibio.o $(BIN)/AnfibioDomestico.o $(BIN)/AnfibioExotico.o $(BIN)/AnfibioNativo.o  $(BIN)/Animal.o $(BIN)/AnimalDomestico.o $(BIN)/AnimalExotico.o $(BIN)/AnimalNativo.o $(BIN)/AnimalSilvestre.o $(BIN)/Ave.o $(BIN)/AveDomestico.o $(BIN)/AveExotica.o $(BIN)/AveNativo.o $(BIN)/FuncionarioTratador.o $(BIN)/FuncionarioVeterinario.o $(BIN)/Funcionario.o $(BIN)/PetFera.o $(BIN)/Mamifero.o $(BIN)/MamiferoDomestico.o $(BIN)/MamiferoExotico.o $(BIN)/MamiferoNativo.o  $(BIN)/Reptil.o $(BIN)/ReptilDomestico.o $(BIN)/ReptilExotico.o $(BIN)/ReptilNativo.o
 
