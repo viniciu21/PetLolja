@@ -39,4 +39,4 @@ https://github.com/viniciu21/PetLolja/
 
 ## Endereço Video Explicativo
 
-https://clipchamp.com/watch/cVB7Q5t0m7k
+https://www.youtube.com/watch?v=03b5l5VIw9U&feature=youtu.be
