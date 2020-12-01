@@ -2,6 +2,8 @@
 #define __PETFERA__
 
 #include <iostream>
+#include <memory>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -66,13 +68,13 @@ class Petfera {
     /*
 	 * Métodos internos para realizar as operações.
 	 */
-    bool adicionarAnimal(Animal* novo_animal);
-    bool adicionarFuncionario(Funcionario* novo_funcionario);
+    bool adicionarAnimal(std::shared_ptr<Animal> novo_animal);
+    bool adicionarFuncionario(std::shared_ptr<Funcionario> novo_funcionario);
 
     bool atualizar_dados_funcionario();
     bool atualizar_dados_animal();
-    bool atualizar_funcionario(Funcionario* funcionario);
-    bool atualizar_animal(Animal* animal);
+    bool atualizar_funcionario(std::shared_ptr<Funcionario> funcionario);
+    bool atualizar_animal(std::shared_ptr<Animal> animal);
 
     /*
 	 * Tratamentos
@@ -82,12 +84,12 @@ class Petfera {
     string leString(string str_prompt);
     t_genero leGenero(string str_prompt);
     bool leBool(string str_prompt);
-    Funcionario* pegarFuncionario();
+    std::shared_ptr<Funcionario> pegarFuncionario();
     pelos lePelo(string str_prompt);
     TipoDeGestacao leGestacao(string str_prompt);
     TipoDeMamifero leMamifero(string str_prompt);
-    Funcionario* pegarVeterinario();
-    Funcionario* pegarTratador();
+    std::shared_ptr<Funcionario> pegarVeterinario();
+    std::shared_ptr<Funcionario> pegarTratador();
     nivelDeSeguranca leNivelDeSeguranca();
 
     //familia leClasse(string str_prompt);
@@ -99,9 +101,9 @@ class Petfera {
     void listarAnimaisPorClasse();
 
    private:
-    vector<Animal*> animalStore;
+    vector<std::shared_ptr<Animal>> animalStore;
     int animais_cadastrados = 0;
-    vector<Funcionario*> funcionarioStore;
+    vector<std::shared_ptr<Funcionario>> funcionarioStore;
     int funcionarios_cadastrados = 0;
 };
 

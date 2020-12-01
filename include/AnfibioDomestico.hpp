@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class AnfibioDomestico : public Anfibio, AnimalDomestico{
+class AnfibioDomestico : public Anfibio, AnimalDomestico {
    private:
     ostream& imprimeDados(ostream& o) const;
 
@@ -21,8 +21,8 @@ class AnfibioDomestico : public Anfibio, AnimalDomestico{
         string nome,
         t_genero genero,
         familia classe,
-        Funcionario* veterinario,
-        Funcionario* tratador,
+        std::shared_ptr<Funcionario> veterinario,
+        std::shared_ptr<Funcionario> tratador,
         string tipo_temperatura,
         string tipo_pele,
         string tipo_fecundacao,

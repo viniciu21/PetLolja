@@ -8,19 +8,18 @@
 
 using std::string;
 
-class MamiferoNativo : public Mamifero, AnimalNativo
-{
-private:
+class MamiferoNativo : public Mamifero, AnimalNativo {
+   private:
     virtual ostream &imprimeDados(ostream &o) const;
 
-public:
+   public:
     MamiferoNativo(int id,
                    string especie,
                    string nome,
                    t_genero genero,
                    familia classe,
-                   Funcionario *veterinario,
-                   Funcionario *tratador,
+                   std::shared_ptr<Funcionario> veterinario,
+                   std::shared_ptr<Funcionario> tratador,
                    string tipo_temperatura,
                    string tipo_pele,
                    string tipo_fecundacao,

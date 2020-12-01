@@ -6,8 +6,8 @@ Animal::Animal(
     string nome,
     t_genero genero,
     familia classe,
-    Funcionario* veterinario,
-    Funcionario* tratador,
+    std::shared_ptr<Funcionario> veterinario,
+    std::shared_ptr<Funcionario> tratador,
     string tipo_temperatura,
     string tipo_pele,
     string tipo_fecundacao,
@@ -46,11 +46,11 @@ t_genero Animal::getGenero() {
     return this->genero;
 }
 
-Funcionario* Animal::getVeterinario() {
+std::shared_ptr<Funcionario> Animal::getVeterinario() {
     return this->veterinario;
 }
 
-Funcionario* Animal::getTratador() {
+std::shared_ptr<Funcionario> Animal::getTratador() {
     return this->tratador;
 }
 

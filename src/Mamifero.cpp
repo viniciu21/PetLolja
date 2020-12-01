@@ -10,8 +10,8 @@ Mamifero::Mamifero(
     string nome,
     t_genero genero,
     familia classe,
-    Funcionario *veterinario,
-    Funcionario *tratador,
+    std::shared_ptr<Funcionario> veterinario,
+    std::shared_ptr<Funcionario> tratador,
     string tipo_temperatura,
     string tipo_pele,
     string tipo_fecundacao,
@@ -48,7 +48,7 @@ void Mamifero::setDentes(bool dentes) {
 pelos Mamifero::getPelagem() {
     return this->pelagem;
 };
-void  Mamifero::setPelagem(pelos pelos_) {
+void Mamifero::setPelagem(pelos pelos_) {
     this->pelagem = pelos_;
 };
 
@@ -64,11 +64,9 @@ TipoDeMamifero Mamifero::getTipoMamifero() {
     return this->tipo_mamifero;
 }
 
-
 void Mamifero::setTipoMamifero(TipoDeMamifero tipoDeMamifero_) {
     this->tipo_mamifero = tipoDeMamifero_;
 }
-
 
 ostream &Mamifero::imprimeDados(ostream &o) const {
     return o;

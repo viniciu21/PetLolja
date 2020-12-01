@@ -10,8 +10,8 @@ Ave::Ave(
     string nome,
     t_genero genero,
     familia classe,
-    Funcionario* veterinario,
-    Funcionario* tratador,
+    std::shared_ptr<Funcionario> veterinario,
+    std::shared_ptr<Funcionario> tratador,
     string tipo_temperatura,
     string tipo_pele,
     string tipo_fecundacao,
@@ -41,11 +41,11 @@ string Ave::getTamanhoDoBico() {
     return this->tamanhoDoBico;
 };
 
-void Ave::setEnvergaduraAsas(string asas){
+void Ave::setEnvergaduraAsas(string asas) {
     this->envergaduraAsas = asas;
 };
 
-void Ave::setTamanhoDoBico(string bico){
+void Ave::setTamanhoDoBico(string bico) {
     this->tamanhoDoBico = bico;
 };
 

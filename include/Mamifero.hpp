@@ -6,13 +6,13 @@
 #include "../include/Animal.hpp"
 using std::string;
 
-enum pelos{
+enum pelos {
     ausente,
     reduzido,
     normal
 };
 
-enum TipoDeMamifero{
+enum TipoDeMamifero {
     cursorial,
     saltador,
     plantigrado,
@@ -23,14 +23,13 @@ enum TipoDeMamifero{
     voador
 };
 
-enum TipoDeGestacao{
+enum TipoDeGestacao {
     marsupial,
     placentario
 };
 class Mamifero : public Animal {
    private:
     virtual ostream& imprimeDados(ostream&) const = 0;
-
 
    protected:
     bool tem_dentes;
@@ -39,23 +38,22 @@ class Mamifero : public Animal {
     TipoDeMamifero tipo_mamifero;
 
    public:
-
     Mamifero(int id,
-        string especie,
-        string nome,
-        t_genero genero,
-        familia classe,
-        Funcionario* veterinario,
-        Funcionario* tratador,
-        string tipo_temperatura,
-        string tipo_pele,
-        string tipo_fecundacao,
-        bool troca_pele,
-        string material_eliminidado,
-        bool tem_dentes,
-        pelos pelagem,
-        TipoDeGestacao tipo_gestacao,
-        TipoDeMamifero tipo_mamifero);
+             string especie,
+             string nome,
+             t_genero genero,
+             familia classe,
+             std::shared_ptr<Funcionario> veterinario,
+             std::shared_ptr<Funcionario> tratador,
+             string tipo_temperatura,
+             string tipo_pele,
+             string tipo_fecundacao,
+             bool troca_pele,
+             string material_eliminidado,
+             bool tem_dentes,
+             pelos pelagem,
+             TipoDeGestacao tipo_gestacao,
+             TipoDeMamifero tipo_mamifero);
 
     ~Mamifero();
 

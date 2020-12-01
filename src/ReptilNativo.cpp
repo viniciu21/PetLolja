@@ -14,8 +14,8 @@ ReptilNativo::ReptilNativo(
     string nome,
     t_genero genero,
     familia classe,
-    Funcionario *veterinario,
-    Funcionario *tratador,
+    std::shared_ptr<Funcionario> veterinario,
+    std::shared_ptr<Funcionario> tratador,
     string tipo_temperatura,
     string tipo_pele,
     string tipo_fecundacao,
@@ -25,29 +25,28 @@ ReptilNativo::ReptilNativo(
     bool registro_ibama,
     bool territorio_brasileiro,
     enExtincao extincao) : Reptil(id,
-                                   especie,
-                                   nome,
-                                   genero,
-                                   classe,
-                                   veterinario,
-                                   tratador,
-                                   tipo_temperatura,
-                                   tipo_pele,
-                                   tipo_fecundacao,
-                                   troca_pele,
-                                   material_eliminidado),
-                          AnimalNativo(
+                                  especie,
+                                  nome,
+                                  genero,
+                                  classe,
+                                  veterinario,
+                                  tratador,
+                                  tipo_temperatura,
+                                  tipo_pele,
+                                  tipo_fecundacao,
+                                  troca_pele,
+                                  material_eliminidado),
+                           AnimalNativo(
                                aquatico_terrestre,
                                registro_ibama,
                                territorio_brasileiro,
-                               extincao) {};
+                               extincao){};
 
 ReptilNativo::~ReptilNativo() {}
 
-ostream &ReptilNativo::imprimeDados(ostream &o) const
-{
+ostream &ReptilNativo::imprimeDados(ostream &o) const {
     o << std::endl
-      << "============== Ave Domestico ============" << std::endl
+      << "============== Reptil Nativo ============" << std::endl
       << "ID                    | " << this->id << std::endl
       << "Classe                | Ave" << std::endl
       << "Nome                  | " << this->nome << std::endl
@@ -58,10 +57,6 @@ ostream &ReptilNativo::imprimeDados(ostream &o) const
       << "Fecundacao            | " << this->tipo_fecundacao << std::endl
       << "Troca de Pele         | " << this->troca_pele << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
-      << "Veterinario           | "
-      << "" << std::endl
-      << "Tratador              | "
-      << "" << std::endl
       << "Aquatico ou Terrestre | " << this->aquatico_terrestre << std::endl
       << "Registro Ibama        | " << this->registro_ibama << std::endl
       << "Territorio Brasileiro | " << this->territorio_brasileiro << std::endl

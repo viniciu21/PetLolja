@@ -2,6 +2,7 @@
 #define __ANIMAL__
 
 #include <iostream>
+#include <memory>
 #include <string>
 
 #include "./Funcionario.hpp"
@@ -29,8 +30,8 @@ class Animal {
     string nome;
     t_genero genero;
     familia classe;
-    Funcionario* veterinario;
-    Funcionario* tratador;
+    std::shared_ptr<Funcionario> veterinario;
+    std::shared_ptr<Funcionario> tratador;
     string tipo_temperatura;
     string tipo_pele;
     string tipo_fecundacao;
@@ -43,8 +44,8 @@ class Animal {
            string nome,
            t_genero genero,
            familia classe,
-           Funcionario* veterinario,
-           Funcionario* tratador,
+           std::shared_ptr<Funcionario> veterinario,
+           std::shared_ptr<Funcionario> tratador,
            string tipo_temperatura,
            string tipo_pele,
            string tipo_fecundacao,
@@ -58,8 +59,8 @@ class Animal {
     string getEspecie();
     string getNome();
     t_genero getGenero();
-    Funcionario* getVeterinario();
-    Funcionario* getTratador();
+    std::shared_ptr<Funcionario> getVeterinario();
+    std::shared_ptr<Funcionario> getTratador();
     string getTipo_temperatura();
     string getTipo_pele();
     string getTipo_fecundacao();
@@ -71,9 +72,6 @@ class Animal {
 
     void setEspecie(string especie);
     void setNome(string nome);
-    /*  void setGenero(t_genero genero);
-    void setVeterinario(Funcionario* veterinario);
-    void setTratador(Funcionario* tratador);*/
     void setTipo_temperatura(string temperatura);
     void setTipo_pele(string pele);
     void setTipo_fecundacao(string fecundacao);

@@ -1,7 +1,9 @@
 #include "../include/PetFera.hpp"
 
+#include <memory>
 #include <sstream>
 #include <string>
+#include <vector>
 
 #include "../include/AnfibioDomestico.hpp"
 #include "../include/AnfibioExotico.hpp"
@@ -19,9 +21,9 @@
 #include "../include/ReptilNativo.hpp"
 
 Petfera::Petfera() {
-    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "Vinicius", "cpf", Tratador, "asd", "masd", Verde);
+    std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(this->funcionarioStore.size(), "Vinicius", "cpf", Tratador, "asd", "masd", Verde);
     this->adicionarFuncionario(novo);
-    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "Mathias", "cpf", Veterinario, "asd", "masd", true);
+    std::shared_ptr<Funcionario> novo2 = std::make_shared<FuncionarioVeterinario>(this->funcionarioStore.size(), "Mathias", "cpf", Veterinario, "asd", "masd", true);
     this->adicionarFuncionario(novo2);
 }
 Petfera::~Petfera() {
@@ -114,7 +116,7 @@ void Petfera::PetferaMenu(int& escolha) {
             listarAnimaisPorFunca();
             break;
         case 7:
-            cout << "Vamos la cadastrar um animal"
+            cout << "Vamos la listar animais"
                  << "\n";
 
             listarAnimaisPorClasse();
@@ -151,8 +153,8 @@ void Petfera::PetferaMenu(int& escolha) {
 *	que irão efetivar as operações.
 **/
 
-Funcionario* Petfera::pegarVeterinario() {
-    Funcionario* novo;
+std::shared_ptr<Funcionario> Petfera::pegarVeterinario() {
+    std::shared_ptr<Funcionario> novo;
 
     int id;
     cout << "O IBAMA nos obriga a escolher um veterinario para cuidar do animal"
@@ -180,8 +182,8 @@ Funcionario* Petfera::pegarVeterinario() {
     return novo;
 }
 
-Funcionario* Petfera::pegarTratador() {
-    Funcionario* novo;
+std::shared_ptr<Funcionario> Petfera::pegarTratador() {
+    std::shared_ptr<Funcionario> novo;
 
     int id;
     cout << "O IBAMA nos obriga a escolher um tratador para cuidar do animal"
@@ -211,6 +213,12 @@ Funcionario* Petfera::pegarTratador() {
 
 void Petfera::listarAnimaisPorClasse() {
     int escolha;
+
+    if (animalStore.size() == 0) {
+        cout << "Sem animais cadastrados"
+             << "\n";
+    };
+
     cout << "# Escolha uma das classes"
          << "\n"
          << "0 --> Mamiferos"
@@ -246,48 +254,43 @@ void Petfera::listarAnimaisPorFunca() {
     }
 }
 void Petfera::listarTodosFuncaionarios() {
-    bool isCadastrarNovo;
-    if (this->funcionarioStore.size() == 0) {
-        cout << "Sem funcionários cadastrados! " << endl;
+    cout << "Aqui estao todo os Funcionários do Petfera"
+         << "\n\n";
 
-        isCadastrarNovo = leBool("Gostaria de cadastrar um novo ? [S/n]");
+    if (animalStore.size() == 0) {
+        cout << "Não temos nenhum funcionário em nosso Banco de dados, por favor, cadastre um animal"
+             << "\n"
+             << "retornando"
+             << "\n";
 
-        if (isCadastrarNovo)
-            cadastrarFuncionario();
-        return;
-    } else {
-        cout << "Aqui estao todo os animais na Petfera"
-             << "\n\n";
-
-        for (auto& novo : this->funcionarioStore) {
-            cout << (*novo) << endl;
-        }
-        return;
+        inicio();
     }
+    for (auto& novo : this->animalStore) {
+        cout << (*novo) << endl;
+    }
+    return;
 }
 void Petfera::listarTodosAnimais() {
-    bool isCadastrarNovo;
+    cout << "Aqui estao todo os animais na Petfera"
+         << "\n\n";
+
     if (animalStore.size() == 0) {
-        cout << "Sem animais cadastrados! " << endl;
+        cout << "Não temos nenhum animal em nosso Banco de dados, por favor, cadastre um animal"
+             << "\n"
+             << "retornando"
+             << "\n";
 
-        isCadastrarNovo = leBool("Gostaria de cadastrar um novo ? [S/n]");
-
-        if (isCadastrarNovo) cadastrarAnimal();
-        return;
-    } else {
-        cout << "Aqui estao todo os animais na Petfera"
-             << "\n\n";
-
-        for (auto& novo : this->animalStore) {
-            cout << (*novo) << endl;
-        }
-        return;
+        inicio();
     }
+    for (auto& novo : this->animalStore) {
+        cout << (*novo) << endl;
+    }
+    return;
 }
 
 void Petfera::cadastrarAveDomestico() {
-    Funcionario* tratador = pegarTratador();
-    Funcionario* Veterinario = pegarVeterinario();
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
     t_genero genero = leGenero("Digite F para femea e M para macho \n");
@@ -301,7 +304,7 @@ void Petfera::cadastrarAveDomestico() {
     string nome_animal = leString("Digite um nome para o animal \n");
     string nome_dono = leString("Digite um nome do dono para o animal \n");
 
-    Animal* criado = new AveDomestico(this->animalStore.size(), especie, nome, genero, Aves, Veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, nome_animal, nome_dono);
+    std::shared_ptr<Animal> criado = std::make_shared<AveDomestico>(this->animalStore.size(), especie, nome, genero, Aves, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, nome_animal, nome_dono);
 
     if (adicionarAnimal(criado)) {
         this->animais_cadastrados++;
@@ -313,8 +316,8 @@ void Petfera::cadastrarAveDomestico() {
 }
 
 void Petfera::cadastrarAveExotica() {
-    Funcionario* tratador = pegarTratador();
-    Funcionario* veterinario = pegarVeterinario();
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
     t_genero genero = leGenero("Digite F para femea e M para macho \n");
@@ -331,7 +334,7 @@ void Petfera::cadastrarAveExotica() {
     enExtincao extincao = nao_ameacado;
     string pais_origem = leString("Digite qual o pais que ele foi encontrado ");
 
-    Animal* criado = new AveExotica(this->animalStore.size(), especie, nome, genero, Aves, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
+    std::shared_ptr<Animal> criado = std::make_shared<AveExotica>(this->animalStore.size(), especie, nome, genero, Aves, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
 
     if (adicionarAnimal(criado)) {
         this->animais_cadastrados++;
@@ -343,8 +346,8 @@ void Petfera::cadastrarAveExotica() {
 }
 
 void Petfera::cadastrarAveNativa() {
-    Funcionario* tratador = pegarTratador();
-    Funcionario* veterinario = pegarVeterinario();
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -361,7 +364,7 @@ void Petfera::cadastrarAveNativa() {
     bool territorio_brasileiro = false;
     enExtincao extincao = nao_ameacado;
 
-    Animal* criado = new AveNativo(this->animalStore.size(), especie, nome, genero, Aves, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
+    std::shared_ptr<Animal> criado = std::make_shared<AveNativo>(this->animalStore.size(), especie, nome, genero, Aves, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
 
     if (adicionarAnimal(criado)) {
         this->animais_cadastrados++;
@@ -373,8 +376,8 @@ void Petfera::cadastrarAveNativa() {
 }
 
 void Petfera::cadastrarAnfibioDomestico() {
-    Funcionario* tratador = pegarTratador();
-    Funcionario* veterinario = pegarVeterinario();
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
     t_genero genero = leGenero("Digite F para femea e M para macho \n");
@@ -388,7 +391,7 @@ void Petfera::cadastrarAnfibioDomestico() {
     string nome_animal = leString("Digite um nome para o animal \n");
     string nome_dono = leString("Digite um nome do dono para o animal \n");
 
-    Animal* criado = new AnfibioDomestico(this->animalStore.size(), especie, nome, genero, Anfibios, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, nome_animal, nome_dono);
+    std::shared_ptr<Animal> criado = std::make_shared<AnfibioDomestico>(this->animalStore.size(), especie, nome, genero, Anfibios, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, nome_animal, nome_dono);
 
     if (adicionarAnimal(criado)) {
         this->animais_cadastrados++;
@@ -400,8 +403,8 @@ void Petfera::cadastrarAnfibioDomestico() {
 }
 
 void Petfera::cadastrarAnfibioExotico() {
-    Funcionario* tratador = pegarTratador();
-    Funcionario* veterinario = pegarVeterinario();
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
     t_genero genero = leGenero("Digite F para femea e M para macho \n");
@@ -418,7 +421,7 @@ void Petfera::cadastrarAnfibioExotico() {
     enExtincao extincao = nao_ameacado;
     string pais_origem = leString("Digite qual o pais que ele foi encontrado ");
 
-    Animal* criado = new AnfibioExotico(this->animalStore.size(), especie, nome, genero, Anfibios, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
+    std::shared_ptr<Animal> criado = std::make_shared<AnfibioExotico>(this->animalStore.size(), especie, nome, genero, Anfibios, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
 
     if (adicionarAnimal(criado)) {
         this->animais_cadastrados++;
@@ -430,8 +433,8 @@ void Petfera::cadastrarAnfibioExotico() {
 }
 
 void Petfera::cadastrarAnfibioNativo() {
-    Funcionario* tratador = pegarTratador();
-    Funcionario* veterinario = pegarVeterinario();
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -448,7 +451,7 @@ void Petfera::cadastrarAnfibioNativo() {
     bool territorio_brasileiro = false;
     enExtincao extincao = nao_ameacado;
 
-    Animal* criado = new AnfibioNativo(this->animalStore.size(), especie, nome, genero, Anfibios, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
+    std::shared_ptr<Animal> criado = std::make_shared<AnfibioNativo>(this->animalStore.size(), especie, nome, genero, Anfibios, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
 
     if (adicionarAnimal(criado)) {
         this->animais_cadastrados++;
@@ -460,8 +463,8 @@ void Petfera::cadastrarAnfibioNativo() {
 }
 
 void Petfera::cadastrarReptilDomestico() {
-    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -475,7 +478,7 @@ void Petfera::cadastrarReptilDomestico() {
     string nome_animal = leString("Digite um nome para o animal \n");
     string nome_dono = leString("Digite um nome do dono para o animal \n");
 
-    Animal* criado = new ReptilDomestico(this->animalStore.size(), especie, nome, genero, Repteis, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, nome_animal, nome_dono);
+    std::shared_ptr<Animal> criado = std::make_shared<ReptilDomestico>(this->animalStore.size(), especie, nome, genero, Repteis, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, nome_animal, nome_dono);
 
     cout << "Salvando Animal"
          << "\n";
@@ -483,8 +486,8 @@ void Petfera::cadastrarReptilDomestico() {
 }
 
 void Petfera::cadastrarReptilExotico() {
-    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -501,7 +504,7 @@ void Petfera::cadastrarReptilExotico() {
     enExtincao extincao = nao_ameacado;
     string pais_origem = leString("Digite qual o pais que ele foi encontrado");
 
-    Animal* criado = new ReptilExotico(this->animalStore.size(), especie, nome, genero, Repteis, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
+    std::shared_ptr<Animal> criado = std::make_shared<ReptilExotico>(this->animalStore.size(), especie, nome, genero, Repteis, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
 
     cout << "Salvando Animal"
          << "\n";
@@ -509,8 +512,8 @@ void Petfera::cadastrarReptilExotico() {
 }
 
 void Petfera::cadastrarReptilNativo() {
-    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -527,7 +530,7 @@ void Petfera::cadastrarReptilNativo() {
     enExtincao extincao = nao_ameacado;
     string pais_origem = leString("Digite qual o pais que ele foi encontrado");
 
-    Animal* criado = new ReptilNativo(this->animalStore.size(), especie, nome, genero, Repteis, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
+    std::shared_ptr<Animal> criado = std::make_shared<ReptilNativo>(this->animalStore.size(), especie, nome, genero, Repteis, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
 
     cout << "Salvando Animal"
          << "\n";
@@ -535,8 +538,8 @@ void Petfera::cadastrarReptilNativo() {
 }
 
 void Petfera::cadastrarMamiferoDomestico() {
-    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
 
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
@@ -554,7 +557,7 @@ void Petfera::cadastrarMamiferoDomestico() {
     string nome_animal = leString("Digite um nome para o animal \n");
     string nome_dono = leString("Digite um nome do dono para o animal \n");
 
-    Animal* criado = new MamiferoDomestico(this->animalStore.size(), especie, nome, genero, Mamiferos, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, nome_animal, nome_dono);
+    std::shared_ptr<Animal> criado = std::make_shared<MamiferoDomestico>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, nome_animal, nome_dono);
 
     cout << "Salvando Animal"
          << "\n";
@@ -562,9 +565,8 @@ void Petfera::cadastrarMamiferoDomestico() {
 }
 
 void Petfera::cadastrarMamiferoExotico() {
-    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
-
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
     t_genero genero = leGenero("Digite F para femea e M para macho \n");
@@ -584,7 +586,7 @@ void Petfera::cadastrarMamiferoExotico() {
     enExtincao extincao = nao_ameacado;
     string pais_origem = leString("Digite qual o pais que ele foi encontrado");
 
-    Animal* criado = new MamiferoExotico(this->animalStore.size(), especie, nome, genero, Mamiferos, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
+    std::shared_ptr<Animal> criado = std::make_shared<MamiferoExotico>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao, pais_origem);
 
     cout << "Salvando Animal"
          << "\n";
@@ -592,9 +594,8 @@ void Petfera::cadastrarMamiferoExotico() {
 }
 
 void Petfera::cadastrarMamiferoNativo() {
-    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), "nome", "cpf", Tratador, "asd", "masd", Verde);
-    Funcionario* novo2 = new FuncionarioVeterinario(this->funcionarioStore.size(), "nome", "cpf", Veterinario, "asd", "masd", true);
-
+    std::shared_ptr<Funcionario> tratador = pegarTratador();
+    std::shared_ptr<Funcionario> veterinario = pegarVeterinario();
     string especie = leString("Digite o nome cientifico para o animal \n");
     string nome = leString("Digite o nome popular para o animal \n");
     t_genero genero = leGenero("Digite F para femea e M para macho \n");
@@ -613,7 +614,7 @@ void Petfera::cadastrarMamiferoNativo() {
     bool territorio_brasileiro = false;
     enExtincao extincao = nao_ameacado;
 
-    Animal* criado = new MamiferoNativo(this->animalStore.size(), especie, nome, genero, Mamiferos, novo2, novo, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
+    std::shared_ptr<Animal> criado = std::make_shared<MamiferoNativo>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, tipo_mamifero, aquatico_terrestre, registro_ibama, territorio_brasileiro, extincao);
 
     cout << "Salvando Animal"
          << "\n";
@@ -648,6 +649,7 @@ void Petfera::cadastrarAnimal() {
         case 2:
             cout << "cadastrando Mamifero"
                  << "\n";
+            cadastrarMamifero();
             break;
         case 3:
             cout << "cadastrando Ave"
@@ -784,7 +786,6 @@ void Petfera::cadastrarAve() {
     }
 }  // Interface com o usuário
 
-//Change
 void Petfera::cadastrarMamifero() {
     short escolhaSilvestre;
 
@@ -800,17 +801,17 @@ void Petfera::cadastrarMamifero() {
         case 1:
             cout << "Salvando Mamifero Domestico"
                  << "\n";
-            cadastrarAveDomestico();
+            cadastrarMamiferoDomestico();
             break;
         case 2:
             cout << "Salvando Mamifero Exotico"
                  << "\n";
-            cadastrarAveExotica();
+            cadastrarMamiferoExotico();
             break;
         case 3:
             cout << "Salvando Mamifero Nativo"
                  << "\n";
-            cadastrarAveNativa();
+            cadastrarMamiferoNativo();
             break;
         default:
             cout << "Opcao invalida, retornando..."
@@ -905,7 +906,7 @@ void Petfera::cadastrarVeterinario() {
     string email = leString("Digite o email do funcionario \n");
     bool inscritoCRMV = leBool("Digite S para se o funcionario esta inscrito no CRMV e N para se não está \n");
 
-    Funcionario* novo = new FuncionarioVeterinario(this->funcionarioStore.size(), nome, cpf, classificacao, celular, email, inscritoCRMV);
+    std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioVeterinario>(this->funcionarioStore.size(), nome, cpf, classificacao, celular, email, inscritoCRMV);
 
     if (adicionarFuncionario(novo)) {
         this->funcionarios_cadastrados++;
@@ -945,7 +946,7 @@ void Petfera::cadastrarTratador() {
     string email = leString("Digite o email do funcionario \n");
     nivelDeSeguranca seguranca = leNivelDeSeguranca();
 
-    Funcionario* novo = new FuncionarioTratador(this->funcionarioStore.size(), nome, cpf, classificacao, celular, email, seguranca);
+    std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(this->funcionarioStore.size(), nome, cpf, classificacao, celular, email, seguranca);
 
     if (adicionarFuncionario(novo)) {
         this->funcionarios_cadastrados++;
@@ -959,7 +960,7 @@ void Petfera::cadastrarTratador() {
 /*
  * Metodos internos para realizar as operações.
  */
-bool Petfera::adicionarAnimal(Animal* novo_animal) {
+bool Petfera::adicionarAnimal(std::shared_ptr<Animal> novo_animal) {
     cout << "Salvando Animal"
          << "\n";
     this->animalStore.push_back(novo_animal);
@@ -967,7 +968,7 @@ bool Petfera::adicionarAnimal(Animal* novo_animal) {
     return true;
 }
 
-bool Petfera::adicionarFuncionario(Funcionario* novo_funcionario) {
+bool Petfera::adicionarFuncionario(std::shared_ptr<Funcionario> novo_funcionario) {
     cout << "Salvando funcionario"
          << "\n";
     funcionarioStore.push_back(novo_funcionario);
@@ -1049,12 +1050,13 @@ TipoDeMamifero Petfera::leMamifero(string str_prompt) {
 bool Petfera::atualizar_dados_animal() {
     int id_animal;
 
+    listarTodosAnimais();
+
     cout << "ID do animal a ser atualizado: ";
     cin >> id_animal;
 
     for (auto& animal : this->animalStore) {
         if (id_animal == animal->getId()) {
-
             atualizar_animal(animal);
 
         } else {
@@ -1065,36 +1067,35 @@ bool Petfera::atualizar_dados_animal() {
     return true;
 }
 
-
 bool Petfera::atualizar_dados_funcionario() {
     int id_funcionario;
 
+    listarTodosFuncaionarios();
 
     cout << "ID do funcionario a ser atualizado: ";
     cin >> id_funcionario;
 
     for (auto& funcionario : this->funcionarioStore) {
         if (id_funcionario == funcionario->getId()) {
-    
-
             atualizar_funcionario(funcionario);
             break;
-           
-        }else {
+
+        } else {
             cout << "ID nao encontrado, retornando...";
         }
-
     }
 
     return true;
 }
-
 
 void Petfera::removerAnimal() {
     int id;
 
     cout << "Voce escolheu: Remover Animal.\n"
          << endl;
+
+    listarTodosAnimais();
+
     cout << "Numero de identificacao (id) do animal: ";
     cin >> id;
     int index = 0;
@@ -1113,6 +1114,9 @@ void Petfera::removerFuncionario() {
 
     cout << "Voce escolheu: Remover funcionario.\n"
          << endl;
+
+    listarTodosFuncaionarios();
+
     cout << "Numero de identificacao (id) do funcionario: ";
     cin >> id;
 
@@ -1127,9 +1131,7 @@ void Petfera::removerFuncionario() {
     }
 }
 
-bool Petfera::atualizar_funcionario(Funcionario* funcionario){
-
-
+bool Petfera::atualizar_funcionario(std::shared_ptr<Funcionario> funcionario) {
     string alterar_string;
     bool alterar_bool;
     short escolha;
@@ -1149,14 +1151,12 @@ bool Petfera::atualizar_funcionario(Funcionario* funcionario){
          << "    4 -> Alterar email"
          << endl;
 
-         if (funcionario->getClassicicacao()  == Veterinario){
-             
-            cout << "    5 -> Alterar inscrição no CRMV" << endl;
+    if (funcionario->getClassicicacao() == Veterinario) {
+        cout << "    5 -> Alterar inscrição no CRMV" << endl;
 
-         }else if(funcionario->getClassicicacao()  == Tratador){
-
-            cout << "    6 -> Alterar nivel de seguranca" << endl;
-         }
+    } else if (funcionario->getClassicicacao() == Tratador) {
+        cout << "    6 -> Alterar nivel de seguranca" << endl;
+    }
 
     cin >> escolha_str;
     ss << escolha_str;
@@ -1166,7 +1166,6 @@ bool Petfera::atualizar_funcionario(Funcionario* funcionario){
          << "\n";
 
     if (escolha == 1) {
-
         cout << "Digite o novo nome \n";
 
         cin >> alterar_string;
@@ -1194,37 +1193,31 @@ bool Petfera::atualizar_funcionario(Funcionario* funcionario){
 
         funcionario->setEmail(alterar_string);
 
-    }
-    else if (escolha == 5) {
-
+    } else if (escolha == 5) {
         alterar_bool = leBool("Possui inscricao CRMV? [S/N]");
 
-        FuncionarioVeterinario* func_vet = dynamic_cast<FuncionarioVeterinario*>(funcionario);
+        // FuncionarioVeterinario* func_vet = dynamic_cast<FuncionarioVeterinario*>(funcionario);
 
-        func_vet->setIsInscritoCRMV(alterar_bool);
+        // func_vet->setIsInscritoCRMV(alterar_bool);
 
-    }
-    else if (escolha == 6) {
-
+    } else if (escolha == 6) {
         cout << "Digite o novo nivel\n";
 
         nivelDeSeguranca seguranca = leNivelDeSeguranca();
 
-        FuncionarioTratador* func_trat = dynamic_cast<FuncionarioTratador*>(funcionario);
+        // FuncionarioTratador* func_trat = dynamic_cast<FuncionarioTratador*>(funcionario);
 
-        func_trat->setClassificacaoDeSeguranca(seguranca);
+        // func_trat->setClassificacaoDeSeguranca(seguranca);
 
-    }else if( escolha == 0 || escolha > 4){
-
+    } else if (escolha == 0 || escolha > 4) {
         cout << "Erro, escolha apenas entre os valores informados";
         return false;
     }
 
     return true;
-}   
+}
 
-
-bool Petfera::atualizar_animal(Animal* animal) {
+bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
     bool alterar_bool;
     string alterar_string;
     short escolha;
@@ -1233,7 +1226,7 @@ bool Petfera::atualizar_animal(Animal* animal) {
     TipoDeGestacao alterar_gestacao;
     stringstream ss;
 
-  cout << "o que vc quer atualizar? "
+    cout << "o que vc quer atualizar? "
          << "\n"
          << "# Temos as seguintes opcao : # "
          << "\n"
@@ -1252,36 +1245,29 @@ bool Petfera::atualizar_animal(Animal* animal) {
          << "    7 -> Alterar Material eliminado do animal"
          << endl;
 
-        if (animal->getFamilia()  == Mamiferos){
-             
-            cout << "    8 -> Alterar se possui dentes" << endl;
-            cout << "    9 -> Alterar pelagem" << endl;
-            cout << "    10 -> Alterar tipo de gestacao" << endl;
-            cout << "    11 -> Alterar tipo de mamifero" << endl;
+    if (animal->getFamilia() == Mamiferos) {
+        cout << "    8 -> Alterar se possui dentes" << endl;
+        cout << "    9 -> Alterar pelagem" << endl;
+        cout << "    10 -> Alterar tipo de gestacao" << endl;
+        cout << "    11 -> Alterar tipo de mamifero" << endl;
 
-         }else if(animal->getFamilia()  == Aves){
+    } else if (animal->getFamilia() == Aves) {
+        cout << "    12 -> Alterar envergadura da asa" << endl;
+        cout << "    13 -> Alterar tamanho do bico" << endl;
 
-            cout << "    12 -> Alterar envergadura da asa" << endl;
-            cout << "    13 -> Alterar tamanho do bico" << endl;
+    } else if (animal->getFamilia() == Anfibios) {
+        cout << "    14 -> Alterar habitat" << endl;
+        cout << "    15 -> Alterar se possui ovos" << endl;
 
-         }else if(animal->getFamilia()  == Anfibios){
-
-            cout << "    14 -> Alterar habitat" << endl;
-            cout << "    15 -> Alterar se possui ovos" << endl;
-
-         }else if(animal->getFamilia()  == Repteis){
-
-           
-         }
+    } else if (animal->getFamilia() == Repteis) {
+    }
 
     cout << "Escolha uma opcao"
          << "\n";
 
-    
     cin >> escolha_str;
     ss << escolha_str;
     ss >> escolha;
-
 
     if (escolha == 1) {
         cout << "Digite a nova especie \n";
@@ -1328,77 +1314,69 @@ bool Petfera::atualizar_animal(Animal* animal) {
 
         animal->setMaterial_eliminidado(alterar_string);
 
-    }else if (escolha == 8){
-
+    } else if (escolha == 8) {
         alterar_bool = leBool("Possui Dentes? [S/n]");
 
-        Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+        // shared_ptr<Mamifero> mami_trat = dynamic_cast<Mamifero>(animal);
 
-        mami_trat->setDentes(alterar_bool);
+        // mami_trat->setDentes(alterar_bool);
 
-    }else if (escolha == 9){
+    } else if (escolha == 9) {
+        alterar_pelos = lePelo("Digite o número correspondende à pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
 
-        alterar_pelos =  lePelo("Digite o número correspondende à pelagem do animal \n1-ausencia de pelos \n2-pelo reduzido \n3-pelo normal \n");
+        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
 
-        Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+        // mami_trat->setPelagem(alterar_pelos);
 
-        mami_trat->setPelagem(alterar_pelos);
-
-    }else if (escolha == 10){
-      
+    } else if (escolha == 10) {
         alterar_gestacao = leGestacao("Digite o número que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
 
-        Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
 
-        mami_trat->setTipoGestacao(alterar_gestacao);
+        // mami_trat->setTipoGestacao(alterar_gestacao);
 
-    }else if (escolha == 11){
-      
-        TipoDeMamifero tipo_mamifero = leMamifero("Digite o número que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador");
+    } else if (escolha == 11) {
+        TipoDeMamifero tipo_mamifero = leMamifero("Digite o número que indique o tipo do mamifero\n1-Cursorial \n2-Saltador \n3-Plantigrado \n4-Fossorial \n5-Arboricola \n6-Planador \n7-Aquatico \n8-Voador\n");
 
-        Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
+        // Mamifero* mami_trat = dynamic_cast<Mamifero*>(animal);
 
-        mami_trat->setTipoMamifero(tipo_mamifero);
+        // mami_trat->setTipoMamifero(tipo_mamifero);
 
-    }else if(escolha == 12){
-
+    } else if (escolha == 12) {
         cout << "Digite o novo tipo de pele \n";
 
         cin >> alterar_string;
 
-        Ave* ave_trat = dynamic_cast<Ave*>(animal);
+        // Ave* ave_trat = dynamic_cast<Ave*>(animal);
 
-        ave_trat->setEnvergaduraAsas(alterar_string);
+        // ave_trat->setEnvergaduraAsas(alterar_string);
 
-    }else if(escolha == 13){
-
+    } else if (escolha == 13) {
         cout << "Digite o novo tipo de pele \n";
 
         cin >> alterar_string;
-        
-        Ave* ave_trat = dynamic_cast<Ave*>(animal);
 
-        ave_trat->setTamanhoDoBico(alterar_string);
+        // Ave* ave_trat = dynamic_cast<Ave*>(animal);
 
-    }else if(escolha == 14){
+        // ave_trat->setTamanhoDoBico(alterar_string);
 
+    } else if (escolha == 14) {
         cout << "Digite o novo habitat \n";
 
         cin >> alterar_string;
-        
-        Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
 
-        anfi_trat->setHabitat(alterar_string);
+        // Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
 
-    }else if(escolha == 15){
+        // anfi_trat->setHabitat(alterar_string);
 
+    } else if (escolha == 15) {
         alterar_bool = leBool("Possui ovos? [S/n]");
 
-        Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
+        // Anfibio* anfi_trat = dynamic_cast<Anfibio*>(animal);
 
-        anfi_trat->setPossui_ovos(alterar_bool);
+        // anfi_trat->setPossui_ovos(alterar_bool);
 
-    }else if (escolha == 0 || escolha > 15) {
+    } else if (escolha == 0 || escolha > 15) {
         cout << "Erro, escolha apenas as opções mostradas";
         return false;
     }
