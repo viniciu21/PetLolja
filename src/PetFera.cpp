@@ -7,6 +7,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>  
+#include <bits/stdc++.h> 
 
 #include "../include/AnfibioDomestico.hpp"
 #include "../include/AnfibioExotico.hpp"
@@ -24,7 +25,7 @@
 #include "../include/ReptilNativo.hpp"
 
 Petfera::Petfera() {
-    std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(this->funcionarioStore.size(), "Mario jr", "cpf", Tratador, "(84) 95165-8432", "roi@gmail.com", Verde);
+    std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(this->funcionarioStore.size(), "Mario", "cpf", Tratador, "(84) 95165-8432", "roi@gmail.com", Verde);
     this->adicionarFuncionario(novo);
     std::shared_ptr<Funcionario> novo2 = std::make_shared<FuncionarioVeterinario>(this->funcionarioStore.size(), "Ahsoka", "cpf", Veterinario, "(84) 9245-7524", "ordem_jedi_nadinha@hotmail.com", true);
     this->adicionarFuncionario(novo2);
@@ -311,7 +312,7 @@ void Petfera::cadastrarAveDomestico() {
     string tamanhoDoBico = leString("Digite o tamanho do bico do animal \n");
     string nome_animal = leString("Digite um nome para o animal \n");
 
-    std::shared_ptr<Animal> criado = std::make_shared<AveDomestico>(this->animalStore.size(), especie, nome, genero, Aves, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, nome_animal, "sem dono");
+    std::shared_ptr<Animal> criado = std::make_shared<AveDomestico>(this->animalStore.size(), especie, nome, genero, Aves, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tamanhoDoBico, envergadura, nome_animal, "Ninguem");
 
     if (adicionarAnimal(criado)) {
         this->animais_cadastrados++;
@@ -397,7 +398,7 @@ void Petfera::cadastrarAnfibioDomestico() {
     bool possui_ovos = leBool("Digite S se o animal possui ovos e N se o animal nao possui ovos \n");
     string nome_animal = leString("Digite um nome para o animal \n");
 
-    std::shared_ptr<Animal> criado = std::make_shared<AnfibioDomestico>(this->animalStore.size(), especie, nome, genero, Anfibios, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, nome_animal, "sem dono");
+    std::shared_ptr<Animal> criado = std::make_shared<AnfibioDomestico>(this->animalStore.size(), especie, nome, genero, Anfibios, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, habitat, possui_ovos, nome_animal, "Ninguem");
 
     if (adicionarAnimal(criado)) {
         this->animais_cadastrados++;
@@ -483,7 +484,7 @@ void Petfera::cadastrarReptilDomestico() {
     bool troca_pele = leBool("Digite S se o animal troca de pele ou N se o animal nao troca de pele \n");
     string nome_animal = leString("Digite um nome para o animal \n");
 
-    std::shared_ptr<Animal> criado = std::make_shared<ReptilDomestico>(this->animalStore.size(), especie, nome, genero, Repteis, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, nome_animal, "sem dono");
+    std::shared_ptr<Animal> criado = std::make_shared<ReptilDomestico>(this->animalStore.size(), especie, nome, genero, Repteis, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, nome_animal, "Ninguem");
 
     cout << "Salvando Animal"
          << "\n";
@@ -559,7 +560,7 @@ void Petfera::cadastrarMamiferoDomestico() {
     TipoDeGestacao tipo_gestacao = leGestacao("Digite o numero que indique o tipo de gestacao do animal \n1-Marsupio \n2-Placenta");
     string nome_animal = leString("Digite um nome para o animal \n");
 
-    std::shared_ptr<Animal> criado = std::make_shared<MamiferoDomestico>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, nome_animal, "sem dono");
+    std::shared_ptr<Animal> criado = std::make_shared<MamiferoDomestico>(this->animalStore.size(), especie, nome, genero, Mamiferos, veterinario, tratador, tipo_temperatura, tipo_pele, tipo_fecundacao, troca_pele, material_eliminidado, tem_dentes, pelagem, tipo_gestacao, nome_animal, "Ninguem");
 
     cout << "Salvando Animal"
          << "\n";
@@ -1397,22 +1398,52 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
 
 void  Petfera::salvar_doc(){
 
+    vector<string> chaves{"Cuidadores", "Veterinario", "Tratador", "ID", "Classe", "Nome", "Cientifico", "Sexo",  "Temperatura", "Habitat", "Possui","Ovos", "Pele", "Fecundacao", "Troca","Pele", "Material","Eliminado", "Batismo", "Dono", "/", "Aquatico", "Terrestre", "Aquatico/Terrestre", "Registro", "Ibama", "Territorio" "Brasileiro", "Ameacado", "Extinsao", "Pais" ,"Origem", "Tamanho", "bico ", "Envergadura", "Dentes", "Pelagem", "Tipo","gestacao"};
+   
     ifstream arqCache("cache.dat");
-    ofstream arqDados_csv("Dados.dat");
+    ofstream arqDados("Dados.dat");
+    ofstream arqDados_csv("Dados_csv.dat");
+
     string linha;
     string palavra;
+    string teste;
 
     while(arqCache >> linha){
-       
         if (linha != " " && linha != "=============="){
-            this->tokens.push_back(linha);
+        this->tokens.push_back(linha);  
+
+            }
         }
+    
+
+    for (auto& novo : this->tokens){ 
+        cout << novo << endl;
+        arqDados<< novo << endl;
         
     }
-    std::replace (this->tokens.begin(), this->tokens.end(), "|", ";");
-    for (auto& novo : this->tokens) {
 
-        cout << novo;
-        arqDados_csv << novo;
+
+    for (int i = 0; i < this->tokens.size(); ++i)
+    {
+        for (int j = 0; j < chaves.size(); ++j)
+        {
+            if (tokens[i] == chaves[j] || tokens[i] == "|")
+            {
+                tokens[i] = "";
+            }
+        }
+
     }
-}
+    
+    for (auto& novo : this->tokens)
+    {
+        if (novo == "." && novo != ""){
+
+            arqDados_csv << novo << endl;
+
+        }else if(novo != ""){
+             arqDados_csv << novo << ";";
+        } 
+    }
+}   
+ 

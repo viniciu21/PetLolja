@@ -47,7 +47,7 @@ AveDomestico::~AveDomestico() {
 
 ostream& AveDomestico::imprimeDados(ostream& o) const {
     o << std::endl
-      << "============== Ave Domestico ============" << std::endl
+      << "============== Ave_Domestico ==============" << std::endl
       << "ID                    | " << this->id << std::endl
       << "Classe                | Ave" << std::endl
       << "Nome                  | " << this->nome << std::endl
@@ -56,12 +56,12 @@ ostream& AveDomestico::imprimeDados(ostream& o) const {
       << "Temperatura           | " << this->tipo_temperatura << std::endl
       << "Pele                  | " << this->tipo_pele << std::endl
       << "Fecundacao            | " << this->tipo_fecundacao << std::endl
-      << "Troca de Pele         | " << this->troca_pele << std::endl
+      << "Troca Pele            | " << this->troca_pele << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
-      << "Nome de Batismo       | " << this->nome_animal << std::endl
-      << "Nome do dono          | " << this->nome_dono << std::endl
-      << "Tamanho do bico       | " << this->tamanhoDoBico << std::endl
-      << "Envergadura           | " << this->envergaduraAsas << std::endl;
+      << "Nome Batismo          | " << this->nome_animal << std::endl
+      << "Nome  dono            | " << this->nome_dono << std::endl
+      << "Tamanho bico          | " << this->tamanhoDoBico << std::endl
+      << "Envergadura           | " << this->envergaduraAsas << std::endl<< ".";
 
     return o;
 }

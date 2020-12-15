@@ -54,18 +54,18 @@ AnfibioNativo::~AnfibioNativo() {
 
 ostream& AnfibioNativo::imprimeDados(ostream& o) const {
     o << std::endl
-      << "============== Anfibio Nativo ============" << std::endl
+      << "============== Anfibio Nativo ==============" << std::endl
       << "ID                    | " << this->id << std::endl
       << "Classe                | Anfibio" << std::endl
       << "Nome                  | " << this->nome << std::endl
       << "Nome Cientifico       | " << this->especie << std::endl
       << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
       << "Habitat               | " << this->habitat << std::endl
-      << "Material Eleiminado   | " << this->material_eliminidado << std::endl
-      << "Aquatico ou Terrestre | " << this->aquatico_terrestre << std::endl
+      << "Material Eliminado    | " << this->material_eliminidado << std::endl
+      << "Aquatico/Terrestre    | " << this->aquatico_terrestre << std::endl
       << "Registro Ibama        | " << this->registro_ibama << std::endl
-      << "Territorio Brasileiro | " << this->territorio_brasileiro << std::endl
-      << "Ameacado de Extinsao  | " << (this->extincao == ameacado ? "Risco de extincao" : "Nao corre risco de extincao") << std::endl;
+      << "Brasileiro            | " << this->territorio_brasileiro << std::endl
+      << "Ameacado de Extinsao  | " << (this->extincao == ameacado ? "Risco_de_extincao" : "Nao_corre_risco_de_extincao") << std::endl << ".";
 
     return o;
 }

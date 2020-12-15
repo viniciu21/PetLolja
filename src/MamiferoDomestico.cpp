@@ -48,7 +48,7 @@ MamiferoDomestico::~MamiferoDomestico() {}
 
 ostream &MamiferoDomestico::imprimeDados(ostream &o) const {
     o << std::endl
-      << "============== Mamifero Domestico ============" << std::endl
+      << "============== Mamifero_Domestico ==============" << std::endl
       << "ID                    | " << this->id << std::endl
       << "Classe                | Ave" << std::endl
       << "Nome                  | " << this->nome << std::endl
@@ -59,11 +59,11 @@ ostream &MamiferoDomestico::imprimeDados(ostream &o) const {
       << "Fecundacao            | " << this->tipo_fecundacao << std::endl
       << "Troca de Pele         | " << this->troca_pele << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
-      << "Nome de Batismo       | " << this->nome_animal << std::endl
-      << "Nome do dono          | " << this->nome_dono << std::endl
+      << "Nome Batismo          |  " << this->nome_animal << std::endl
+      << "Nome dono             | " << this->nome_dono << std::endl
       << "Dentes                | " << (this->tem_dentes ? "Possui dentes" : "Não possui dentes") << std::endl
       << "Pelagem               | " << (this->pelagem == 0 ? "Ausente" : this->pelagem == 1 ? "Reduzido" : "Normal") << std::endl
-      << "Tipo de gestacao      | " << (this->tipo_gestacao == 0 ? "Marsupial" : "Placentario") << std::endl;
+      << "Tipo gestacao         | " << (this->tipo_gestacao == 0 ? "Marsupial" : "Placentario") << std::endl<< ".";
 
     return o;
 }

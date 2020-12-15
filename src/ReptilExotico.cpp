@@ -47,9 +47,9 @@ ReptilExotico::~ReptilExotico() {}
 
 ostream &ReptilExotico::imprimeDados(ostream &o) const {
     o << std::endl
-      << "============== Reptil Exotico ============" << std::endl
+      << "============== Reptil_Exotico ==============" << std::endl
       << "ID                    | " << this->id << std::endl
-      << "Classe                | Ave" << std::endl
+      << "Classe                | Reptil" << std::endl
       << "Nome                  | " << this->nome << std::endl
       << "Nome Cientifico       | " << this->especie << std::endl
       << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
@@ -58,11 +58,11 @@ ostream &ReptilExotico::imprimeDados(ostream &o) const {
       << "Fecundacao            | " << this->tipo_fecundacao << std::endl
       << "Troca de Pele         | " << this->troca_pele << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
-      << "Aquatico ou Terrestre | " << this->aquatico_terrestre << std::endl
+      << "Aquatico/Terrestre    | " << this->aquatico_terrestre << std::endl
       << "Registro Ibama        | " << this->registro_ibama << std::endl
       << "Territorio Brasileiro | " << this->territorio_brasileiro << std::endl
-      << "Ameacado de Extinsao  | " << (this->extincao == ameacado ? "Risco de extincao" : "Nao corre risco de extincao") << std::endl
-      << "Pais Origem           | " << this->pais_origem << std::endl;
+      << "Ameacado Extinsao     | " << (this->extincao == ameacado ? "Ameacado" : "Nao_Ameacado") << std::endl
+      << "Pais Origem           | " << this->pais_origem << std::endl<< ".";
 
     return o;
 }
