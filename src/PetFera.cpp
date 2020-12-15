@@ -6,6 +6,7 @@
 #include <vector>
 #include <fstream>
 #include <iostream>
+#include <algorithm>  
 
 #include "../include/AnfibioDomestico.hpp"
 #include "../include/AnfibioExotico.hpp"
@@ -1397,24 +1398,21 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
 void  Petfera::salvar_doc(){
 
     ifstream arqCache("cache.dat");
-    ofstream arqDados("Dados.dat");
-    ifstream arqDados_csv("Dados_csv.dat");
-
+    ofstream arqDados_csv("Dados.dat");
     string linha;
     string palavra;
 
     while(arqCache >> linha){
-        
-        stringstream s(linha);
-            while(getline(s, palavra, '*')){
-                cout << palavra << end;
-                this->tokens.push_back(palavra);
-            }
+       
+        if (linha != " " && linha != "=============="){
+            this->tokens.push_back(linha);
+        }
         
     }
-
+    std::replace (this->tokens.begin(), this->tokens.end(), "|", ";");
     for (auto& novo : this->tokens) {
+
         cout << novo;
-        arqDados << novo << end;
+        arqDados_csv << novo;
     }
 }

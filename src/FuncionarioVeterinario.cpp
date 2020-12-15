@@ -24,7 +24,7 @@ FuncionarioVeterinario::FuncionarioVeterinario(
 
 std::ostream& FuncionarioVeterinario::imprimeDados(std::ostream& os) const {
     os << std::endl
-       << "            Funcionario Veterinario        " << std::endl << " " << std::endl << "|"
+       << "==============Funcionario Veterinario==============" << std::endl << " " <<  "|"
        << "ID                     |" << this->id << std::endl<< "|"
        << "Classe                 |Funcionario" << std::endl<< "|"
        << "Nome                   |" << this->nome << std::endl<< "|"

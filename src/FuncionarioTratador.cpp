@@ -28,7 +28,7 @@ FuncionarioTratador::FuncionarioTratador(
 
 std::ostream& FuncionarioTratador::imprimeDados(std::ostream& os) const {
     os << std::endl
-       << "            Funcionario Tratador        " << std::endl << " " << std::endl << "|"
+       << "==============Funcionario Tratador==============" << std::endl << "|"
        << "ID                     |" << this->id << std::endl << "|"
        << "Classe                 |Funcionario" << std::endl<< "|"
        << "Nome                   |" << this->nome << std::endl<< "|"

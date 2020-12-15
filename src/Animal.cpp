@@ -104,9 +104,9 @@ void Animal::setMaterial_eliminidado(string material_eliminidado) {
 std::ostream& operator<<(std::ostream& o, Animal& a) {
     o << std::endl
       << "============== Cuidadores ============== "
-      << "\n"
+      << "\n" << "| "
       << "Veterinario           | "
-      << a.getVeterinario()->getNome() << std::endl
+      << a.getVeterinario()->getNome() << std::endl << "| "
       << "Tratador              | "
       << a.getTratador()->getNome() << std::endl;
 
