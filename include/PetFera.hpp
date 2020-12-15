@@ -75,6 +75,7 @@ class Petfera {
     bool atualizar_dados_animal();
     bool atualizar_funcionario(std::shared_ptr<Funcionario> funcionario);
     bool atualizar_animal(std::shared_ptr<Animal> animal);
+    void salvar_animal(std::shared_ptr<Animal> animal);
 
     /*
 	 * Tratamentos
