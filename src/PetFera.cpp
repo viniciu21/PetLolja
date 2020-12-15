@@ -1398,7 +1398,7 @@ void  Petfera::salvar_doc(){
     vector<string> chaves{"Cuidadores", "Veterinario", "Tratador", "ID", "Classe", "Nome", "Cientifico", "Sexo",  "Temperatura", "Habitat", "Possui","Ovos", "Pele", "Fecundacao", "Troca","Pele", "Material","Eliminado", "Batismo", "Dono", "/", "Aquatico", "Terrestre", "Aquatico/Terrestre", "Registro", "Ibama", "Territorio" "Brasileiro", "Ameacado", "Extinsao", "Pais" ,"Origem", "Tamanho", "bico ", "Envergadura", "Dentes", "Pelagem", "Tipo","gestacao"};
    
     ifstream arqCache("cache.dat");
-    ofstream arqDados("Dados.dat");
+    ofstream arqDados("temp.dat");
     ofstream arqDados_csv("../banco/Dados_csv.dat", ios::app);
 
     string linha;
@@ -1413,15 +1413,15 @@ void  Petfera::salvar_doc(){
     
 
     for (auto& novo : this->tokens){ 
-        cout << novo << endl;
+    
         arqDados<< novo << endl;
         
     }
 
 
-    for (int i = 0; i < this->tokens.size(); ++i)
+    for (unsigned int i = 0; i < this->tokens.size(); ++i)
     {
-        for (int j = 0; j < chaves.size(); ++j)
+        for (unsigned int j = 0; j < chaves.size(); ++j)
         {
             if (tokens[i] == chaves[j] || tokens[i] == "|")
             {
