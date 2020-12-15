@@ -4,6 +4,8 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <fstream>
+#include <iostream>
 
 #include "../include/AnfibioDomestico.hpp"
 #include "../include/AnfibioExotico.hpp"
@@ -65,7 +67,7 @@ void Petfera::PetferaMenu(int& escolha) {
          << "\n"
          << "    10 -> Listar todos animais "
          << "\n"
-         << "    11 -> Sair " << std::endl;
+         << "    11 -> Salvar CSV " << std::endl;
 
     cout << "Escolha uma Opcao"
          << "\n";
@@ -76,12 +78,7 @@ void Petfera::PetferaMenu(int& escolha) {
     ss >> escolha;
 
     switch (escolha) {
-        case 11:
-            cout << "\033[1;33m"
-                 << "Muito obrigado e volte sempre!!"
-                 << "\033[0m"
-                 << "\n";
-            break;
+    
         case 1:
             cout << "Vamos la cadastrar um animal"
                  << "\n";
@@ -139,6 +136,11 @@ void Petfera::PetferaMenu(int& escolha) {
                  << "\n";
             listarTodosAnimais();
             break;
+        case 11:
+            cout << "Salvando csv..."
+                 << "\n";
+            salvar_doc();
+        break;
         default:
             cout << "\033[1;33m"
                  << "Nao temos essa Opcao, Escolha de 1-11"
@@ -271,6 +273,9 @@ void Petfera::listarTodosFuncaionarios() {
     return;
 }
 void Petfera::listarTodosAnimais() {
+
+    ofstream arqCache("cache.dat");
+
     cout << "Aqui estao todo os animais na Petfera"
          << "\n\n";
 
@@ -284,6 +289,8 @@ void Petfera::listarTodosAnimais() {
     }
     for (auto& novo : this->animalStore) {
         cout << (*novo) << endl;
+        arqCache << (*novo) << endl;
+
     }
     return;
 }
@@ -1384,4 +1391,30 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
     }
 
     return true;
+}
+
+
+void  Petfera::salvar_doc(){
+
+    ifstream arqCache("cache.dat");
+    ofstream arqDados("Dados.dat");
+    ifstream arqDados_csv("Dados_csv.dat");
+
+    string linha;
+    string palavra;
+
+    while(arqCache >> linha){
+        
+        stringstream s(linha);
+            while(getline(s, palavra, '*')){
+                cout << palavra << end;
+                this->tokens.push_back(palavra);
+            }
+        
+    }
+
+    for (auto& novo : this->tokens) {
+        cout << novo;
+        arqDados << novo << end;
+    }
 }
