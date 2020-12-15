@@ -61,7 +61,7 @@ ostream& AveNativo::imprimeDados(ostream& o) const {
       << "Nome Cientifico       | " << this->especie << std::endl
       << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
-      << "Aquatico/errestre     | " << this->aquatico_terrestre << std::endl
+      << "Aquatico/terrestre     | " << this->aquatico_terrestre << std::endl
       << "Registro Ibama        | " << this->registro_ibama << std::endl
       << "Territorio Brasileiro | " << this->territorio_brasileiro << std::endl
       << "Ameacado Extinsao     | " << (this->extincao == ameacado ? "Ameacado" : "Nao_Ameacado") << std::endl

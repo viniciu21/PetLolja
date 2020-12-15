@@ -67,9 +67,8 @@ void Petfera::PetferaMenu(int& escolha) {
          << "\n"
          << "    9 -> Atualizar dados de um funcionario"
          << "\n"
-         << "    10 -> Listar todos animais "
-         << "\n"
-         << "    11 -> Salvar CSV " << std::endl;
+         << "    10 -> Listar e Salvar animais "
+         << "\n";
 
     cout << "Escolha uma Opcao"
          << "\n";
@@ -134,14 +133,12 @@ void Petfera::PetferaMenu(int& escolha) {
             atualizar_dados_funcionario();
             break;
         case 10:
-            cout << "Esta e a lista de todos os animais da Petfera"
+            cout << "Esta e a lista de todos os animais da Petfera que vc esta salvando"
                  << "\n";
+            cout << "Salvando csv..." ;   
             listarTodosAnimais();
-            break;
-        case 11:
-            cout << "Salvando csv..."
-                 << "\n";
             salvar_doc();
+            break;
         break;
         default:
             cout << "\033[1;33m"
@@ -1402,11 +1399,10 @@ void  Petfera::salvar_doc(){
    
     ifstream arqCache("cache.dat");
     ofstream arqDados("Dados.dat");
-    ofstream arqDados_csv("Dados_csv.dat");
+    ofstream arqDados_csv("../banco/Dados_csv.dat", ios::app);
 
     string linha;
     string palavra;
-    string teste;
 
     while(arqCache >> linha){
         if (linha != " " && linha != "=============="){
@@ -1445,5 +1441,7 @@ void  Petfera::salvar_doc(){
              arqDados_csv << novo << ";";
         } 
     }
+
+    inicio();
 }   
  
