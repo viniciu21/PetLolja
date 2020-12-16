@@ -24,14 +24,14 @@ FuncionarioVeterinario::FuncionarioVeterinario(
 
 std::ostream& FuncionarioVeterinario::imprimeDados(std::ostream& os) const {
     os << std::endl
-       << "==============Funcionario Veterinario==============" << std::endl << " " <<  "|"
-       << "ID                     |" << this->id << std::endl<< "|"
-       << "Classe                 |Funcionario" << std::endl<< "|"
-       << "Nome                   |" << this->nome << std::endl<< "|"
-       << "Numero para contato    |" << this->celularProfissional << std::endl<< "|"
-       << "Funcao                 |" << "Veterinario" << std::endl<< "|"
-       << "Cpf                    |" << this->cpf << std::endl<< "|"
-       << "Email                  |" << this->email << std::endl<< "|"
-       << "Inscricao no CRMV      |" << (this->isInscritoCRMV ? "Inscrito" : "Nao inscrito") << std::endl;
+       << "============== Funcionario_Veterinario ==============" << std::endl << " " <<  "| "
+       << "ID                     | " << this->id << std::endl<< "| "
+       << "Classe                 | Funcionario" << std::endl<< "| "
+       << "Nome                   | " << this->nome << std::endl<< "| "
+       << "Numero contato         | " << this->celularProfissional << std::endl<< "| "
+       << "Funcao                 | " << "Veterinario" << std::endl<< "| "
+       << "Cpf                    | " << this->cpf << std::endl<< "| "
+       << "Email                  | " << this->email << std::endl<< "| "
+       << "Inscricao CRMV         | " << (this->isInscritoCRMV ? "Inscrito" : "Nao inscrito") << std::endl << " .";
     return os;
 }

@@ -47,7 +47,8 @@ class Petfera {
     void cadastrarFuncionario();  // Interface com o usuário
     void cadastrarVeterinario();  // Interface com o usuário
     void cadastrarTratador();     // Interface com o usuário
-    void salvar_doc();
+    void salvar_doc_animais();
+    void salvar_doc_funcio();
 
     void cadastrarAnfibioDomestico();
     void cadastrarAnfibioExotico();
@@ -105,8 +106,8 @@ class Petfera {
     int animais_cadastrados = 0;
     vector<std::shared_ptr<Funcionario>> funcionarioStore;
     int funcionarios_cadastrados = 0;
-    vector<string> tokens;
-    vector<string> tokens_csv;
+    vector<string> tokens_animais;
+    vector<string> tokens_funcio;
 };
 
 #endif

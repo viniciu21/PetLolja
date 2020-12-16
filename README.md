@@ -20,6 +20,8 @@ Na pasta bin (PetLolja\bin) execute:
 
 Irá funcionar como um programa de cadastramento de petshop permitindo a inserção, atualização e listagem de funcionarios e animais
 
+É importante utilizar a função de salvar funcionario e salvar animais, pois assim as informações serão salvas no banco de dados, casos contrario as alterações serão PERDIDAS!
+
 ## Feito por
 
 Thauanny Ramos

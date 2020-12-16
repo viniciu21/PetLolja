@@ -28,15 +28,15 @@ FuncionarioTratador::FuncionarioTratador(
 
 std::ostream& FuncionarioTratador::imprimeDados(std::ostream& os) const {
     os << std::endl
-       << "==============Funcionario Tratador==============" << std::endl << "|"
-       << "ID                     |" << this->id << std::endl << "|"
-       << "Classe                 |Funcionario" << std::endl<< "|"
-       << "Nome                   |" << this->nome << std::endl<< "|"
-       << "Numero para contato    |" << this->celularProfissional << std::endl<< "|"
-       << "Funcao                 |" << "Tratador" << std::endl<< "|"
-       << "Cpf                    |" << this->cpf << std::endl<< "|"
-       << "Email                  |" << this->email << std::endl<< "|"
-       << "Nivel de seguranca     |" << (this->classificacaoDeSeguranca == Verde ? "Verde" : this->classificacaoDeSeguranca == Azul ? "Azul" : "Vermelho") << std::endl;
+       << "============== Funcionario_Tratador ==============" << std::endl << "| "
+       << "ID                     | " << this->id << std::endl << "| "
+       << "Classe                 | Funcionario" << std::endl<< "| "
+       << "Nome                   | " << this->nome << std::endl<< "| "
+       << "Numero contato         | " << this->celularProfissional << std::endl<< "| "
+       << "Funcao                 | " << "Tratador" << std::endl<< "| "
+       << "Cpf                    | " << this->cpf << std::endl<< "| "
+       << "Email                  | " << this->email << std::endl<< "| "
+       << "Nivel seguranca        | " << (this->classificacaoDeSeguranca == Verde ? "Verde" : this->classificacaoDeSeguranca == Azul ? "Azul" : "Vermelho") << std::endl<<" .";
 
     return os;
 }
