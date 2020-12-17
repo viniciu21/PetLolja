@@ -1019,7 +1019,7 @@ t_genero Petfera::leGenero(string str_prompt) {
             break;
         }
 
-    } while (genero_string != "F" || genero_string != "M");
+    } while (true);
 
     return genero;
 }
