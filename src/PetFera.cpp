@@ -1422,14 +1422,13 @@ void  Petfera::salvar_doc_animais(){
 
     }
 
-    for (auto& novo : this->tokens_animais)
-    {
+    for (auto& novo : this->tokens_animais){
         if (novo == "." && novo != ""){
 
-            arqDados_csv_animais << novo << endl;
+            arqDados_csv_animais << "" << endl;
 
         }else if(novo != ""){
-             arqDados_csv_animais << novo << ";";
+            arqDados_csv_animais << novo << ";";
         }
     }
 
@@ -1472,14 +1471,14 @@ void  Petfera::salvar_doc_funcio(){
 
     }
 
-    for (auto& novo : this->tokens_funcio)
-    {
+    for (auto& novo : this->tokens_funcio){
+
         if (novo == "." && novo != ""){
 
-            arqDados_csv << novo << endl;
+            arqDados_csv << "" << endl;
 
         }else if(novo != ""){
-             arqDados_csv << novo << ";";
+            arqDados_csv << novo << ";";
         }
     }
 
