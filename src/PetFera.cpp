@@ -1392,7 +1392,7 @@ void  Petfera::salvar_doc_animais(){
 
     ifstream arqCache_animais("cache_animais.dat");
     ofstream arqDados_animais("temp_animais.dat");
-    ofstream arqDados_csv_animais("../banco/Dados_csv_animais.dat");
+    ofstream arqDados_csv_animais("../banco/Dados_csv_animais.csv");
 
     string linha;
     string palavra;
@@ -1441,7 +1441,7 @@ void  Petfera::salvar_doc_funcio(){
 
     ifstream arqCache("cache_funcio.dat");
     ofstream arqDados("temp_func.dat");
-    ofstream arqDados_csv("../banco/Dados_csv_funci.dat");
+    ofstream arqDados_csv("../banco/Dados_csv_funci.csv");
 
     string linha;
     string palavra;
