@@ -1,4 +1,4 @@
-#include "../include/ReptilDomestico.hpp"
+#include "ReptilDomestico.hpp"
 
 #include <iomanip>
 #include <iostream>

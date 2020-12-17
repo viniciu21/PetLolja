@@ -1,4 +1,4 @@
-#include "../include/Ave.hpp"
+#include "Ave.hpp"
 
 #include <iostream>
 

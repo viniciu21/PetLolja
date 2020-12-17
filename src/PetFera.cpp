@@ -1,4 +1,4 @@
-#include "../include/PetFera.hpp"
+#include "PetFera.hpp"
 
 #include <memory>
 #include <sstream>
@@ -9,20 +9,20 @@
 #include <algorithm>  
 #include <bits/stdc++.h> 
 
-#include "../include/AnfibioDomestico.hpp"
-#include "../include/AnfibioExotico.hpp"
-#include "../include/AnfibioNativo.hpp"
-#include "../include/AveDomestico.hpp"
-#include "../include/AveExotica.hpp"
-#include "../include/AveNativo.hpp"
-#include "../include/FuncionarioTratador.hpp"
-#include "../include/FuncionarioVeterinario.hpp"
-#include "../include/MamiferoDomestico.hpp"
-#include "../include/MamiferoExotico.hpp"
-#include "../include/MamiferoNativo.hpp"
-#include "../include/ReptilDomestico.hpp"
-#include "../include/ReptilExotico.hpp"
-#include "../include/ReptilNativo.hpp"
+#include "AnfibioDomestico.hpp"
+#include "AnfibioExotico.hpp"
+#include "AnfibioNativo.hpp"
+#include "AveDomestico.hpp"
+#include "AveExotica.hpp"
+#include "AveNativo.hpp"
+#include "FuncionarioTratador.hpp"
+#include "FuncionarioVeterinario.hpp"
+#include "MamiferoDomestico.hpp"
+#include "MamiferoExotico.hpp"
+#include "MamiferoNativo.hpp"
+#include "ReptilDomestico.hpp"
+#include "ReptilExotico.hpp"
+#include "ReptilNativo.hpp"
 
 Petfera::Petfera() {
     std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(this->funcionarioStore.size(), "Mario", "cpf", Tratador, "(84) 95165-8432", "roi@gmail.com", Verde);

@@ -5,8 +5,8 @@ using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/AnfibioExotico.hpp"
-#include "../include/AnimalExotico.hpp"
+#include "AnfibioExotico.hpp"
+#include "AnimalExotico.hpp"
 
 AnfibioExotico::AnfibioExotico(
     int id,

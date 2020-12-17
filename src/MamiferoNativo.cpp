@@ -6,7 +6,7 @@ using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/MamiferoNativo.hpp"
+#include "MamiferoNativo.hpp"
 
 MamiferoNativo::MamiferoNativo(
     int id,

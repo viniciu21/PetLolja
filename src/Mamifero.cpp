@@ -1,4 +1,4 @@
-#include "../include/Mamifero.hpp"
+#include "Mamifero.hpp"
 
 #include <iostream>
 

@@ -6,7 +6,7 @@ using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/MamiferoExotico.hpp"
+#include "MamiferoExotico.hpp"
 
 MamiferoExotico::MamiferoExotico(
     int id,

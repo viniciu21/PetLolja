@@ -1,4 +1,4 @@
-#include "../include/AnimalSilvestre.hpp"
+#include "AnimalSilvestre.hpp"
 
 AnimalSilvestre::AnimalSilvestre(
     string aquatico_terrestre,

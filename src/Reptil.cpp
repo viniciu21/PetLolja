@@ -1,4 +1,4 @@
-#include "../include/Reptil.hpp"
+#include "Reptil.hpp"
 
 #include <iostream>
 

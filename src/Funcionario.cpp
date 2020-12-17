@@ -1,4 +1,4 @@
-#include "../include/Funcionario.hpp"
+#include "Funcionario.hpp"
 
 #include <iostream>
 

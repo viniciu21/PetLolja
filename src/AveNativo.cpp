@@ -5,7 +5,7 @@ using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/AveNativo.hpp"
+#include "AveNativo.hpp"
 
 AveNativo::AveNativo(
     int id,

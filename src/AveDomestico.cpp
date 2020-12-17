@@ -1,4 +1,4 @@
-#include "../include/AveDomestico.hpp"
+#include "AveDomestico.hpp"
 
 #include <iomanip>
 #include <iostream>

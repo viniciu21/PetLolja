@@ -1,4 +1,4 @@
-#include "../include/FuncionarioTratador.hpp"
+#include "FuncionarioTratador.hpp"
 
 #include <iostream>
 

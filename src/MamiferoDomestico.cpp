@@ -1,4 +1,4 @@
-#include "../include/MamiferoDomestico.hpp"
+#include "MamiferoDomestico.hpp"
 
 #include <iomanip>
 #include <iostream>

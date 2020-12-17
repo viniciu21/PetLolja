@@ -5,8 +5,8 @@ using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/AnimalExotico.hpp"
-#include "../include/AveExotica.hpp"
+#include "AnimalExotico.hpp"
+#include "AveExotica.hpp"
 
 AveExotica::AveExotica(
     int id,

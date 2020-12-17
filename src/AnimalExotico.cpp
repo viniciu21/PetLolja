@@ -1,8 +1,8 @@
 #include <iomanip>
 #include <iostream>
 
-#include "../include/AnimalExotico.hpp"
-#include "../include/AnimalSilvestre.hpp"
+#include "AnimalExotico.hpp"
+#include "AnimalSilvestre.hpp"
 
 AnimalExotico::AnimalExotico(
     string aquatico_terrestre,

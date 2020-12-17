@@ -5,7 +5,7 @@ using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/AnimalNativo.hpp"
+#include "AnimalNativo.hpp"
 
 AnimalNativo::AnimalNativo(
     string aquatico_terrestre,

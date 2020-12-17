@@ -6,7 +6,7 @@ using std::endl;
 using std::setfill;
 using std::setw;
 
-#include "../include/AnfibioDomestico.hpp"
+#include "AnfibioDomestico.hpp"
 
 AnfibioDomestico::AnfibioDomestico(
     int id,
