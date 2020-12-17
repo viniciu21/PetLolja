@@ -1524,8 +1524,7 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal)
     return true;
 }
 
-void Petfera::salvar_animal(shared_ptr<Animal> animal)
-{
+void Petfera::salvar_animal(shared_ptr<Animal> animal){
     std::ofstream animais;
     animais.open("../animais.csv");
 
