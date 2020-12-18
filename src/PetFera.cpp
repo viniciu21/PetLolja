@@ -36,6 +36,23 @@ Petfera::Petfera() {
     // std::shared_ptr<Funcionario> novo2 = std::make_shared<FuncionarioVeterinario>(this->funcionarioStore.size(), "Ahsoka", "cpf", Veterinario, "(84) 9245-7524", "ordem_jedi_nadinha@hotmail.com", true);
     // this->adicionarFuncionario(novo2);
     funcaCVS.close();
+
+
+		ifstream animaisCSV("../banco/Dados_csv_animais.csv");
+		string animalDados;
+		string animalToken;
+		while(getline(animaisCSV,animalDados)){
+			std::stringstream s(animalDados);
+			std::vector<string> animalAtual;
+			while(getline(s,animalToken,';')){
+				animalAtual.push_back(animalToken);
+			}
+			std::shared_ptr<Funcionario> veterinario = pegarVeterinarioPeloNome(animalAtual.at(0));
+			std::shared_ptr<Funcionario> tratador = pegarTratadorPeloNome(animalAtual.at(1));
+
+
+		}
+	animaisCSV.close();
 }
 
 Petfera::~Petfera() {
@@ -192,7 +209,17 @@ std::shared_ptr<Funcionario> Petfera::pegarVeterinario() {
     }
     return novo;
 }
+std::shared_ptr<Funcionario> Petfera::pegarVeterinarioPeloNome(string nome) {
+    std::shared_ptr<Funcionario> novo;
 
+
+    for (auto& funcionario : funcionarioStore) {
+        if (funcionario->getNome() == nome) {
+            novo = funcionario;
+        }
+    }
+    return novo;
+}
 std::shared_ptr<Funcionario> Petfera::pegarTratador() {
     std::shared_ptr<Funcionario> novo;
 
@@ -221,7 +248,16 @@ std::shared_ptr<Funcionario> Petfera::pegarTratador() {
     }
     return novo;
 }
+std::shared_ptr<Funcionario> Petfera::pegarTratadorPeloNome(string nome) {
+    std::shared_ptr<Funcionario> novo;
 
+    for (auto& funcionario : funcionarioStore) {
+        if (funcionario->getNome() == nome) {
+            novo = funcionario;
+        }
+    }
+    return novo;
+}
 void Petfera::listarAnimaisPorClasse() {
     int escolha;
 
@@ -1469,9 +1505,9 @@ void Petfera::salvar_doc_funcio() {
 
     for (auto& novo : tokens_funcio) {
         arqDados << novo << endl;
-       
+
     }
-   
+
 
     for (unsigned int i = 0; i < tokens_funcio.size(); ++i) {
         for (unsigned int j = 0; j < chaves.size(); ++j) {

@@ -90,7 +90,10 @@ class Petfera {
     pelos lePelo(string str_prompt);
     TipoDeGestacao leGestacao(string str_prompt);
     std::shared_ptr<Funcionario> pegarVeterinario();
+		std::shared_ptr<Funcionario> pegarVeterinarioPeloNome(string nome);
     std::shared_ptr<Funcionario> pegarTratador();
+		std::shared_ptr<Funcionario> pegarTratadorPeloNome(string nome);
+
     nivelDeSeguranca leNivelDeSeguranca();
 
     //familia leClasse(string str_prompt);
@@ -107,7 +110,7 @@ class Petfera {
     vector<std::shared_ptr<Funcionario>> funcionarioStore;
     int funcionarios_cadastrados = 0;
 
-    
+
 };
 
 #endif
