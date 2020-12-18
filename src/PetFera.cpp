@@ -1,20 +1,59 @@
 #include "PetFera.hpp"
 
+#include <bits/stdc++.h>
+
+#include <algorithm>
+#include <fstream>
+#include <iostream>
 #include <memory>
 #include <sstream>
 #include <string>
 #include <vector>
-#include <fstream>
-#include <iostream>
-#include <algorithm>
-#include <bits/stdc++.h>
-
 
 Petfera::Petfera() {
-    std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(this->funcionarioStore.size(), "Mario", "cpf", Tratador, "(84) 95165-8432", "roi@gmail.com", Verde);
-    this->adicionarFuncionario(novo);
-    std::shared_ptr<Funcionario> novo2 = std::make_shared<FuncionarioVeterinario>(this->funcionarioStore.size(), "Ahsoka", "cpf", Veterinario, "(84) 9245-7524", "ordem_jedi_nadinha@hotmail.com", true);
-    this->adicionarFuncionario(novo2);
+    ifstream funcaCVS;
+    funcaCVS.open("./banco/Dados_csv_funci.csv");
+    string funcaDadosJuntos;
+    string funcaToken;
+    while (getline(funcaCVS, funcaDadosJuntos)) {
+        std::stringstream s(funcaDadosJuntos);
+        std::vector<string> dadosFunca;
+        while (getline(s, funcaToken, ';')) {
+            dadosFunca.push_back(funcaToken);
+        }
+        if (dadosFunca.at(0) == "Funcionario_Tratador") {
+            int classificacao;
+            nivelDeSeguranca nivelSeguranca;
+            if (dadosFunca.at(5) == "Tratador") {
+                classificacao = 0;
+            } else {
+                classificacao = 1;
+            }
+            if (dadosFunca.at(8) == "Verde") {
+                nivelSeguranca = Verde;
+            } else if (dadosFunca.at(8) == "Azul") {
+                nivelSeguranca = Azul;
+            } else {
+                nivelSeguranca = Vermelho;
+            }
+            std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(stoi(dadosFunca.at(1)), dadosFunca.at(3), dadosFunca.at(6), classificacao, dadosFunca.at(4), dadosFunca.at(7), nivelSeguranca);
+            adicionarFuncionario(novo);
+        } else {
+            int classificacao;
+            if (dadosFunca.at(5) == "Tratador") {
+                classificacao = 0;
+            } else {
+                classificacao = 1;
+            }
+            std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioVeterinario>(stoi(dadosFunca.at(1)), dadosFunca.at(3), dadosFunca.at(6), classificacao, dadosFunca.at(4), dadosFunca.at(7), true);
+            adicionarFuncionario(novo);
+        }
+    }
+
+    // std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(this->funcionarioStore.size(), "Mario", "cpf", Tratador, "(84) 95165-8432", "roi@gmail.com", Verde);
+    // this->adicionarFuncionario(novo);
+    // std::shared_ptr<Funcionario> novo2 = std::make_shared<FuncionarioVeterinario>(this->funcionarioStore.size(), "Ahsoka", "cpf", Veterinario, "(84) 9245-7524", "ordem_jedi_nadinha@hotmail.com", true);
+    // this->adicionarFuncionario(novo2);
 }
 
 Petfera::~Petfera() {
@@ -68,7 +107,6 @@ void Petfera::PetferaMenu(int& escolha) {
     ss >> escolha;
 
     switch (escolha) {
-
         case 1:
             cout << "Vamos la cadastrar um animal"
                  << "\n";
@@ -1385,10 +1423,11 @@ bool Petfera::atualizar_animal(shared_ptr<Animal> animal) {
     return true;
 }
 
-
-void  Petfera::salvar_doc_animais(){
-
-    vector<string> chaves{"Cuidadores", "Veterinario", "Tratador", "ID", "Classe", "Nome", "Cientifico", "Sexo",  "Temperatura", "Habitat", "Possui","Ovos", "Pele", "Fecundacao", "Troca","Pele", "Material","Eliminado", "Batismo", "Dono", "/", "Aquatico", "Terrestre", "Aquatico/Terrestre", "Registro", "Ibama", "Territorio" "Brasileiro", "Ameacado", "Extinsao", "Pais" ,"Origem", "Tamanho", "bico ", "Envergadura", "Dentes", "Pelagem", "Tipo","gestacao"};
+void Petfera::salvar_doc_animais() {
+    vector<string> chaves{"Cuidadores", "Veterinario", "Tratador", "ID", "Classe", "Nome", "Cientifico", "Sexo", "Temperatura", "Habitat", "Possui", "Ovos", "Pele", "Fecundacao", "Troca", "Pele", "Material", "Eliminado", "Batismo", "Dono", "/", "Aquatico", "Terrestre", "Aquatico/Terrestre", "Registro", "Ibama",
+                          "Territorio"
+                          "Brasileiro",
+                          "Ameacado", "Extinsao", "Pais", "Origem", "Tamanho", "bico ", "Envergadura", "Dentes", "Pelagem", "Tipo", "gestacao"};
 
     ifstream arqCache_animais("cache_animais.dat");
     ofstream arqDados_animais("temp_animais.dat");
@@ -1397,37 +1436,30 @@ void  Petfera::salvar_doc_animais(){
     string linha;
     string palavra;
 
-    while(arqCache_animais >> linha){
-        if (linha != " " && linha != "=============="){
-        this->tokens_animais.push_back(linha);
+    while (arqCache_animais >> linha) {
+        if (linha != " " && linha != "==============") {
+            this->tokens_animais.push_back(linha);
 
-            }
         }
-
-    for (auto& novo : this->tokens_animais){
-
-        arqDados_animais<< novo << endl;
-
     }
 
-    for (unsigned int i = 0; i < this->tokens_animais.size(); ++i)
-    {
-        for (unsigned int j = 0; j < chaves.size(); ++j)
-        {
-            if (tokens_animais[i] == chaves[j] || tokens_animais[i] == "|")
-            {
+    for (auto& novo : this->tokens_animais) {
+        arqDados_animais << novo << endl;
+    }
+
+    for (unsigned int i = 0; i < this->tokens_animais.size(); ++i) {
+        for (unsigned int j = 0; j < chaves.size(); ++j) {
+            if (tokens_animais[i] == chaves[j] || tokens_animais[i] == "|") {
                 tokens_animais[i] = "";
             }
         }
-
     }
 
-    for (auto& novo : this->tokens_animais){
-        if (novo == "." && novo != ""){
-
+    for (auto& novo : this->tokens_animais) {
+        if (novo == "." && novo != "") {
             arqDados_csv_animais << "" << endl;
 
-        }else if(novo != ""){
+        } else if (novo != "") {
             arqDados_csv_animais << novo << ";";
         }
     }
@@ -1435,8 +1467,7 @@ void  Petfera::salvar_doc_animais(){
     inicio();
 }
 
-void  Petfera::salvar_doc_funcio(){
-
+void Petfera::salvar_doc_funcio() {
     vector<string> chaves{"ID", "Classe", "Nome", "Numero", "contato", "Funcao", "Cpf", "Email", "Nivel", "seguranca", "Inscricao", "CRMV"};
 
     ifstream arqCache("cache_funcio.dat");
@@ -1446,38 +1477,29 @@ void  Petfera::salvar_doc_funcio(){
     string linha;
     string palavra;
 
-    while(arqCache >> linha){
-        if (linha != " " && linha != "=============="){
-        this->tokens_funcio.push_back(linha);
-
-            }
+    while (arqCache >> linha) {
+        if (linha != " " && linha != "==============") {
+            this->tokens_funcio.push_back(linha);
         }
-
-    for (auto& novo : this->tokens_funcio){
-
-        arqDados<< novo << endl;
-
     }
 
-    for (unsigned int i = 0; i < this->tokens_funcio.size(); ++i)
-    {
-        for (unsigned int j = 0; j < chaves.size(); ++j)
-        {
-            if (tokens_funcio[i] == chaves[j] || tokens_funcio[i] == "|")
-            {
+    for (auto& novo : this->tokens_funcio) {
+        arqDados << novo << endl;
+    }
+
+    for (unsigned int i = 0; i < this->tokens_funcio.size(); ++i) {
+        for (unsigned int j = 0; j < chaves.size(); ++j) {
+            if (tokens_funcio[i] == chaves[j] || tokens_funcio[i] == "|") {
                 tokens_funcio[i] = "";
             }
         }
-
     }
 
-    for (auto& novo : this->tokens_funcio){
-
-        if (novo == "." && novo != ""){
-
+    for (auto& novo : this->tokens_funcio) {
+        if (novo == "." && novo != "") {
             arqDados_csv << "" << endl;
 
-        }else if(novo != ""){
+        } else if (novo != "") {
             arqDados_csv << novo << ";";
         }
     }
