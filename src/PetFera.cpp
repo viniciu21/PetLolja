@@ -62,17 +62,17 @@ Petfera::Petfera()
 				stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
+				toGenero(animalAtual.at(7)), // Genero
 				Anfibios,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(11),// Tipo pele
 				animalAtual.at(12),// Fecundação
-				leBool(animalAtual.at(13)),// Troca pele
+				toBool(animalAtual.at(13)),// Troca pele
 				animalAtual.at(14),// Material eliminado
 				animalAtual.at(9), // Habitat
-				leBool(animalAtual.at(10)),// Possui ovos
+				toBool(animalAtual.at(10)),// Possui ovos
 				animalAtual.at(15),// Nome animal
 				"Ninguem"          // Nome do dono
 				);
@@ -88,19 +88,19 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
+				toGenero(animalAtual.at(7)), // Genero
 				Anfibios,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(11),// Tipo pele
 				animalAtual.at(12),// Fecundação
-				leBool(animalAtual.at(13)),// Troca pele
+				toBool(animalAtual.at(13)),// Troca pele
 				animalAtual.at(14),// Material eliminado
 				animalAtual.at(9), // Habitat
-				leBool(animalAtual.at(10)),// Possui ovos
+				toBool(animalAtual.at(10)),// Possui ovos
 				animalAtual.at(15),// Aquatico/Terrestre
-				leBool(animalAtual.at(16)),// Registro Ibama
+				toBool(animalAtual.at(16)),// Registro Ibama
 				false,// Brasileiro
 				nao_ameacado,// Ameacado Extinção
 				animalAtual.at(19) // Pais Origem
@@ -116,19 +116,19 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
+				toGenero(animalAtual.at(7)), // Genero
 				Anfibios,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(11),// Tipo pele
 				animalAtual.at(12),// Fecundação
-				leBool(animalAtual.at(13)),// Troca pele
+				toBool(animalAtual.at(13)),// Troca pele
 				animalAtual.at(14),// Material eliminado
 				animalAtual.at(9), // Habitat
-				leBool(animalAtual.at(10)),// Possui ovos
+				toBool(animalAtual.at(10)),// Possui ovos
 				animalAtual.at(15),// Aquatico/Terrestre
-				leBool(animalAtual.at(16)),// Registro Ibama
+				toBool(animalAtual.at(16)),// Registro Ibama
 				true,// Brasileiro
 				nao_ameacado// Ameacado Extinção
 				);
@@ -144,14 +144,14 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
+				toGenero(animalAtual.at(7)), // Genero
 				Aves,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				leBool(animalAtual.at(11)),// Troca pele
+				toBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 				animalAtual.at(15),// Tamanho bico
 				animalAtual.at(16),// Envergadura das asas
@@ -169,20 +169,20 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
+				toGenero(animalAtual.at(7)), // Genero
 				Aves,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				leBool(animalAtual.at(11)),// Troca pele
+				toBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 				animalAtual.at(18),// Tamanho bico
 				animalAtual.at(19),// Envergadura das asas
 
 				animalAtual.at(13),// Aquatico Terrestre
-				leBool(animalAtual.at(14)),// Registro Ibama
+				toBool(animalAtual.at(14)),// Registro Ibama
 				false,// Brasileiro
 				nao_ameacado,// Ameacado Extinção
 				animalAtual.at(17) // Pais
@@ -198,19 +198,19 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
+				toGenero(animalAtual.at(7)), // Genero
 				Aves,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				leBool(animalAtual.at(11)),// Troca pele
+				toBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 				animalAtual.at(17),// Tamanho bico
 				animalAtual.at(18),// Envergadura das asas
 				animalAtual.at(13),// Aquatico Terrestre
-				leBool(animalAtual.at(14)),// Registro Ibama
+				toBool(animalAtual.at(14)),// Registro Ibama
 				true,// Brasileiro
 				nao_ameacado// Ameacado Extinção
 				);
@@ -226,19 +226,19 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
+				toGenero(animalAtual.at(7)), // Genero
 				Mamiferos,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				leBool(animalAtual.at(11)),// Troca pele
+				toBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 
-				leBool(animalAtual.at(15)),// Dentes
-				lePelo(animalAtual.at(16)),// Pelagem
-				leGestacao(animalAtual.at(17)),// Gestacao
+				toBool(animalAtual.at(15)),// Dentes
+				toPelo(animalAtual.at(16)),// Pelagem
+				toGestacao(animalAtual.at(17)),// Gestacao
 
 				animalAtual.at(13),// Nome animal
 				"Ninguem"          // Nome do dono
@@ -254,22 +254,22 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
+				toGenero(animalAtual.at(7)), // Genero
 				Mamiferos,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				leBool(animalAtual.at(11)),// Troca pele
+				toBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 
-				leBool(animalAtual.at(18)),// Dentes
-				lePelo(animalAtual.at(19)),// Pelagem
-				leGestacao(animalAtual.at(20)),// Gestacao
+				toBool(animalAtual.at(18)),// Dentes
+				toPelo(animalAtual.at(19)),// Pelagem
+				toGestacao(animalAtual.at(20)),// Gestacao
 
 				animalAtual.at(13),// Aquatico Terrestre
-				leBool(animalAtual.at(14)),// Registro Ibama
+				toBool(animalAtual.at(14)),// Registro Ibama
 				false,// Brasileiro
 				nao_ameacado,// Ameacado Extinção
 				animalAtual.at(17) // Pais
@@ -285,22 +285,22 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
+				toGenero(animalAtual.at(7)), // Genero
 				Mamiferos,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				leBool(animalAtual.at(11)),// Troca pele
+				toBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 
-				leBool(animalAtual.at(17)),// Dentes
-				lePelo(animalAtual.at(18)),// Pelagem
-				leGestacao(animalAtual.at(19)),// Gestacao
+				toBool(animalAtual.at(17)),// Dentes
+				toPelo(animalAtual.at(18)),// Pelagem
+				toGestacao(animalAtual.at(19)),// Gestacao
 
 				animalAtual.at(13),// Aquatico Terrestre
-				leBool(animalAtual.at(14)),// Registro Ibama
+				toBool(animalAtual.at(14)),// Registro Ibama
 				true,// Brasileiro
 				nao_ameacado// Ameacado Extinção
 				);
@@ -316,14 +316,14 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
-				Mamiferos,          // Classe
+				toGenero(animalAtual.at(7)), // Genero
+				Repteis,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				leBool(animalAtual.at(11)),// Troca pele
+				toBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 				animalAtual.at(13),// Nome animal
 				"Ninguem"          // Nome do dono
@@ -339,18 +339,18 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
-				Mamiferos,          // Classe
+				toGenero(animalAtual.at(7)), // Genero
+				Repteis,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				leBool(animalAtual.at(11)),// Troca pele
+				toBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 
 				animalAtual.at(13),// Aquatico/Terrestre
-				leBool(animalAtual.at(14)),// Registro Ibama
+				toBool(animalAtual.at(14)),// Registro Ibama
 				false,// Brasileiro
 				nao_ameacado,// Extinção
 				animalAtual.at(17)// Pais
@@ -368,18 +368,18 @@ Petfera::Petfera()
 				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
-				leGenero(animalAtual.at(7)), // Genero
-				Mamiferos,          // Classe
+				toGenero(animalAtual.at(7)), // Genero
+				Repteis,          // Classe
 				veterinario,       // Veterinario
 				tratador,					 // Tratador
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				leBool(animalAtual.at(11)),// Troca pele
+				toBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 
 				animalAtual.at(13),// Aquatico Terrestre
-				leBool(animalAtual.at(14)),// Registro Ibama
+				toBool(animalAtual.at(14)),// Registro Ibama
 				true,// Brasileiro
 				nao_ameacado// Ameacado Extinção
 				);
@@ -1522,7 +1522,21 @@ bool Petfera::leBool(string str_prompt)
 		return false;
 	}
 }
+bool Petfera::toBool(string key){
+	if(key == "sim"){
+		return true;
+	}else{
+		return false;
+	}
+}
 
+t_genero Petfera::toGenero(string key){
+	if(key == "Macho"){
+		return M;
+	}else{
+		return F;
+	}
+}
 pelos Petfera::lePelo(string str_prompt)
 {
 	int resposta;
@@ -1533,6 +1547,15 @@ pelos Petfera::lePelo(string str_prompt)
 	return pelos(resposta - 1);
 }
 
+pelos Petfera::toPelo(string key){
+	if(key == "Ausente"){
+		return ausente;
+	}else if(key == "Reduzido"){
+		return reduzido;
+	}else{
+		return normal;
+	}
+}
 TipoDeGestacao Petfera::leGestacao(string str_prompt)
 {
 	int resposta;
@@ -1541,6 +1564,14 @@ TipoDeGestacao Petfera::leGestacao(string str_prompt)
 	cin >> resposta;
 
 	return TipoDeGestacao(resposta - 1);
+}
+
+TipoDeGestacao Petfera::toGestacao(string key){
+	if(key == "Marsupial"){
+		return marsupial;
+	}else{
+		return placentario;
+	}
 }
 
 bool Petfera::atualizar_dados_animal()

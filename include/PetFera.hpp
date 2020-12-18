@@ -85,10 +85,14 @@ class Petfera {
     // int leID(string str_prompt);
     string leString(string str_prompt);
     t_genero leGenero(string str_prompt);
+		t_genero toGenero(string key);
     bool leBool(string str_prompt);
+		bool toBool(string key);
     std::shared_ptr<Funcionario> pegarFuncionario();
     pelos lePelo(string str_prompt);
+		pelos toPelo(string key);
     TipoDeGestacao leGestacao(string str_prompt);
+		TipoDeGestacao toGestacao(string key);
     std::shared_ptr<Funcionario> pegarVeterinario();
 		std::shared_ptr<Funcionario> pegarVeterinarioPeloNome(string nome);
     std::shared_ptr<Funcionario> pegarTratador();
