@@ -52,7 +52,7 @@ ostream& AnfibioDomestico::imprimeDados(ostream& o) const {
     o << std::endl
       << " ============== Anfibio_Domestico ============== " << std::endl << "| "
       << "ID                     | " << this->id << std::endl << "| "
-      << "Classe                 | anfibio" << std::endl << "| "
+      << "Classe                 | Anfibio" << std::endl << "| "
       << "Nome                   | " << this->nome << std::endl << "| "
       << "Nome Cientifico        | " << this->especie << std::endl << "| "
       << "Sexo                   | " << (this->genero == F ? "Femea" : "Macho") << std::endl << "| "
@@ -62,7 +62,7 @@ ostream& AnfibioDomestico::imprimeDados(ostream& o) const {
       << "Pele                   | " << this->tipo_pele << std::endl<< "| "
       << "Fecundacao             | " << this->tipo_fecundacao << std::endl<< "| "
       << "Troca Pele             | " << (this->troca_pele == true ? "sim" : "nao") << std::endl << "| "
-      << "Material Eliminado     | " << this->material_eliminidado << std::endl<< "| " 
+      << "Material Eliminado     | " << this->material_eliminidado << std::endl<< "| "
       << "Nome Batismo           | " << this->nome_animal << std::endl<< "| "
       << "Nome Dono              | " << this->nome_dono << std::endl << " .";
 

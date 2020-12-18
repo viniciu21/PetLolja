@@ -44,7 +44,7 @@ ostream &ReptilDomestico::imprimeDados(ostream &o) const {
     o << std::endl
       << "============== Reptil_Domestico ==============" << std::endl
       << "ID                    | " << this->id << std::endl
-      << "Classe                | Ave" << std::endl
+      << "Classe                | Reptil" << std::endl
       << "Nome                  | " << this->nome << std::endl
       << "Nome Cientifico       | " << this->especie << std::endl
       << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
