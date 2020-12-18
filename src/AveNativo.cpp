@@ -55,7 +55,7 @@ ostream& AveNativo::imprimeDados(ostream& o) const {
     o << std::endl
 
       << "============== Ave_Nativo ==============" << std::endl
-     << "ID                    | " << this->id << std::endl
+     	<< "ID                    | " << this->id << std::endl
       << "Classe                | Ave" << std::endl
       << "Nome                  | " << this->nome << std::endl
       << "Nome Cientifico       | " << this->especie << std::endl
