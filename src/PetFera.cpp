@@ -59,7 +59,7 @@ Petfera::Petfera()
 		// Anfibio
 		if (animalAtual.at(2) == "Anfibio_Domestico"){
 			std::shared_ptr<Animal> criado = std::make_shared<AnfibioDomestico>(
-				animalAtual.at(3), // ID
+				stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -85,7 +85,7 @@ Petfera::Petfera()
 		}
 		if (animalAtual.at(2) == "Anfibio_Exotico"){
 			std::shared_ptr<Animal> criado = std::make_shared<AnfibioExotico>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -113,7 +113,7 @@ Petfera::Petfera()
 		}
 		if (animalAtual.at(2) == "Anfibio_Nativo"){
 			std::shared_ptr<Animal> criado = std::make_shared<AnfibioNativo>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -141,7 +141,7 @@ Petfera::Petfera()
 		// Ave
 		if (animalAtual.at(2) == "Ave_Domestico"){
 			std::shared_ptr<Animal> criado = std::make_shared<AveDomestico>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -166,7 +166,7 @@ Petfera::Petfera()
 		}
 		if (animalAtual.at(2) == "Ave_Exotico"){
 		std::shared_ptr<Animal> criado = std::make_shared<AveExotica>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -195,7 +195,7 @@ Petfera::Petfera()
 		}
 		if (animalAtual.at(2) == "Ave_Nativo"){
 				std::shared_ptr<Animal> criado = std::make_shared<AveNativo>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -223,7 +223,7 @@ Petfera::Petfera()
 		// Mamifero
 		if (animalAtual.at(2) == "Mamifero_Domestico"){
 			std::shared_ptr<Animal> criado = std::make_shared<MamiferoDomestico>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -251,7 +251,7 @@ Petfera::Petfera()
 		}
 		if (animalAtual.at(2) == "Mamifero_Exotico"){
 			std::shared_ptr<Animal> criado = std::make_shared<MamiferoExotico>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -282,7 +282,7 @@ Petfera::Petfera()
 		}
 		if (animalAtual.at(2) == "Mamifero_Nativo"){
 				std::shared_ptr<Animal> criado = std::make_shared<MamiferoNativo>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -313,7 +313,7 @@ Petfera::Petfera()
 		// Repteis
 		if (animalAtual.at(2) == "Reptil_Domestico"){
 			std::shared_ptr<Animal> criado = std::make_shared<ReptilDomestico>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -336,7 +336,7 @@ Petfera::Petfera()
 		}
 		if (animalAtual.at(2) == "Reptil_Exotico"){
 			std::shared_ptr<Animal> criado = std::make_shared<ReptilExotico>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
@@ -350,7 +350,7 @@ Petfera::Petfera()
 				animalAtual.at(12),// Material eliminado
 
 				animalAtual.at(13),// Aquatico/Terrestre
-				animalAtual.at(14),// Registro Ibama
+				leBool(animalAtual.at(14)),// Registro Ibama
 				false,// Brasileiro
 				nao_ameacado,// Extinção
 				animalAtual.at(17)// Pais
@@ -365,7 +365,7 @@ Petfera::Petfera()
 
 		if (animalAtual.at(2) == "Reptil_Nativo"){
 				std::shared_ptr<Animal> criado = std::make_shared<ReptilNativo>(
-				animalAtual.at(3), // ID
+				std:: stoi(animalAtual.at(3)), // ID
 				animalAtual.at(6), // Especie
 				animalAtual.at(5), // Nome
 				leGenero(animalAtual.at(7)), // Genero
