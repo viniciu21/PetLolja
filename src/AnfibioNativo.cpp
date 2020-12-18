@@ -55,13 +55,18 @@ AnfibioNativo::~AnfibioNativo() {
 ostream& AnfibioNativo::imprimeDados(ostream& o) const {
     o << std::endl
       << "============== Anfibio Nativo ==============" << std::endl
-      << "ID                    | " << this->id << std::endl
-      << "Classe                | Anfibio" << std::endl
-      << "Nome                  | " << this->nome << std::endl
-      << "Nome Cientifico       | " << this->especie << std::endl
-      << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
-      << "Habitat               | " << this->habitat << std::endl
-      << "Material Eliminado    | " << this->material_eliminidado << std::endl
+      << "ID                     | " << this->id << std::endl << "| "
+      << "Classe                 | anfibio" << std::endl << "| "
+      << "Nome                   | " << this->nome << std::endl << "| "
+      << "Nome Cientifico        | " << this->especie << std::endl << "| "
+      << "Sexo                   | " << (this->genero == F ? "Femea" : "Macho") << std::endl << "| "
+      << "Temperatura            | " << this->tipo_temperatura << std::endl<< "| "
+      << "Habitat                | " << this->habitat << std::endl<< "| "
+      << "Ovos                   | " << (this->possui_ovos == true ? "sim" : "nao") << std::endl <<"| "
+      << "Pele                   | " << this->tipo_pele << std::endl<< "| "
+      << "Fecundacao             | " << this->tipo_fecundacao << std::endl<< "| "
+      << "Troca Pele             | " << (this->troca_pele == true ? "sim" : "nao") << std::endl << "| "
+      << "Material Eliminado     | " << this->material_eliminidado << std::endl<< "| "
       << "Aquatico/Terrestre    | " << this->aquatico_terrestre << std::endl
       << "Registro Ibama        | " << this->registro_ibama << std::endl
       << "Brasileiro            | " << this->territorio_brasileiro << std::endl
