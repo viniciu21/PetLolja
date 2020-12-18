@@ -18,9 +18,13 @@ Na pasta bin (PetLolja\bin) execute:
 
 ## Como funciona?
 
-Irá funcionar como um programa de cadastramento de petshop permitindo a inserção, atualização e listagem de funcionarios e animais
+Irá funcionar como um programa de cadastramento de petshop permitindo a inserção, atualização e listagem de funcionarios e animais.
 
-É importante utilizar a função de salvar funcionario e salvar animais, pois assim as informações serão salvas no banco de dados, casos contrario as alterações serão PERDIDAS!
+Correções: Remoções de Warnings e erros logicos que estavam aparecendo. 
+
+Funções adicionadas: Agora o cadastramento ficará salvo no HD. Atualize, cadastre e nao perca nenhum dado!
+
+É importante utilizar a função "listar e salvar todos os funcionarios"  e "Listar e salvar todos os animais" após cadastramentos e atualizações, pois assim as alterações serão salvas no banco de dados, casos contrario as alterações serão PERDIDAS!
 
 ## Feito por
 
@@ -41,4 +45,6 @@ https://github.com/viniciu21/PetLolja/
 
 ## Endereço Video Explicativo
 
-https://www.youtube.com/watch?v=03b5l5VIw9U&feature=youtu.be
+Primeira versão: https://www.youtube.com/watch?v=03b5l5VIw9U&feature=youtu.be
+
+Nova versão: 

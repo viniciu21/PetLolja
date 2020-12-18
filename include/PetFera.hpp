@@ -106,8 +106,8 @@ class Petfera {
     int animais_cadastrados = 0;
     vector<std::shared_ptr<Funcionario>> funcionarioStore;
     int funcionarios_cadastrados = 0;
-    vector<string> tokens_animais;
-    vector<string> tokens_funcio;
+
+    
 };
 
 #endif

@@ -11,8 +11,7 @@
 #include <vector>
 
 Petfera::Petfera() {
-    ifstream funcaCVS;
-    funcaCVS.open("./banco/Dados_csv_funci.csv");
+    ifstream funcaCVS("../banco/Dados_csv_funci.csv");
     string funcaDadosJuntos;
     string funcaToken;
     while (getline(funcaCVS, funcaDadosJuntos)) {
@@ -36,6 +35,7 @@ Petfera::Petfera() {
     // this->adicionarFuncionario(novo);
     // std::shared_ptr<Funcionario> novo2 = std::make_shared<FuncionarioVeterinario>(this->funcionarioStore.size(), "Ahsoka", "cpf", Veterinario, "(84) 9245-7524", "ordem_jedi_nadinha@hotmail.com", true);
     // this->adicionarFuncionario(novo2);
+    funcaCVS.close();
 }
 
 Petfera::~Petfera() {
@@ -1414,22 +1414,22 @@ void Petfera::salvar_doc_animais() {
     ifstream arqCache_animais("cache_animais.dat");
     ofstream arqDados_animais("temp_animais.dat");
     ofstream arqDados_csv_animais("../banco/Dados_csv_animais.csv");
-
+    vector<string> tokens_animais;
     string linha;
     string palavra;
 
     while (arqCache_animais >> linha) {
         if (linha != " " && linha != "==============") {
-            this->tokens_animais.push_back(linha);
+            tokens_animais.push_back(linha);
 
         }
     }
 
-    for (auto& novo : this->tokens_animais) {
+    for (auto& novo : tokens_animais) {
         arqDados_animais << novo << endl;
     }
 
-    for (unsigned int i = 0; i < this->tokens_animais.size(); ++i) {
+    for (unsigned int i = 0; i < tokens_animais.size(); ++i) {
         for (unsigned int j = 0; j < chaves.size(); ++j) {
             if (tokens_animais[i] == chaves[j] || tokens_animais[i] == "|") {
                 tokens_animais[i] = "";
@@ -1437,7 +1437,7 @@ void Petfera::salvar_doc_animais() {
         }
     }
 
-    for (auto& novo : this->tokens_animais) {
+    for (auto& novo : tokens_animais) {
         if (novo == "." && novo != "") {
             arqDados_csv_animais << "" << endl;
 
@@ -1455,21 +1455,25 @@ void Petfera::salvar_doc_funcio() {
     ifstream arqCache("cache_funcio.dat");
     ofstream arqDados("temp_func.dat");
     ofstream arqDados_csv("../banco/Dados_csv_funci.csv");
-
+    vector<string> tokens_funcio;
     string linha;
+
     string palavra;
 
     while (arqCache >> linha) {
         if (linha != " " && linha != "==============") {
-            this->tokens_funcio.push_back(linha);
+            tokens_funcio.push_back(linha);
         }
     }
 
-    for (auto& novo : this->tokens_funcio) {
-        arqDados << novo << endl;
-    }
 
-    for (unsigned int i = 0; i < this->tokens_funcio.size(); ++i) {
+    for (auto& novo : tokens_funcio) {
+        arqDados << novo << endl;
+       
+    }
+   
+
+    for (unsigned int i = 0; i < tokens_funcio.size(); ++i) {
         for (unsigned int j = 0; j < chaves.size(); ++j) {
             if (tokens_funcio[i] == chaves[j] || tokens_funcio[i] == "|") {
                 tokens_funcio[i] = "";
@@ -1477,7 +1481,8 @@ void Petfera::salvar_doc_funcio() {
         }
     }
 
-    for (auto& novo : this->tokens_funcio) {
+
+    for (auto& novo : tokens_funcio) {
         if (novo == "." && novo != "") {
             arqDados_csv << "" << endl;
 
