@@ -312,13 +312,82 @@ Petfera::Petfera()
 		}
 		// Repteis
 		if (animalAtual.at(2) == "Reptil_Domestico"){
-			cadastrarAnfibioDomestico();
+			std::shared_ptr<Animal> criado = std::make_shared<ReptilDomestico>(
+				animalAtual.at(3), // ID
+				animalAtual.at(6), // Especie
+				animalAtual.at(5), // Nome
+				leGenero(animalAtual.at(7)), // Genero
+				Mamiferos,          // Classe
+				veterinario,       // Veterinario
+				tratador,					 // Tratador
+				animalAtual.at(8), // Temperatura
+				animalAtual.at(9),// Tipo pele
+				animalAtual.at(10),// Fecundação
+				leBool(animalAtual.at(11)),// Troca pele
+				animalAtual.at(12),// Material eliminado
+				animalAtual.at(13),// Nome animal
+				"Ninguem"          // Nome do dono
+				);
+
+			if (adicionarAnimal(criado))
+			{
+				this->animais_cadastrados++;
+			}
 		}
 		if (animalAtual.at(2) == "Reptil_Exotico"){
-			cadastrarAnfibioExotico();
+			std::shared_ptr<Animal> criado = std::make_shared<ReptilExotico>(
+				animalAtual.at(3), // ID
+				animalAtual.at(6), // Especie
+				animalAtual.at(5), // Nome
+				leGenero(animalAtual.at(7)), // Genero
+				Mamiferos,          // Classe
+				veterinario,       // Veterinario
+				tratador,					 // Tratador
+				animalAtual.at(8), // Temperatura
+				animalAtual.at(9),// Tipo pele
+				animalAtual.at(10),// Fecundação
+				leBool(animalAtual.at(11)),// Troca pele
+				animalAtual.at(12),// Material eliminado
+
+				animalAtual.at(13),// Aquatico/Terrestre
+				animalAtual.at(14),// Registro Ibama
+				false,// Brasileiro
+				nao_ameacado,// Extinção
+				animalAtual.at(17)// Pais
+				);
+
+			if (adicionarAnimal(criado))
+			{
+				this->animais_cadastrados++;
+			}
 		}
+
+
 		if (animalAtual.at(2) == "Reptil_Nativo"){
-				cadastrarAnfibioNativo();
+				std::shared_ptr<Animal> criado = std::make_shared<ReptilNativo>(
+				animalAtual.at(3), // ID
+				animalAtual.at(6), // Especie
+				animalAtual.at(5), // Nome
+				leGenero(animalAtual.at(7)), // Genero
+				Mamiferos,          // Classe
+				veterinario,       // Veterinario
+				tratador,					 // Tratador
+				animalAtual.at(8), // Temperatura
+				animalAtual.at(9),// Tipo pele
+				animalAtual.at(10),// Fecundação
+				leBool(animalAtual.at(11)),// Troca pele
+				animalAtual.at(12),// Material eliminado
+
+				animalAtual.at(13),// Aquatico Terrestre
+				leBool(animalAtual.at(14)),// Registro Ibama
+				true,// Brasileiro
+				nao_ameacado// Ameacado Extinção
+				);
+
+			if (adicionarAnimal(criado))
+			{
+				this->animais_cadastrados++;
+			}
 		}
 	}
 	animaisCSV.close();
