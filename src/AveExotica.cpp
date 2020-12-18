@@ -55,10 +55,14 @@ ostream& AveExotica::imprimeDados(ostream& o) const {
     o << std::endl
       << "============== Ave_Exotico ==============" << std::endl
       << "ID                    | " << this->id << std::endl
-      << "Classe                | Anfibio" << std::endl
+      << "Classe                | Ave" << std::endl
       << "Nome                  | " << this->nome << std::endl
       << "Nome Cientifico       | " << this->especie << std::endl
       << "Sexo                  | " << (this->genero == F ? "Femea" : "Macho") << std::endl
+      << "Temperatura           | " << this->tipo_temperatura << std::endl
+      << "Pele                  | " << this->tipo_pele << std::endl
+      << "Fecundacao            | " << this->tipo_fecundacao << std::endl
+      << "Troca Pele            | " << this->troca_pele << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
       << "Aquatico/Terrestre    | " << this->aquatico_terrestre << std::endl
       << "Registro Ibama        | " << this->registro_ibama << std::endl

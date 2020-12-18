@@ -136,16 +136,88 @@ Petfera::Petfera()
 			if (adicionarAnimal(criado))
 			{
 				this->animais_cadastrados++;
-			}		}
+			}
+		}
 		// Ave
 		if (animalAtual.at(2) == "Ave_Domestico"){
-			cadastrarAnfibioDomestico();
+			std::shared_ptr<Animal> criado = std::make_shared<AveDomestico>(
+				animalAtual.at(3), // ID
+				animalAtual.at(6), // Especie
+				animalAtual.at(5), // Nome
+				leGenero(animalAtual.at(7)), // Genero
+				Aves,          // Classe
+				veterinario,       // Veterinario
+				tratador,					 // Tratador
+				animalAtual.at(8), // Temperatura
+				animalAtual.at(9),// Tipo pele
+				animalAtual.at(10),// Fecundação
+				animalAtual.at(11),// Troca pele
+				animalAtual.at(12),// Material eliminado
+				animalAtual.at(15),// Tamanho bico
+				animalAtual.at(16),// Envergadura das asas
+				animalAtual.at(13),// Nome animal
+				"Ninguem"          // Nome do dono
+				);
+
+			if (adicionarAnimal(criado))
+			{
+				this->animais_cadastrados++;
+			}
 		}
 		if (animalAtual.at(2) == "Ave_Exotico"){
-			cadastrarAnfibioExotico();
+		std::shared_ptr<Animal> criado = std::make_shared<AveExotica>(
+				animalAtual.at(3), // ID
+				animalAtual.at(6), // Especie
+				animalAtual.at(5), // Nome
+				leGenero(animalAtual.at(7)), // Genero
+				Aves,          // Classe
+				veterinario,       // Veterinario
+				tratador,					 // Tratador
+				animalAtual.at(8), // Temperatura
+				animalAtual.at(9),// Tipo pele
+				animalAtual.at(10),// Fecundação
+				animalAtual.at(11),// Troca pele
+				animalAtual.at(12),// Material eliminado
+				animalAtual.at(18),// Tamanho bico
+				animalAtual.at(19),// Envergadura das asas
+				animalAtual.at(13),// Aquatico Terrestre
+				leBool(animalAtual.at(14)),// Registro Ibama
+				false,// Brasileiro
+				nao_ameacado,// Ameacado Extinção
+				animalAtual.at(17) // Pais
+				);
+
+			if (adicionarAnimal(criado))
+			{
+				this->animais_cadastrados++;
+			}
 		}
 		if (animalAtual.at(2) == "Ave_Nativo"){
-				cadastrarAnfibioNativo();
+				std::shared_ptr<Animal> criado = std::make_shared<AveNativo>(
+				animalAtual.at(3), // ID
+				animalAtual.at(6), // Especie
+				animalAtual.at(5), // Nome
+				leGenero(animalAtual.at(7)), // Genero
+				Aves,          // Classe
+				veterinario,       // Veterinario
+				tratador,					 // Tratador
+				animalAtual.at(8), // Temperatura
+				animalAtual.at(9),// Tipo pele
+				animalAtual.at(10),// Fecundação
+				animalAtual.at(11),// Troca pele
+				animalAtual.at(12),// Material eliminado
+				animalAtual.at(17),// Tamanho bico
+				animalAtual.at(18),// Envergadura das asas
+				animalAtual.at(13),// Aquatico Terrestre
+				leBool(animalAtual.at(14)),// Registro Ibama
+				true,// Brasileiro
+				nao_ameacado// Ameacado Extinção
+				);
+
+			if (adicionarAnimal(criado))
+			{
+				this->animais_cadastrados++;
+			}
 		}
 		// Mamifero
 		if (animalAtual.at(2) == "Mamifero_Domestico"){
@@ -348,6 +420,7 @@ std::shared_ptr<Funcionario> Petfera::pegarVeterinarioPeloNome(string nome)
 	}
 	return novo;
 }
+
 std::shared_ptr<Funcionario> Petfera::pegarTratador()
 {
 	std::shared_ptr<Funcionario> novo;
