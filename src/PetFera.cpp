@@ -22,30 +22,12 @@ Petfera::Petfera() {
             dadosFunca.push_back(funcaToken);
         }
         if (dadosFunca.at(0) == "Funcionario_Tratador") {
-            int classificacao;
-            nivelDeSeguranca nivelSeguranca;
-            if (dadosFunca.at(5) == "Tratador") {
-                classificacao = 0;
-            } else {
-                classificacao = 1;
-            }
-            if (dadosFunca.at(8) == "Verde") {
-                nivelSeguranca = Verde;
-            } else if (dadosFunca.at(8) == "Azul") {
-                nivelSeguranca = Azul;
-            } else {
-                nivelSeguranca = Vermelho;
-            }
-            std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(stoi(dadosFunca.at(1)), dadosFunca.at(3), dadosFunca.at(6), classificacao, dadosFunca.at(4), dadosFunca.at(7), nivelSeguranca);
+
+            std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioTratador>(stoi(dadosFunca.at(1)), dadosFunca.at(3), dadosFunca.at(6), Tratador, dadosFunca.at(4), dadosFunca.at(7), Verde);
             adicionarFuncionario(novo);
         } else {
-            int classificacao;
-            if (dadosFunca.at(5) == "Tratador") {
-                classificacao = 0;
-            } else {
-                classificacao = 1;
-            }
-            std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioVeterinario>(stoi(dadosFunca.at(1)), dadosFunca.at(3), dadosFunca.at(6), classificacao, dadosFunca.at(4), dadosFunca.at(7), true);
+
+            std::shared_ptr<Funcionario> novo = std::make_shared<FuncionarioVeterinario>(stoi(dadosFunca.at(1)), dadosFunca.at(3), dadosFunca.at(6), Veterinario, dadosFunca.at(4), dadosFunca.at(7), true);
             adicionarFuncionario(novo);
         }
     }
