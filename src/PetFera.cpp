@@ -69,7 +69,7 @@ Petfera::Petfera()
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(11),// Tipo pele
 				animalAtual.at(12),// Fecundação
-				animalAtual.at(13),// Troca pele
+				leBool(animalAtual.at(13)),// Troca pele
 				animalAtual.at(14),// Material eliminado
 				animalAtual.at(9), // Habitat
 				leBool(animalAtual.at(10)),// Possui ovos
@@ -95,7 +95,7 @@ Petfera::Petfera()
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(11),// Tipo pele
 				animalAtual.at(12),// Fecundação
-				animalAtual.at(13),// Troca pele
+				leBool(animalAtual.at(13)),// Troca pele
 				animalAtual.at(14),// Material eliminado
 				animalAtual.at(9), // Habitat
 				leBool(animalAtual.at(10)),// Possui ovos
@@ -123,7 +123,7 @@ Petfera::Petfera()
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(11),// Tipo pele
 				animalAtual.at(12),// Fecundação
-				animalAtual.at(13),// Troca pele
+				leBool(animalAtual.at(13)),// Troca pele
 				animalAtual.at(14),// Material eliminado
 				animalAtual.at(9), // Habitat
 				leBool(animalAtual.at(10)),// Possui ovos
@@ -151,7 +151,7 @@ Petfera::Petfera()
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				animalAtual.at(11),// Troca pele
+				leBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 				animalAtual.at(15),// Tamanho bico
 				animalAtual.at(16),// Envergadura das asas
@@ -176,10 +176,11 @@ Petfera::Petfera()
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				animalAtual.at(11),// Troca pele
+				leBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 				animalAtual.at(18),// Tamanho bico
 				animalAtual.at(19),// Envergadura das asas
+
 				animalAtual.at(13),// Aquatico Terrestre
 				leBool(animalAtual.at(14)),// Registro Ibama
 				false,// Brasileiro
@@ -204,7 +205,7 @@ Petfera::Petfera()
 				animalAtual.at(8), // Temperatura
 				animalAtual.at(9),// Tipo pele
 				animalAtual.at(10),// Fecundação
-				animalAtual.at(11),// Troca pele
+				leBool(animalAtual.at(11)),// Troca pele
 				animalAtual.at(12),// Material eliminado
 				animalAtual.at(17),// Tamanho bico
 				animalAtual.at(18),// Envergadura das asas
@@ -221,13 +222,93 @@ Petfera::Petfera()
 		}
 		// Mamifero
 		if (animalAtual.at(2) == "Mamifero_Domestico"){
-			cadastrarAnfibioDomestico();
+			std::shared_ptr<Animal> criado = std::make_shared<MamiferoDomestico>(
+				animalAtual.at(3), // ID
+				animalAtual.at(6), // Especie
+				animalAtual.at(5), // Nome
+				leGenero(animalAtual.at(7)), // Genero
+				Mamiferos,          // Classe
+				veterinario,       // Veterinario
+				tratador,					 // Tratador
+				animalAtual.at(8), // Temperatura
+				animalAtual.at(9),// Tipo pele
+				animalAtual.at(10),// Fecundação
+				leBool(animalAtual.at(11)),// Troca pele
+				animalAtual.at(12),// Material eliminado
+
+				leBool(animalAtual.at(15)),// Dentes
+				lePelo(animalAtual.at(16)),// Pelagem
+				leGestacao(animalAtual.at(17)),// Gestacao
+
+				animalAtual.at(13),// Nome animal
+				"Ninguem"          // Nome do dono
+				);
+
+			if (adicionarAnimal(criado))
+			{
+				this->animais_cadastrados++;
+			}
 		}
 		if (animalAtual.at(2) == "Mamifero_Exotico"){
-			cadastrarAnfibioExotico();
+			std::shared_ptr<Animal> criado = std::make_shared<MamiferoExotico>(
+				animalAtual.at(3), // ID
+				animalAtual.at(6), // Especie
+				animalAtual.at(5), // Nome
+				leGenero(animalAtual.at(7)), // Genero
+				Mamiferos,          // Classe
+				veterinario,       // Veterinario
+				tratador,					 // Tratador
+				animalAtual.at(8), // Temperatura
+				animalAtual.at(9),// Tipo pele
+				animalAtual.at(10),// Fecundação
+				leBool(animalAtual.at(11)),// Troca pele
+				animalAtual.at(12),// Material eliminado
+
+				leBool(animalAtual.at(18)),// Dentes
+				lePelo(animalAtual.at(19)),// Pelagem
+				leGestacao(animalAtual.at(20)),// Gestacao
+
+				animalAtual.at(13),// Aquatico Terrestre
+				leBool(animalAtual.at(14)),// Registro Ibama
+				false,// Brasileiro
+				nao_ameacado,// Ameacado Extinção
+				animalAtual.at(17) // Pais
+				);
+
+			if (adicionarAnimal(criado))
+			{
+				this->animais_cadastrados++;
+			}
 		}
 		if (animalAtual.at(2) == "Mamifero_Nativo"){
-				cadastrarAnfibioNativo();
+				std::shared_ptr<Animal> criado = std::make_shared<MamiferoNativo>(
+				animalAtual.at(3), // ID
+				animalAtual.at(6), // Especie
+				animalAtual.at(5), // Nome
+				leGenero(animalAtual.at(7)), // Genero
+				Mamiferos,          // Classe
+				veterinario,       // Veterinario
+				tratador,					 // Tratador
+				animalAtual.at(8), // Temperatura
+				animalAtual.at(9),// Tipo pele
+				animalAtual.at(10),// Fecundação
+				leBool(animalAtual.at(11)),// Troca pele
+				animalAtual.at(12),// Material eliminado
+
+				leBool(animalAtual.at(17)),// Dentes
+				lePelo(animalAtual.at(18)),// Pelagem
+				leGestacao(animalAtual.at(19)),// Gestacao
+
+				animalAtual.at(13),// Aquatico Terrestre
+				leBool(animalAtual.at(14)),// Registro Ibama
+				true,// Brasileiro
+				nao_ameacado// Ameacado Extinção
+				);
+
+			if (adicionarAnimal(criado))
+			{
+				this->animais_cadastrados++;
+			}
 		}
 		// Repteis
 		if (animalAtual.at(2) == "Reptil_Domestico"){
