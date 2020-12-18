@@ -63,7 +63,7 @@ ostream& AveNativo::imprimeDados(ostream& o) const {
       << "Temperatura           | " << this->tipo_temperatura << std::endl
       << "Pele                  | " << this->tipo_pele << std::endl
       << "Fecundacao            | " << this->tipo_fecundacao << std::endl
-      << "Troca Pele            | " << this->troca_pele << std::endl
+      << "Troca de Pele         | " << (this->troca_pele == true ? "sim" : "nao") << std::endl
       << "Material Eliminado    | " << this->material_eliminidado << std::endl
       << "Aquatico/terrestre     | " << this->aquatico_terrestre << std::endl
       << "Registro Ibama        | " << this->registro_ibama << std::endl
